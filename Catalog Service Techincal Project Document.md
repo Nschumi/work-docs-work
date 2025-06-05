@@ -30,21 +30,12 @@ The **Catalog Service** is a backend module in a modular monolith, exposing tele
 
 ## 4. Modular Monolith Architecture
 
+```mermaid
 flowchart TD
-ChannelService["Channel Service
-(Placement & Rules)"]
-CatalogService["Catalog Service
-(Catalog Items, API)"]
-ProductService["External Product Service
-(Product Details API)"]
-Frontends["Frontend Applications
-(Web, eCare, App)"]
-
-text
-ChannelService --> CatalogService
-CatalogService --> ProductService
-CatalogService --> Frontends
-text
+    ChannelService["Channel Service (Placement & Rules)"] --> CatalogService["Catalog Service (Catalog Items, API)"]
+    CatalogService --> ProductService["External Product Service (Product Details API)"]
+    CatalogService --> Frontends["Frontend Applications (Web, eCare, App)"]
+```
 
 **Module Boundaries:**
 
