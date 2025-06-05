@@ -2,217 +2,202 @@
 
 ## 1. Purpose and Overview
 
-The **Catalog Service** is a backend service responsible for exposing telecom subscription products to various digital channels. It enables brand managers to create catalog items that reference underlying products, with channel-specific variations such as binding periods, campaigns, and display names. The service supports flexible product presentation, dynamic marketing strategies, and real-time updates across all customer touchpoints.
+The **Catalog Service** is a backend module in a modular monolith, exposing telecom subscription products to digital channels. It enables brand managers to create catalog items referencing underlying products, with channel-specific variations (binding periods, campaigns, display names). The service supports flexible product presentation, dynamic marketing, and real-time updates across all customer touchpoints.
 
 ---
 
 ## 2. Business Context
 
-- **Telecom Subscription Products:** The core products are subscription-based offerings.
-- **Catalog Items:** Each catalog item references an underlying product and can include:
+- **Telecom Subscription Products:** Core offerings are subscription-based.
+- **Catalog Items:** Reference products and include:
   - Binding period
   - Campaign (e.g., 50% off)
-  - Channel-specific display name
-  - Channel-specific pricing or presentation
-- **Brand Managers:** Can create multiple catalog items from the same product, each with variations as needed for different channels or campaigns.
-- **Channels:** Website, eCare portal, mobile app, and others.
+  - Channel-specific display name/pricing
+- **Brand Managers:** Can create multiple catalog items per product for different channels/campaigns.
+- **Channels:** Web, eCare portal, mobile app, etc.
 
 ---
 
 ## 3. Key Responsibilities
 
-- **Expose Products:** Make catalog items available to various digital channels.
-- **Support Variations:** Allow channel-specific and campaign-specific variations of products.
-- **Integrate with Other Services:** Work with Channel Service, Campaign Service, and Product Service.
-- **Provide Real-Time Updates:** Ensure changes are reflected instantly across all channels.
-- **Audit and Compliance:** Maintain a history of changes for regulatory and business transparency.
+- Expose catalog items to digital channels.
+- Support channel/campaign-specific product variations.
+- Integrate with Channel, Campaign, and Product modules.
+- Provide real-time updates.
+- Maintain audit history for compliance.
 
 ---
 
-## 4. High-Level Architecture
+## 4. Modular Monolith Architecture
 
-+----------------+ +----------------+ +----------------------+
-| Channel Service| ---> | Catalog Service| ---> | Product Service |
-| (Placement API)| | (Catalog API) | | (Product Details) |
-+----------------+ +----------------+ +----------------------+
-|
-v
-+----------------------+
-| Frontend Applications|
-| (Web, eCare, App) |
-+----------------------+
+flowchart TD
+ChannelService["Channel Service
+(Placement & Rules)"]
+CatalogService["Catalog Service
+(Catalog Items, API)"]
+ProductService["Product Service
+(Product Details)"]
+Frontends["Frontend Applications
+(Web, eCare, App)"]
 
-- **Channel Service:** Determines where products are shown.
-- **Catalog Service:** Manages catalog items and exposes them to channels.
-- **Product Service:** Source of truth for underlying product data.
+text
+ChannelService --> CatalogService
+CatalogService --> ProductService
+CatalogService --> Frontends
+text
+
+**Module Boundaries:**
+
+- Each service is a distinct module with internal types and explicit contracts for inter-module communication, avoiding direct repository access.
+- Use interfaces and DTOs in a shared contracts project to prevent circular dependencies.
 
 ---
 
 ## 5. Data Model
 
-### Entities
+### Entities (C# 12 Example)
 
-- **CatalogItem**
+public sealed record CatalogItem(
+Guid CatalogItemId,
+Guid ProductId,
+Guid BrandId,
+string Name,
+string Description,
+int BindingPeriodMonths,
+Guid? CampaignId,
+IReadOnlyList<Guid> ChannelAvailability,
+decimal? Price,
+CatalogItemStatus Status,
+DateTimeOffset CreatedAt,
+DateTimeOffset UpdatedAt
+);
 
-  - `CatalogItemId`: GUID
-  - `ProductId`: GUID (FK to Product Service)
-  - `BrandId`: GUID
-  - `Name`: string (channel-specific display name)
-  - `Description`: string
-  - `BindingPeriodMonths`: int
-  - `CampaignId`: GUID (optional, FK to Campaign Service)
-  - `ChannelAvailability`: list of channel IDs
-  - `Price`: decimal (optional, channel-specific)
-  - `Status`: enum (Active, Inactive, Archived)
-  - `CreatedAt`/`UpdatedAt`: datetime
+public enum CatalogItemStatus { Active, Inactive, Archived }
 
-- **Brand**
+text
 
-  - `BrandId`: GUID
-  - `Name`: string
-
-- **ChannelAvailability**
-
-  - `CatalogItemId`: GUID
-  - `ChannelId`: GUID
-
-- **Campaign**
-  - `CampaignId`: GUID
-  - `Name`: string
-  - `DiscountPercent`: decimal
-  - `StartDate`/`EndDate`: datetime
+- **Anti-pattern:** Avoid anemic models—encapsulate business logic (e.g., price calculation, campaign application) in domain entities, not just in services.
 
 ---
 
 ## 6. API Design
 
-### Endpoints
+- `GET /catalog/items`
+- `GET /catalog/items/{id}`
+- `POST /catalog/items`
+- `PUT /catalog/items/{id}`
+- `DELETE /catalog/items/{id}`
+- `GET /catalog/items/{id}/channels`
+- `PATCH /catalog/items/{id}/campaign`
 
-- `GET /catalog/items`: List catalog items (with filtering by channel, brand, status)
-- `GET /catalog/items/{id}`: Get details for a catalog item
-- `POST /catalog/items`: Create a new catalog item
-- `PUT /catalog/items/{id}`: Update a catalog item
-- `DELETE /catalog/items/{id}`: Archive a catalog item
-- `GET /catalog/items/{id}/channels`: List channels where the item is available
-- `PATCH /catalog/items/{id}/campaign`: Assign or update campaign for a catalog item
+**Implementation Steps:**
 
-### Example: Create Catalog Item (Request Body)
-
-{
-"productId": "guid",
-"brandId": "guid",
-"name": "Premium Unlimited 5G",
-"description": "Best value 5G subscription",
-"bindingPeriodMonths": 24,
-"campaignId": "guid",
-"channelAvailability": ["web", "app"],
-"price": 299.00
-}
+- Use ASP.NET Core Minimal APIs or Controllers for endpoints.
+- Apply MediatR for CQRS (Command/Query separation).
+- Use FluentValidation for input validation.
 
 ---
 
 ## 7. Integration Patterns
 
-- **Product Service:** Fetch base product data.
-- **Campaign Service:** Apply campaign details and discounts.
-- **Channel Service:** Determine channel-specific availability and placement.
-- **Authentication Service:** Secure admin and API access (OAuth2/JWT).
+- **Product Module:** Fetch base product data via public interfaces.
+- **Campaign Module:** Apply campaign details/discounts via events or service calls.
+- **Channel Module:** Determine channel availability and placement.
+- **Authentication:** Secure admin/API access with OAuth2/JWT.
+
+**Avoid:** Direct access to other modules' repositories or internal types—always use public contracts/interfaces.
 
 ---
 
 ## 8. Technology Stack
 
-- **.NET 8, C# 12**
-- **ASP.NET Core Web API**
-- **Entity Framework Core**
-- **SQL Server or PostgreSQL**
-- **Docker/Kubernetes for containerization**
-- **Serilog for logging**
-- **Redis for caching (optional)**
-- **Swagger/OpenAPI for documentation**
+- .NET 8, C# 12
+- ASP.NET Core Web API
+- Entity Framework Core
+- SQL Server/PostgreSQL
+- Docker/Kubernetes
+- Serilog for logging
+- Redis for caching (optional)
+- Swagger/OpenAPI
 
 ---
 
-## 9. Project Implementation Phases & Jira Epics
+## 9. Implementation Phases & Jira Epics
 
 ### Epic 1: Foundation Setup
 
-- Project repo and CI/CD pipeline
-- Database schema and migrations
-- Basic API scaffolding
-- Authentication integration
+- Project repo, CI/CD, database schema, migrations, API scaffolding, authentication
 
 ### Epic 2: Core Catalog API
 
-- CatalogItem CRUD endpoints
-- Repository and service layer
-- Input validation and error handling
-- Swagger documentation
+- CRUD endpoints, repository/service layer, validation, Swagger
 
 ### Epic 3: Business Logic & Variations
 
-- Channel-specific logic
-- Campaign integration
-- Brand manager workflows
+- Channel/campaign logic, brand manager workflows
 
 ### Epic 4: Integration
 
-- Product, Campaign, and Channel Service integration
-- Event publishing for catalog changes
+- Product, Campaign, Channel integration; event publishing
 
 ### Epic 5: Advanced Features
 
-- Search and filtering
-- Bulk operations
-- Audit logging
+- Search/filtering, bulk ops, audit logging
 
 ### Epic 6: Testing & QA
 
-- Unit and integration tests
-- Performance and security testing
+- Unit/integration tests, performance/security
+
+#### Example Jira Tasks
+
+- Implement CatalogItem entity with encapsulated business logic
+  - **Acceptance:** CatalogItem enforces business invariants (e.g., no negative price)
+- Expose `GET /catalog/items` with filtering by channel/brand/status
+  - **Acceptance:** Endpoint returns filtered results, validated by integration tests
+- Integrate with Product module via interface, not direct repository
+  - **Acceptance:** No direct references to Product module internals
 
 ---
 
-## 10. Deployment & Operations
+## 10. Anti-Patterns to Avoid
 
-- **Zero-downtime deployments** via Kubernetes
-- **Automated database migrations**
-- **Health checks** and monitoring (Application Insights, Prometheus, etc.)
-- **Structured logging** and correlation IDs
-- **Backup and disaster recovery**
+- **Big Ball of Mud:** Eroded module boundaries due to shortcut dependencies.
+- **Anemic Domain Model:** All business logic in services, not entities.
+- **Direct Repository Access:** One module accessing another's data layer directly.
+
+**Mitigation:** Enforce boundaries with internal types, public contracts, and code reviews.
 
 ---
 
-## 11. Risks & Mitigation
+## 11. ADR Template Recommendation
 
-- **Performance bottlenecks:** Use caching and database indexing.
-- **Integration failures:** Circuit breakers, retries, and graceful degradation.
-- **Data consistency:** Strong validation and transactional updates.
-- **Regulatory compliance:** Comprehensive audit trails and approval workflows.
+**Architecture Decision Record (ADR) Template:**
+
+[Title]
+Status
+Accepted/Proposed/Deprecated
+
+Context
+[Background and why this decision is needed]
+
+Decision
+[What is being decided and why]
+
+Consequences
+[Impacts, trade-offs, and follow-up actions]
+
+text
+
+**Key ADRs to capture:**
+
+- Module boundary definitions
+- Integration patterns (sync/async, contracts)
+- Data ownership and consistency
 
 ---
 
 ## 12. Summary
 
-The Catalog Service is a central, flexible, and robust component for managing and exposing telecom subscription products across multiple channels. It supports dynamic marketing, channel-specific variations, and real-time updates, while integrating cleanly with other core services and modern content management systems.
+The Catalog Service module is a robust, flexible component in a modular monolith, supporting dynamic telecom product presentation and channel-specific variations. By following modular boundaries, encapsulating business logic, and integrating via public contracts, the system avoids common telecom anti-patterns and remains maintainable and scalable.
 
 ---
-
-## Diagram: Catalog Service in Context
-
-+----------------------+
-| Channel Service |
-| (Placement & Rules) |
-+----------+-----------+
-|
-v
-+----------+-----------+
-| Catalog Service |
-| (Catalog Items, API) |
-+----------+-----------+
-|
-v
-+----------+-----------+
-| Product Service |
-| (Product Details) |
-+----------------------+
