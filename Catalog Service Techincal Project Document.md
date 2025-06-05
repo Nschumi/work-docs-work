@@ -22,7 +22,7 @@ The **Catalog Service** is a backend module in a modular monolith, exposing tele
 
 - Expose catalog items to digital channels.
 - Support channel/campaign-specific product variations.
-- Integrate with Channel, Campaign, and Product modules.
+- Integrate with Channel, Campaign, and **external Product Service**.
 - Provide real-time updates.
 - Maintain audit history for compliance.
 
@@ -35,8 +35,8 @@ ChannelService["Channel Service
 (Placement & Rules)"]
 CatalogService["Catalog Service
 (Catalog Items, API)"]
-ProductService["Product Service
-(Product Details)"]
+ProductService["External Product Service
+(Product Details API)"]
 Frontends["Frontend Applications
 (Web, eCare, App)"]
 
@@ -48,8 +48,8 @@ text
 
 **Module Boundaries:**
 
-- Each service is a distinct module with internal types and explicit contracts for inter-module communication, avoiding direct repository access.
-- Use interfaces and DTOs in a shared contracts project to prevent circular dependencies.
+- Each internal service is a distinct module with internal types and explicit contracts for inter-module communication, avoiding direct repository access.
+- Integration with the **external Product Service** is handled via HTTP APIs or other service endpoints, not via shared contracts or direct database access.
 
 ---
 
@@ -59,7 +59,7 @@ text
 
 public sealed record CatalogItem(
 Guid CatalogItemId,
-Guid ProductId,
+Guid ProductId, // References the external Product Service
 Guid BrandId,
 string Name,
 string Description,
@@ -100,12 +100,48 @@ text
 
 ## 7. Integration Patterns
 
-- **Product Module:** Fetch base product data via public interfaces.
+- **External Product Service:** Fetch base product data via RESTful APIs or other service endpoints. Implement a typed HTTP client using `HttpClientFactory` in .NET 8.
 - **Campaign Module:** Apply campaign details/discounts via events or service calls.
 - **Channel Module:** Determine channel availability and placement.
 - **Authentication:** Secure admin/API access with OAuth2/JWT.
 
-**Avoid:** Direct access to other modules' repositories or internal types—always use public contracts/interfaces.
+**Avoid:** Direct access to the external Product Service's database or internals—always use its public APIs. Implement retry and circuit breaker policies to handle network/service failures.
+
+**Example: Typed HTTP Client for Product Service**
+
+public interface IProductServiceClient
+{
+Task<ProductDto?> GetProductByIdAsync(Guid productId, CancellationToken cancellationToken);
+}
+
+public class ProductServiceClient : IProductServiceClient
+{
+private readonly HttpClient \_httpClient;
+
+text
+public ProductServiceClient(HttpClient httpClient) => \_httpClient = httpClient;
+
+public async Task<ProductDto?> GetProductByIdAsync(Guid productId, CancellationToken cancellationToken)
+{
+var response = await \_httpClient.GetAsync($"/products/{productId}", cancellationToken);
+if (!response.IsSuccessStatusCode)
+return null;
+
+    return await response.Content.ReadFromJsonAsync<ProductDto>(cancellationToken: cancellationToken);
+
+}
+}
+
+text
+
+**Registration in DI:**
+
+services.AddHttpClient<IProductServiceClient, ProductServiceClient>(client =>
+{
+client.BaseAddress = new Uri(Configuration["ProductService:BaseUrl"]);
+});
+
+text
 
 ---
 
@@ -138,7 +174,8 @@ text
 
 ### Epic 4: Integration
 
-- Product, Campaign, Channel integration; event publishing
+- Integrate with **external Product Service** via HTTP client
+- Integrate with Campaign, Channel modules; event publishing
 
 ### Epic 5: Advanced Features
 
@@ -154,8 +191,8 @@ text
   - **Acceptance:** CatalogItem enforces business invariants (e.g., no negative price)
 - Expose `GET /catalog/items` with filtering by channel/brand/status
   - **Acceptance:** Endpoint returns filtered results, validated by integration tests
-- Integrate with Product module via interface, not direct repository
-  - **Acceptance:** No direct references to Product module internals
+- Integrate with **external Product Service** via REST API
+  - **Acceptance:** Product data is fetched via HTTP, no direct references to Product Service internals
 
 ---
 
@@ -163,9 +200,13 @@ text
 
 - **Big Ball of Mud:** Eroded module boundaries due to shortcut dependencies.
 - **Anemic Domain Model:** All business logic in services, not entities.
-- **Direct Repository Access:** One module accessing another's data layer directly.
+- **Direct Repository Access:** One module or service accessing another's data layer directly.
+- **Tight Coupling to External Service:** Avoid assuming the external Product Service is always available or its API is always stable.
 
-**Mitigation:** Enforce boundaries with internal types, public contracts, and code reviews.
+**Mitigation:**
+
+- Enforce boundaries with internal types, public contracts, and code reviews.
+- Use API versioning and resilience patterns (retry, circuit breaker) for external calls.
 
 ---
 
@@ -193,11 +234,12 @@ text
 - Module boundary definitions
 - Integration patterns (sync/async, contracts)
 - Data ownership and consistency
+- External Product Service integration strategy
 
 ---
 
 ## 12. Summary
 
-The Catalog Service module is a robust, flexible component in a modular monolith, supporting dynamic telecom product presentation and channel-specific variations. By following modular boundaries, encapsulating business logic, and integrating via public contracts, the system avoids common telecom anti-patterns and remains maintainable and scalable.
+The Catalog Service module is a robust, flexible component in a modular monolith, supporting dynamic telecom product presentation and channel-specific variations. By integrating with an **external Product Service** via resilient, well-defined APIs, and following modular boundaries and best practices, the system avoids common telecom anti-patterns and remains maintainable and scalable.
 
 ---
