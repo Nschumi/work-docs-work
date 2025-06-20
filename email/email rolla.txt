@@ -1,0 +1,54 @@
+Hej Rolla, 
+
+jeg skriver til dig grundet manglende engagement med mailen som er forwarded nedenfor. 
+
+Jeg sidder til dag som IT lead i Nuuday Mobile Partners ”Ny tech”-team, hvor vi læner os meget op af de standarder og processer som CCCOE definerer. Vi betræber os på at overholde gode retninglinjer og security, 
+
+•	Passwordless environments  ( Entra based federated credentials )
+•	Key vaults
+•	Secure azure resources 
+•	Etc etc. 
+
+
+Årsagen til at jeg skrev den origanale mail i første omgang, er frustrationen i at Nuuday ikke formår at give os de redskaber som et moderne udviklingsteam burde få givet, uden at skulle kæmpe for det. 
+
+
+ Vi starter lige et andet sted. 
+Jeg har været i nuuday i over 4 år, og lavet .net alt den tid jeg har været her. De udvikler PCer vi fik og stadig får udleveret er simplethen ikke godt nok til dét arbejde der skal udføres. 
+
+•	Et standard ”build” tager ALT for lang tid – det ødelægger ens development flow.
+•	Adgang til k8s via k9s kan tage flere minutter – burde tage 1 sekund
+•	Test af terraform ressource tager op til 15. min –elendigt flow.
+
+Ovenstående gjorde at så må nødsaget til at anskaffe mig en mac – for at kunne udfører mit arbejde ordenligt. For at komme ud af grebet på de sindsyge ting der kommer preinstalleret på ens computer. 
+Dengang ”beskyttede” jeg mig med Nuudays værdi sæt ”Be a rebel”. 
+
+At arbejde på en mac er ikke uden forhindringer, puls er umuligt at få adgang igennem til, vi får igen support fra field service, de slår korsets tegn hvis man spørger om noget med Mac. Man kan ikke printe. 
+
+
+Tilbage til Github Copilot og brugen af AI. 
+Men ovenstående er bare et bevis på, hvor fjollet nogle ting er. For security var til 0 hjælp for at få udviklingsmaskinerne til at fungere optimalt ( vi har laptops med 64 gb ram, det er det eneste kompensationsområde der var fundet )
+
+
+Jeg har adgang til Github Copilot, en MEGET basic version, for den er lukket fuldkommen ned. Faktisk en version som er tilsvarende den Github Copilot der lancerede tilbage juni 2021, Alle nye features derfra er spærret af. 
+
+Jeg ved der er risiko med AI og Open AI. Men jeg tror vi undervurderer risikoen der er ved at lade værre. 
+Der er SÅ mange ting, bare i Github Copilot som vil være til stor hjælp i det daglige. 
+
+Jeg forstår at Nuuday security ”står med lorten” hvis noget går galt. Men jeg håber i kan se behovet for ændring i fremgangsmetode, giv et ansvar ud til teamsne at XYZ skal være overholdt før vi tør tage en risiko, eller hvordan end vi kan komme til enighed om et format. 
+
+
+Fordi i har lukket for Copilot, ændre det ikke at folk faktisk bruger AI alligevel. 
+Jeg sidder dagligt og bruger Perplexity som min sparringspartner, og mit produkt er langt bedre og hurtigere lavet grundet det. 
+AI er en kæmpe ressource til information om best practices og alternative løsningsforslag. Det er ikke Vibe koden vi efterspørger, men at få de redskaber vi burde have, til væres tilgængelighed. 
+
+
+Jeg håber du vil læse min mail, og vende tilbage. Jeg har efter 10 dage ikke hørt fra modtagerne af den skrevne mail og tænker umildbart taktikken er også at tie ”konflikten ihjel.” – lige som seneste gang jeg skrev: https://nuuday.slack.com/archives/CEDTHQYT1/p1746614246339079?thread_ts=1745313262.169439&cid=CEDTHQYT1 
+
+  
+Forslag: 
+- Giv nogle ( os ) og deres repos, pilot status, så de kan benytte sig af tingene. 
+- Lær og erfar. 
+- Hvilke sanity check skal der være? 
+- Definer jeres krav for at åbne op? 
+- Inviter til dialog 😊 

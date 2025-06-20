@@ -2,20 +2,25 @@
 
 ## Executive Summary
 
-This project document outlines the development of a comprehensive multi-tenant telecom eCommerce platform designed as a white-label solution for telecom operators, MVNOs, and regional providers. The platform enables rapid deployment of branded digital commerce experiences while sharing common infrastructure and reducing operational overhead.
+This project document outlines the development of a comprehensive multi-tenant telecom eCommerce platform designed as a white-label solution for telecom brands. The platform enables rapid deployment of branded digital commerce experiences while sharing common infrastructure and reducing operational overhead.
 
-The solution addresses the critical challenge of current legacy systems that require months-long deployment cycles and complete code duplication for new tenants. Our target is to reduce tenant onboarding from months to 2-3 weeks through a modern, scalable architecture built on .NET 8 with modular monolith patterns.
+The solution addresses the critical challenge of current legacy systems that require months-long deployment cycles and complete code duplication for new tenants. Our target is to reduce tenant onboarding from months to 2-3 weeks through a modern, scalable architecture built on .NET 9 with modular monolith patterns.
 
 ## Business Context and Objectives
 
 ### Business Challenge
 
-The telecommunications industry faces significant challenges in digital commerce deployment:
+Nuuday Mobile Partners faces significant challenges in digital commerce deployment:
 
-- Legacy VB script-based systems that prevent new tenant acquisition
-- Manual, error-prone onboarding processes taking months
-- High operational costs due to system duplication
-- Limited scalability and modern feature support
+- The existing e-commerce system is built on a legacy, single-tenant platform (TCM), requiring each brand partner to operate a separate website instance.
+
+- This setup limits flexibility for brand partners, making it difficult to independently manage products, pricing, and campaigns without IT involvement.
+
+- Brand partners face delays in launching new products or adjusting offerings due to the lack of centralized, self-service tools and cumbersome update processes
+
+- Operational inefficiencies arise from duplicated efforts in maintaining separate site instances and inconsistent product management workflows
+
+- The rigidity of the legacy system hinders rapid adaptation to market changes, impacting both time-to-market and the ability to respond to customer needs
 
 ### Strategic Goals
 
@@ -27,13 +32,13 @@ The telecommunications industry faces significant challenges in digital commerce
 
 ### Value Proposition
 
-The platform provides telecom operators with a modern, cost-effective digital commerce solution that enables rapid market entry, complete brand customization, and enterprise-grade reliability. This addresses the current inability to onboard new tenants due to legacy system limitations.
+The platform provides Brand Partners with a modern, cost-effective digital commerce solution that enables rapid market entry, complete brand customization, and enterprise-grade reliability. This addresses the current inability to onboard new tenants due to legacy system limitations.
 
 ## Technical Architecture Overview
 
 ### Modular Monolith Foundation
 
-The platform utilizes a modular monolith architecture powered by .NET 8 and .NET Aspire, providing the organizational benefits of microservices while maintaining deployment simplicity. Each module encapsulates specific business functionality with well-defined interfaces and boundaries.
+The platform utilizes a modular monolith architecture powered by .NET 9 and .NET Aspire, providing the organizational benefits of microservices while maintaining deployment simplicity. Each module encapsulates specific business functionality with well-defined interfaces and boundaries.
 
 ### Multi-Tenancy Strategy
 
