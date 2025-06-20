@@ -47,13 +47,13 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 
 ## 3.3 Modules Overview
 
-### Channel Module
-
-The Channel Module enables the creation and configuration of products for each digital sales channel—such as web interfaces or API endpoints—allowing brand partners to tailor offerings to specific customer touchpoints.
-
 ### Catalog Module
 
 The Catalog Module manages comprehensive product definitions, including pricing structures, promotional campaigns, binding period configurations, and tenancy-specific metadata, ensuring each partner’s catalog remains distinct and current.
+
+### Channel Module
+
+The Channel Module enables the creation and configuration of products for each digital sales channel—such as web interfaces or API endpoints—allowing brand partners to tailor offerings to specific customer touchpoints.
 
 ### Ordering & Checkout Module
 
