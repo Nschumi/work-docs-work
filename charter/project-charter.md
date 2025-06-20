@@ -40,16 +40,28 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Integration with downstream provisioning systems
 - Support for distinct product offerings, pricing, and branding per partner
 - Centralized product management for brand partners
-- First-delivery components:
-  - **Channel Module**: Enables the creation and configuration of products for each digital sales channel—such as web interfaces or API endpoints—allowing brand partners to tailor offerings to specific customer touchpoints.
-  - **Catalog Module**: Manages comprehensive product definitions, including pricing structures, promotional campaigns, binding period configurations, and tenancy-specific metadata, ensuring each partner’s catalog remains distinct and current.
-  - **Ordering & Checkout Module**: Handles the full shopping workflow, from shopping cart management and order placement to payment orchestration and real-time status tracking, providing a seamless experience for end users.
+- First-delivery components (see **3.1.1 Modules Overview**):
+  - Channel Module
+  - Catalog Module
+  - Ordering & Checkout Module
+
+## 3.3 Modules Overview
+
+### Channel Module
+
+The Channel Module enables the creation and configuration of products for each digital sales channel—such as web interfaces or API endpoints—allowing brand partners to tailor offerings to specific customer touchpoints.
+
+### Catalog Module
+
+The Catalog Module manages comprehensive product definitions, including pricing structures, promotional campaigns, binding period configurations, and tenancy-specific metadata, ensuring each partner’s catalog remains distinct and current.
+
+### Ordering & Checkout Module
+
+The Ordering & Checkout Module handles the full shopping workflow, from shopping cart management and order placement to payment orchestration and real-time status tracking, providing a seamless experience for end users.
 
 **3.2 Scope Exclusions:**
 
 - Defining the API interface towards downstream provisioning systems
-
----
 
 ## 4. Project Goals, Objectives, and Success Criteria
 
