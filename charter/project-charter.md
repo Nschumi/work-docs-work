@@ -45,23 +45,38 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
   - Catalog Module
   - Ordering & Checkout Module
 
-## 3.3 Modules Overview
+**3.2 Scope Exclusions:**
 
-### Catalog Module
+- Defining the API interface towards downstream provisioning systems
 
-The Catalog Module manages comprehensive product definitions, including pricing structures, promotional campaigns, binding period configurations, and tenancy-specific metadata, ensuring each partner’s catalog remains distinct and current.
+**3.3 Modules Overview**
 
-### Channel Module
+### Catalog Module Scope
 
-The Channel Module enables the creation and configuration of products for each digital sales channel—such as web interfaces or API endpoints—allowing brand partners to tailor offerings to specific customer touchpoints.
+- Maintains product items by storing only a legacy subscription ID for provisioning purposes, decoupling business logic from legacy data structures.
+- Enriches each catalog entry with variant metadata—such as pricing tiers, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
+- Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
+- Exposes RESTful CRUD APIs for catalog item management and integrates with downstream provisioning systems to fetch subscription details based solely on the legacy ID.
+
+### Channel Module Scope
+
+- Defines and manages digital sales channels (e.g., web front pages, subpages, mobile apps) as discrete entities representing customer touchpoints.
+- Configures visibility of catalog items per channel via a many-to-many association table, incorporating `visible_from` and `visible_to` time-range fields for scheduling item exposure.
+- Supports creation, update, and removal of channel configurations, enabling brand partners to tailor which products appear on which channels.
+- Provides RESTful query APIs that return active catalog items for a given channel, filtering by current timestamp and channel context.
 
 ### Ordering & Checkout Module
 
 The Ordering & Checkout Module handles the full shopping workflow, from shopping cart management and order placement to payment orchestration and real-time status tracking, providing a seamless experience for end users.
 
-**3.2 Scope Exclusions:**
+### Cart Module Scope
 
-- Defining the API interface towards downstream provisioning systems
+- Facilitates the addition, removal, and modification of products in a customer's cart or basket.
+- Tracks product quantities, pricing, and applicable discounts or promotions in real-time.
+- Supports multi-tenant configurations to ensure tenant-specific rules for cart behavior, such as maximum item limits or promotional eligibility.
+- Provides RESTful APIs for managing cart actions, including adding items, updating quantities, and clearing the cart.
+- Integrates seamlessly with the Ordering & Checkout Module to transition cart contents into orders.
+- Ensures cart persistence across sessions, allowing customers to resume shopping without losing their selections.
 
 ## 4. Project Goals, Objectives, and Success Criteria
 
