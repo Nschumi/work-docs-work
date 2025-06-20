@@ -40,6 +40,7 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Integration with downstream provisioning systems
 - Support for distinct product offerings, pricing, and branding per partner
 - Centralized product management for brand partners
+- First-delivery components: channel module for creating products on digital channels and catalog module exposing those products via API, including campaign attachment and binding period management
 
 **3.2 Scope Exclusions:**
 
@@ -59,12 +60,12 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 **4.2 Completion Criteria:**
 
 - At least one brand partner migrated and using the module with whitelabel frontend
-- All core features and integrations operational
+- All core features and integrations operational, including channel and catalog modules
 
 **4.3 Success Criteria:**
 
-- System performance (response time, uptime, transaction volume)
-- Positive feedback from partners and customers
+- System performance (response time, uptime, transaction volume) meets agreed SLAs
+- Positive feedback from partners and customers on usability and performance
 - Decreased support tickets post-launch
 
 ---
@@ -84,55 +85,56 @@ Budget to be defined; will include development, infrastructure, and potential th
 ## 6. Project Team
 
 **6.1 Project Sponsor:**  
-Lars Vieland Grasberger, Head of IT, Nuuday Mobile Partners
+Lars Vieland Grasberger, Head of IT, Nuuday Mobile Partners.
 
 **6.2 Project Manager:**  
-Bjørn Alsted Nielsen, Product Owner, Nuuday Mobile Partners
+Bjørn Alsted Nielsen, Product Owner, Nuuday Mobile Partners.
 
 **6.3 Key Stakeholders:**
 
 - Nichlas Bruselius, Head of Brand Partners
 - Katrine Grøn Iversen, Commercial Manager
 - Katrine Blicher Christensen, Commercial Manager
-- Niclas Schumacher, IT-Lead
+- Niclas Schumacher, IT Lead
 
 **6.4 Core Project Team:**
 
 - Infrastructure & Platform team (responsible for building the module)
 
 **6.5 External Partners/Vendors:**  
-None currently, but may be added as the project progresses
+None currently; may be added as the project progresses.
 
 ---
 
 ## 7. Project Milestones & Checkpoints
 
-**7.1 Key Milestones:**
-
-- Milestone 1: Requirements gathering and analysis complete
-- Milestone 2: Technical design and architecture planning complete
-- Milestone 3: Development for Open Pages Project features complete
-- Milestone 4: eCom module version 0.5
-- Milestone 5: Whitelabel frontend capabilities delivered
-- Milestone 6: eCom module version 1.0 (full feature set)
+**7.1 Key Milestones:**  
+| Milestone ID | Description | Timing |  
+|--------------|----------------------------------------------------------------------------------------|-------------------------|  
+| M1 | Requirements gathering and analysis complete | August 2025 |  
+| M1.1 | Delivery of channel and catalog modules for digital channels and API availability | September 2025 |  
+| M2 | Technical design and architecture planning complete | October 2025 |  
+| M3 | Development for Open Pages Project features complete | November 2025 |  
+| M4 | eCom module version 0.5 | December 2025 |  
+| M5 | Whitelabel frontend capabilities delivered | January 2026 |  
+| M6 | eCom module version 1.0 (full feature set) | February 2026 |
 
 **7.2 Timeline:**
 
-- Phase 1: Technical design (August)
-- Phase 2: Development & integration (September–December)
+- Phase 1 (August): Technical design including architecture for channel and catalog modules.
+- Phase 2 (September–December): Development & integration.
 
 **7.3 Go/No-Go Checkpoints:**
-
-- Dependencies on legacy TCM system, Open Pages project, and provisioning systems may impact go/no-go decisions
+Dependencies on legacy TCM system, Open Pages project, and provisioning systems may impact go/no-go decisions.
 
 ---
 
-## 8. Project Assumptions and Constraints
+## 8. Assumptions, Constraints & Dependencies
 
 **8.1 Assumptions:**
 
-- Timely availability of resources
-- Continued access to legacy TCM system for data retrieval
+- Timely availability of resources for design and development
+- Continued access to legacy TCM system for product, pricing, and MSISDN data
 
 **8.2 Constraints:**
 
@@ -140,50 +142,41 @@ None currently, but may be added as the project progresses
 
 **8.3 Dependencies:**
 
-- Legacy TCM system for product/pricing/MSISDN data
+- Legacy TCM system for product, pricing, and MSISDN data
 - Open Pages project for frontend capabilities
 - Customer/subscriber provisioning systems
 
 ---
 
-## 9. Project Risks and Opportunities
+## 9. Risks and Opportunities
 
 **9.1 Risks:**
 
-- Integration challenges with legacy and downstream systems
-- Delays due to dependencies on other projects
-- Scope creep or misalignment with brand owners
-- Competing priorities within Nuuday Mobile Partners
+- Integration challenges with legacy and downstream systems may delay delivery
+- Dependencies on other projects could cause resource conflicts
+- Scope creep due to evolving partner requirements
+- Competing priorities within Nuuday Mobile Partners may affect focus
 
 **9.2 Opportunities:**
 
-- Enhanced partner relationships
-- Foundation for future eCommerce innovation
+- Strengthened relationships with brand partners through early engagement
+- Foundation for future eCommerce innovation and feature expansion
 
 ---
 
 ## 10. Communication Plan
 
-- Jira dashboard for project status and milestones
-- Regular status updates via Slack
-- Bi-weekly project meetings with stakeholders during feature development
+- **Jira dashboard:** Real-time project status, milestones, and key metrics
+- **Slack channel:** Regular status updates and immediate issue resolution
+- **Bi-weekly meetings:** Project progress reviews with stakeholders during feature development
 
 ---
 
-## 11. Charter Acceptance / Approvals
+## 11. Charter Acceptance & Approvals
 
 - **Project Sponsor:** Lars Vieland Grasberger
 - **Project Manager:** Bjørn Alsted Nielsen
-- **Core Project Team:** [Add signatures as appropriate]
-
----
+- **Core Project Team:** [Signatures as appropriate]
 
 **Prepared by:** [Your Name]  
-**Date:** [Insert Date]
-
-```
-
----
-
-Feel free to copy, edit, and use this markdown in your documentation system! If you need any sections expanded or want a more detailed structure, just let me know.
-```
+**Date:** June 20, 2025
