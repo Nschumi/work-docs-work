@@ -70,9 +70,13 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Supports creation, update, and removal of channel configurations, enabling brand partners to tailor which products appear on which channels.
 - Provides RESTful query APIs that return active catalog items for a given channel, filtering by current timestamp and channel context.
 
-#### Ordering & Checkout Module Scope
+#### Number Management Module
 
-The Ordering & Checkout Module handles the full shopping workflow, from shopping cart management and order placement to payment orchestration and real-time status tracking, providing a seamless experience for end users.
+- Manages the inventory, reservation, assignment, and lifecycle of telephone numbers, including both new number allocation and number port-in (MNP) processes.
+- Maintains number pools and ranges per brand partner, ensuring only available numbers are offered at checkout.
+- Provides APIs to the Ordering & Checkout Module for real-time number selection, validation, reservation, and release.
+- Supports integration with legacy systems for number status updates and regulatory compliance.
+- Tracks number statuses (available, reserved, assigned, ported, etc.) and maintains audit trails for all number transactions.
 
 #### Cart Module Scope
 
@@ -82,6 +86,24 @@ The Ordering & Checkout Module handles the full shopping workflow, from shopping
 - Provides RESTful APIs for managing cart actions, including adding items, updating quantities, and clearing the cart.
 - Integrates seamlessly with the Ordering & Checkout Module to transition cart contents into orders.
 - Ensures cart persistence across sessions, allowing customers to resume shopping without losing their selections.
+- Handles subscription products by treating each added quantity as a separate line item in the cart, ensuring unique tracking and management for each subscription instance.
+
+#### Order Module Scope
+
+- Orchestrates the entire order lifecycle, coordinating interactions between catalog, channel, number management, payment, and provisioning modules.
+- Handles order creation, validation, and updates, ensuring all business rules and dependencies are respected.
+- Tracks order status from initiation through fulfillment, including cancellations, returns, and modifications.
+- Integrates with inventory and number management to allocate resources (e.g., available numbers) as part of the order process.
+- Communicates with the Payment Module to initiate, confirm, or cancel payment transactions as required.
+- Provides real-time order status and notifications to customers and stakeholders.
+- Ensures auditability and traceability for all order-related actions.
+
+#### Payment Module
+
+- Manages payment processing for customer orders, supporting multiple payment methods and gateways.
+- Handles payment authorization, capture, settlement, and refunds in coordination with the Order Module.
+- Provides payment status updates to the Order Module and triggers order progression based on successful payment events.
+- Supports transaction logging, reconciliation, and reporting for financial transparency.
 
 ---
 
