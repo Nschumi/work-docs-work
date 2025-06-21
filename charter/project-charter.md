@@ -58,6 +58,8 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 
 #### Catalog Module Scope
 
+The **Catalog Module** is responsible for managing product items and their associated metadata while ensuring tenant isolation.
+
 - Maintains product items by storing only a legacy subscription ID for provisioning purposes, decoupling business logic from legacy data structures.
 - Enriches each catalog entry with variant metadata—such as pricing tiers, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
 - Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
@@ -65,12 +67,16 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 
 #### Channel Module Scope
 
+The **Channel Module** defines and manages digital sales channels, enabling brand partners to configure product visibility across multiple customer touchpoints.
+
 - Defines and manages digital sales channels (e.g., web front pages, subpages, mobile apps) as discrete entities representing customer touchpoints.
 - Configures visibility of catalog items per channel via a many-to-many association table, incorporating `visible_from` and `visible_to` time-range fields for scheduling item exposure.
 - Supports creation, update, and removal of channel configurations, enabling brand partners to tailor which products appear on which channels.
 - Provides RESTful query APIs that return active catalog items for a given channel, filtering by current timestamp and channel context.
 
-#### Number Management Module
+#### Number Management Module Scope
+
+The **Number Management Module** handles the lifecycle of telephone numbers, ensuring availability and compliance with regulatory requirements.
 
 - Manages the inventory, reservation, assignment, and lifecycle of telephone numbers, including both new number allocation and number port-in (MNP) processes.
 - Maintains number pools and ranges per brand partner, ensuring only available numbers are offered at checkout.
@@ -79,6 +85,8 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Tracks number statuses (available, reserved, assigned, ported, etc.) and maintains audit trails for all number transactions.
 
 #### Cart Module Scope
+
+The **Cart Module** facilitates the shopping cart experience, ensuring seamless management of products and tenant-specific configurations.
 
 - Facilitates the addition, removal, and modification of products in a customer's cart or basket.
 - Tracks product quantities, pricing, and applicable discounts or promotions in real-time.
@@ -90,6 +98,8 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 
 #### Order Module Scope
 
+The **Order Module** orchestrates the entire order lifecycle, ensuring compliance with business rules and seamless integration with other modules.
+
 - Orchestrates the entire order lifecycle, coordinating interactions between catalog, channel, number management, payment, and provisioning modules.
 - Handles order creation, validation, and updates, ensuring all business rules and dependencies are respected.
 - Tracks order status from initiation through fulfillment, including cancellations, returns, and modifications.
@@ -98,7 +108,9 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Provides real-time order status and notifications to customers and stakeholders.
 - Ensures auditability and traceability for all order-related actions.
 
-#### Payment Module
+#### Payment Module Scope
+
+The **Payment Module** manages payment processing, ensuring secure and reliable transactions for customer orders.
 
 - Manages payment processing for customer orders, supporting multiple payment methods and gateways.
 - Handles payment authorization, capture, settlement, and refunds in coordination with the Order Module.
