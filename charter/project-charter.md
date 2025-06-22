@@ -41,17 +41,22 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 
 ### 3.1 Scope Inclusions
 
-- Development of a multi-tenant eCommerce module
+- Development of a multi-tenant eCommerce Service
 - Integration with downstream provisioning systems
 - Support for distinct product offerings, pricing, and branding per partner
 - Centralized product management for brand partners
 - First-delivery components (see **3.3 Modules Overview**):
   - Channel Module
   - Catalog Module
+  - MVP Administration Portal ( covering Channel and Catalog Module)
 
 ### 3.2 Scope Exclusions
 
 - Defining the API interface towards downstream provisioning systems
+
+### 3.2.1 Out of Scope / Future Work
+
+- **Reporting & Analytics Module**: Planned for version 2, this module will provide advanced reporting and analytics capabilities, including dashboards for sales trends, customer behavior, and operational insights.
 
 ### 3.3 Modules Overview
 
@@ -60,11 +65,11 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 The **Catalog Module** is responsible for managing product items and their associated metadata while ensuring tenant isolation.
 
 - Maintains product items by storing only a legacy subscription ID for provisioning purposes, decoupling business logic from legacy data structures.
-- Enriches each catalog entry with variant metadata—such as pricing tiers, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
+- Enriches each catalog entry with variant metadata—such as pricing, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
 - Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
-- Exposes RESTful CRUD APIs for catalog item management and integrates with downstream provisioning systems to fetch subscription details based solely on the legacy ID.
+- Exposes RESTful CRUD APIs for catalog item management and integrates with downstream Product SErvice to fetch subscription details based solely on the legacy ID.
 - Includes information from the underlying subscription, such as:
-  - Available datacards and their potential amounts
+  - Available datacards and their potential amount limits
   - Available SIM types
   - Available modules (e.g., 5G) with their price setup as defined in the legacy system.
 
@@ -72,7 +77,7 @@ The **Catalog Module** is responsible for managing product items and their assoc
 
 The **Channel Module** defines and manages digital sales channels, enabling brand partners to configure product visibility across multiple customer touchpoints.
 
-- Defines and manages digital sales channels (e.g., web front pages, subpages, mobile apps) as discrete entities representing customer touchpoints.
+- Defines and manages digital sales channels (e.g., web front pages, subpages, mobile apps, ecare upsale pages) as discrete entities representing customer touchpoints.
 - Configures visibility of catalog items per channel via a many-to-many association table, incorporating `visible_from` and `visible_to` time-range fields for scheduling item exposure.
 - Supports creation, update, and removal of channel configurations, enabling brand partners to tailor which products appear on which channels.
 - Provides RESTful query APIs that return active catalog items for a given channel, filtering by current timestamp and channel context.
@@ -145,8 +150,8 @@ The **Payment Module** manages payment processing, ensuring secure and reliable 
 
 ### 4.2 Completion Criteria
 
-- At least one brand partner migrated and using the module with whitelabel frontend
-- All core features and integrations operational, including channel and catalog modules
+- At least one brand partner migrated and using the service with whitelabel frontend
+- All core features and integrations operational
 
 ### 4.3 Success Criteria
 
@@ -192,7 +197,7 @@ Infrastructure & Platform team (responsible for building the module)
 
 ### 6.5 External Partners/Vendors
 
-None currently; may be added as the project progresses.
+Eesy - whom is a known brand partner that will be the first customer using the pure API capabilities of the eCommerce Service.
 
 ---
 
@@ -213,8 +218,8 @@ None currently; may be added as the project progresses.
 
 ### 7.2 Timeline
 
-- Phase 1 (August): Technical design including architecture for channel and catalog modules.
-- Phase 2 (September–December): Development & integration.
+- Phase 1 (August-September): Technical design including architecture for channel and catalog modules.
+- Phase 2 (September–May 2025): Development & integration.
 
 ### 7.3 Go/No-Go Checkpoints
 
@@ -262,7 +267,7 @@ Flexible to adapt to changing requirements or priorities
 ## 10. Communication Plan
 
 - **Jira dashboard:** Real-time project status, milestones, and key metrics
-- **Slack channel:** Regular status updates and immediate issue resolution
+- **Slack channel:** Regular status updates and immediate issue resolution and ad-hoc discussions
 - **Bi-weekly meetings:** Project progress reviews with stakeholders during feature development
 
 ---
