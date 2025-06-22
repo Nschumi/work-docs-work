@@ -48,7 +48,6 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - First-delivery components (see **3.1.1 Modules Overview**):
   - Channel Module
   - Catalog Module
-  - Ordering & Checkout Module
 
 ### 3.2 Scope Exclusions
 
@@ -64,6 +63,10 @@ The **Catalog Module** is responsible for managing product items and their assoc
 - Enriches each catalog entry with variant metadata—such as pricing tiers, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
 - Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
 - Exposes RESTful CRUD APIs for catalog item management and integrates with downstream provisioning systems to fetch subscription details based solely on the legacy ID.
+- Includes information from the underlying subscription, such as:
+  - Available datacards and their potential amounts
+  - Available SIM types
+  - Available modules (e.g., 5G) with their price setup as defined in the legacy system.
 
 #### Channel Module Scope
 
@@ -84,17 +87,17 @@ The **Number Management Module** handles the lifecycle of telephone numbers, ens
 - Supports integration with legacy systems for number status updates and regulatory compliance.
 - Tracks number statuses (available, reserved, assigned, ported, etc.) and maintains audit trails for all number transactions.
 
-#### Cart Module Scope
+#### Basket Module Scope
 
-The **Cart Module** facilitates the shopping cart experience, ensuring seamless management of products and tenant-specific configurations.
+The **Basket Module** facilitates the shopping basket experience, ensuring seamless management of products and tenant-specific configurations.
 
-- Facilitates the addition, removal, and modification of products in a customer's cart or basket.
+- Facilitates the addition, removal, and modification of products in a customer's basket.
 - Tracks product quantities, pricing, and applicable discounts or promotions in real-time.
-- Supports multi-tenant configurations to ensure tenant-specific rules for cart behavior, such as maximum item limits or promotional eligibility.
-- Provides RESTful APIs for managing cart actions, including adding items, updating quantities, and clearing the cart.
-- Integrates seamlessly with the Ordering & Checkout Module to transition cart contents into orders.
-- Ensures cart persistence across sessions, allowing customers to resume shopping without losing their selections.
-- Handles subscription products by treating each added quantity as a separate line item in the cart, ensuring unique tracking and management for each subscription instance.
+- Supports multi-tenant configurations to ensure tenant-specific rules for basket behavior, such as maximum item limits or promotional eligibility.
+- Provides RESTful APIs for managing basket actions, including adding items, updating quantities, and clearing the basket.
+- Integrates seamlessly with the Ordering & Checkout Module to transition basket contents into orders.
+- Ensures basket persistence across sessions, allowing customers to resume shopping without losing their selections.
+- Handles subscription products by treating each added quantity as a separate line item in the basket, ensuring unique tracking and management for each subscription instance.
 
 #### Order Module Scope
 
