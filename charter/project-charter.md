@@ -45,10 +45,13 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Integration with downstream provisioning systems
 - Support for distinct product offerings, pricing, and branding per partner
 - Centralized product management for brand partners
+- Development and delivery of whitelabel frontend capabilities enabling brand partners to customize storefront branding, layout, and product presentation
+- Integration of the whitelabel frontend with backend modules (Catalog, Channel, Order, Payment) to provide a seamless end-to-end customer experience
+- Support for responsive design and multi-channel access (web, mobile, app) within the whitelabel frontend
 - First-delivery components (see **3.3 Modules Overview**):
   - Channel Module
   - Catalog Module
-  - MVP Administration Portal ( covering Channel and Catalog Module)
+  - MVP Administration Portal (covering Channel and Catalog Module)
 
 ### 3.2 Scope Exclusions
 
@@ -57,6 +60,7 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 ### 3.2.1 Out of Scope / Future Work
 
 - **Reporting & Analytics Module**: Planned for version 2, this module will provide advanced reporting and analytics capabilities, including dashboards for sales trends, customer behavior, and operational insights.
+- Additional payment providers
 
 ### 3.3 Modules Overview
 
@@ -67,7 +71,7 @@ The **Catalog Module** is responsible for managing product items and their assoc
 - Maintains product items by storing only a legacy subscription ID for provisioning purposes, decoupling business logic from legacy data structures.
 - Enriches each catalog entry with variant metadata—such as pricing, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
 - Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
-- Exposes RESTful CRUD APIs for catalog item management and integrates with downstream Product SErvice to fetch subscription details based solely on the legacy ID.
+- Exposes RESTful CRUD APIs for catalog item management and integrates with downstream Product Service to fetch subscription details based solely on the legacy ID.
 - Includes information from the underlying subscription, such as:
   - Available datacards and their potential amount limits
   - Available SIM types
@@ -104,6 +108,15 @@ The **Basket Module** facilitates the shopping basket experience, ensuring seaml
 - Ensures basket persistence across sessions, allowing customers to resume shopping without losing their selections.
 - Handles subscription products by treating each added quantity as a separate line item in the basket, ensuring unique tracking and management for each subscription instance.
 
+#### Payment Module Scope
+
+The **Payment Module** manages payment processing, ensuring secure and reliable transactions for customer orders.
+
+- Manages payment processing for customer orders, supporting multiple payment methods and gateways.
+- Handles payment authorization, capture, settlement, and refunds in coordination with the Order Module.
+- Provides payment status updates to the Order Module and triggers order progression based on successful payment events.
+- Supports transaction logging, reconciliation, and reporting for financial transparency.
+
 #### Order Module Scope
 
 The **Order Module** orchestrates the entire order lifecycle, ensuring compliance with business rules and seamless integration with other modules.
@@ -116,14 +129,15 @@ The **Order Module** orchestrates the entire order lifecycle, ensuring complianc
 - Provides real-time order status and notifications to customers and stakeholders.
 - Ensures auditability and traceability for all order-related actions.
 
-#### Payment Module Scope
+#### Whitelabel Frontend Module Scope
 
-The **Payment Module** manages payment processing, ensuring secure and reliable transactions for customer orders.
+The **Whitelabel Frontend Module** provides customizable storefront templates allowing brand partners to apply their logos, color schemes, and domain configurations.
 
-- Manages payment processing for customer orders, supporting multiple payment methods and gateways.
-- Handles payment authorization, capture, settlement, and refunds in coordination with the Order Module.
-- Provides payment status updates to the Order Module and triggers order progression based on successful payment events.
-- Supports transaction logging, reconciliation, and reporting for financial transparency.
+- Supports dynamic product display and filtering based on channel configurations and catalog data.
+- Enables flexible layout adjustments and content management to accommodate partner-specific marketing campaigns.
+- Integrates with backend APIs for real-time product, pricing, availability, and order status information.
+- Ensures accessibility, responsive design, and performance optimization across devices and platforms.
+- Facilitates seamless user journeys from product discovery through checkout within the partner’s branded environment.
 
 ### Administration Portal
 
