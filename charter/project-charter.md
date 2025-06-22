@@ -45,7 +45,7 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 - Integration with downstream provisioning systems
 - Support for distinct product offerings, pricing, and branding per partner
 - Centralized product management for brand partners
-- First-delivery components (see **3.1.1 Modules Overview**):
+- First-delivery components (see **3.3 Modules Overview**):
   - Channel Module
   - Catalog Module
 
@@ -203,12 +203,13 @@ None currently; may be added as the project progresses.
 | Milestone ID | Description                                                                       | Timing         |
 | ------------ | --------------------------------------------------------------------------------- | -------------- |
 | M1           | Requirements gathering and analysis complete                                      | August 2025    |
-| M1.1         | Delivery of channel and catalog modules for digital channels and API availability | September 2025 |
-| M2           | Technical design and architecture planning complete                               | October 2025   |
-| M3           | Development for Open Pages Project features complete                              | November 2025  |
-| M4           | eCom module version 0.5                                                           | December 2025  |
-| M5           | Whitelabel frontend capabilities delivered                                        | January 2026   |
-| M6           | eCom module version 1.0 (full feature set)                                        | February 2026  |
+| M2           | Initial general technical design and architecture planning                        | September 2025 |
+| M2.1         | Delivery of channel and catalog modules for digital channels and API availability | October 2025   |
+| M3           | Complete technical design and architecture planning                               | November 2025  |
+| M4           | Development for Open Pages Project features complete                              | December 2025  |
+| M5           | eCom module version 0.5                                                           | January 2026   |
+| M6           | Whitelabel frontend capabilities delivered                                        | April 2026     |
+| M7           | eCom module version 1.0 (full feature set)                                        | May 2026       |
 
 ### 7.2 Timeline
 
