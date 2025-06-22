@@ -117,6 +117,18 @@ The **Payment Module** manages payment processing, ensuring secure and reliable 
 - Provides payment status updates to the Order Module and triggers order progression based on successful payment events.
 - Supports transaction logging, reconciliation, and reporting for financial transparency.
 
+### Administration Portal
+
+- Provides a secure, web-based interface for brand partners and internal staff to manage all aspects of their eCommerce operations.
+- Allows partners to create, update, and organize products in the catalog.
+- Enables management of digital channels, including assigning and scheduling product visibility.
+- Offers real-time order monitoring and detailed order history, with search and filtering options.
+- Supports access to payment status, transaction details, and refund management.
+- Facilitates user and role management for partner organizations, including permissions and branding settings.
+- Includes dashboards and analytics for sales, inventory, and operational KPIs.
+- Ensures audit trails and activity logs for compliance and transparency.
+- Designed for ease of use.
+
 ---
 
 ## 4. Project Goals, Objectives, and Success Criteria
@@ -219,9 +231,11 @@ Flexible to adapt to changing requirements or priorities
 
 ### 8.3 Dependencies
 
-- Legacy TCM system for product, pricing, and MSISDN data
-- Open Pages project for frontend capabilities
-- Customer/subscriber provisioning systems
+- **Legacy TCM system**: Required for product, pricing, and MSISDN data. Any delays in accessing this system may impact the integration timeline and overall project delivery.
+- **Open Pages project**: Provides frontend capabilities for whitelabel solutions. Delays or changes in this project could affect the user interface and customer experience.
+- **Customer/subscriber provisioning systems**: Essential for provisioning and managing customer subscriptions. Integration challenges or unavailability could delay the go-live timeline.
+- **Partner engagement**: Timely feedback and collaboration from brand partners are critical for ensuring the solution meets their requirements.
+- **Infrastructure readiness**: Availability of scalable infrastructure to support multi-tenant operations is necessary for deployment and performance.
 
 ---
 
