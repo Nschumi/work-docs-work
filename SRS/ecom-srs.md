@@ -104,144 +104,147 @@ All external communications are encrypted with HTTPS and TLS 1.3, message queues
 The system shall allow brand partners to create product items that reference legacy subscription IDs while maintaining complete tenant isolation. Each product item shall include campaign metadata, binding period information, tenant-specific pricing, and information from the underlying subscription including available datacards with amount limits, available SIM types, and available modules with pricing as defined in the legacy system.
 
 **REQ-CAT-002: Product Variant Support**  
-The system shall support multiple product variants for the same legacy subscription ID, allowing different campaigns, binding periods, and pricing structures for the same underlying telecom service [1].
+The system shall support multiple product variants for the same legacy subscription ID, allowing different campaigns, binding periods, and pricing structures for the same underlying subscription product.
 
 **REQ-CAT-003: Legacy System Integration**  
-The system shall retrieve product details, pricing information, and availability data from the legacy TCM system using only the subscription ID as a reference [2].
+The system shall retrieve product details, pricing information, and availability data from the legacy TCM system using only the subscription ID as a reference.
 
 #### 4.1.2 Data Management
 
 **REQ-CAT-004: Tenant Data Isolation**  
-The system shall ensure complete data isolation between tenants using schema or row-level isolation patterns, preventing any cross-tenant data access or visibility [1].
+The system shall ensure complete data isolation between tenants using schema or row-level isolation patterns, preventing any cross-tenant data access or visibility.
 
 **REQ-CAT-005: Catalog API Operations**  
-The system shall provide RESTful APIs for catalog CRUD operations, supporting bulk operations and advanced filtering capabilities [2].
+The system shall provide RESTful APIs for catalog CRUD operations, supporting bulk operations and advanced filtering capabilities.
 
 ### 4.2 Channel Module
 
 #### 4.2.1 Channel Configuration
 
 **REQ-CHN-001: Digital Channel Creation**  
-The system shall allow creation and configuration of digital sales channels representing different customer touchpoints including web front pages, subpages, mobile apps, and ecare upsale pages [1].
+The system shall allow creation and configuration of digital sales channels representing different customer touchpoints including web front pages, subpages, mobile apps, and ecare upsale pages.
 
 **REQ-CHN-002: Product-Channel Association**  
-The system shall support many-to-many associations between catalog items and channels using a dedicated association table with visible_from and visible_to time-range fields for scheduling item exposure [2].
+The system shall support many-to-many associations between catalog items and channels using a dedicated association table with visible_from and visible_to time-range fields for scheduling item exposure.
 
 **REQ-CHN-003: Time-Based Visibility**  
-The system shall implement time-based visibility rules using configurable timestamps for each product-channel association, allowing products to be automatically shown or hidden based on current time [1].
+The system shall implement time-based visibility rules using configurable timestamps for each product-channel association, allowing products to be automatically shown or hidden based on current time.
 
 #### 4.2.2 Channel Operations
 
 **REQ-CHN-004: Active Product Queries**  
-The system shall provide APIs to query active catalog items for specific channels, filtering by current timestamp and channel context [2].
+The system shall provide APIs to query active catalog items for specific channels, filtering by current timestamp and channel context.
 
 **REQ-CHN-005: Channel Management APIs**  
-The system shall support complete channel lifecycle management through RESTful APIs [1].
+The system shall support complete channel lifecycle management through RESTful APIs.
 
 ### 4.3 Basket Module
 
 #### 4.3.1 Basket Management
 
 **REQ-BAS-001: Product Addition and Modification**  
-The system shall facilitate the addition, removal, and modification of products in a customer's basket, tracking product quantities, pricing, and applicable discounts or promotions in real-time [1].
+The system shall facilitate the addition, removal, and modification of products in a customer's basket, tracking product quantities, pricing, and applicable discounts or promotions in real-time.
 
 **REQ-BAS-002: Multi-Tenant Configuration Support**  
-The system shall support multi-tenant configurations ensuring tenant-specific rules for basket behavior, such as maximum item limits or promotional eligibility [2].
+The system shall support multi-tenant configurations ensuring tenant-specific rules for basket behavior, such as maximum item limits or promotional eligibility.
 
 **REQ-BAS-003: Subscription Product Handling**  
-The system shall handle subscription products by treating each added quantity as a separate line item in the basket, ensuring unique tracking and management for each subscription instance [1].
+The system shall handle subscription products by treating each added quantity as a separate line item in the basket, ensuring unique tracking and management for each subscription instance.
 
 #### 4.3.2 Basket Persistence and Integration
 
 **REQ-BAS-004: Session Persistence**  
-The system shall ensure basket persistence across sessions, allowing customers to resume shopping without losing their selections [2].
+The system shall ensure basket persistence across sessions, allowing customers to resume shopping without losing their selections.
+
+**REQ-BAS-006: Session Association with Logged-In User**  
+The system shall associate an active basket session with the logged-in user upon login, ensuring that the basket contents are preserved and linked to the user's account rather than only their session.
 
 **REQ-BAS-005: Order Module Integration**  
-The system shall integrate seamlessly with the Order Module to transition basket contents into orders [1].
+The system shall integrate seamlessly with the Order Module to transition basket contents into orders.
 
 ### 4.4 Number Management Module
 
 #### 4.4.1 Number Inventory Management
 
 **REQ-NUM-001: Number Pool Management**  
-The system shall manage telephone number inventory including number pools and ranges per brand partner, ensuring only available numbers are offered during order processing [1].
+The system shall manage telephone number inventory including number pools and ranges per brand partner, ensuring only available numbers are offered during order processing.
 
 **REQ-NUM-002: Real-time Availability**  
-The system shall provide real-time number availability checking and reservation capabilities during order processing [2].
+The system shall provide real-time number availability checking and reservation capabilities during order processing.
 
 **REQ-NUM-003: Number Lifecycle Tracking**  
-The system shall track number statuses including available, reserved, assigned, and ported states with comprehensive audit trails for all number transactions [1].
+The system shall track number statuses including available, reserved, assigned, and ported states with comprehensive audit trails for all number transactions.
 
 #### 4.4.2 Number Portability Support
 
 **REQ-NUM-004: Port-in Process Support**  
-The system shall support mobile number portability (MNP) processes including validation, authorization, and status tracking [2].
+The system shall support mobile number portability (MNP) processes including validation, authorization, and status tracking.
 
 **REQ-NUM-005: Regulatory Compliance**  
-The system shall ensure compliance with national numbering regulations and reporting requirements [1].
+The system shall ensure compliance with national numbering regulations and reporting requirements.
 
 ### 4.5 Order Module
 
 #### 4.5.1 Order Orchestration
 
 **REQ-ORD-001: Order Creation and Validation**  
-The system shall orchestrate the complete order lifecycle, coordinating interactions between catalog validation, number management, payment processing, and provisioning systems [1].
+The system shall orchestrate the complete order lifecycle, coordinating interactions between catalog validation, number management, payment processing, and provisioning systems.
 
 **REQ-ORD-002: Order Status Tracking**  
-The system shall track order status from initiation through fulfillment, including intermediate states for validation, payment, and provisioning with real-time status updates and notifications [2].
+The system shall track order status from initiation through fulfillment, including intermediate states for validation, payment, and provisioning with real-time status updates and notifications.
 
 **REQ-ORD-003: Order Modification Support**  
-The system shall support order modifications, cancellations, and returns according to business rules and order lifecycle state [1].
+The system shall support order modifications, cancellations, and returns according to business rules and order lifecycle state (version 2).
 
 #### 4.5.2 Integration Coordination
 
 **REQ-ORD-004: Payment Integration**  
-The system shall activate payment processing through the Payment Module after order validation and coordinate with payment status updates [2].
+The system shall activate payment processing through the Payment Module after order validation and coordinate with payment status updates.
 
 **REQ-ORD-005: Number Assignment Coordination**  
-The system shall coordinate with the Number Management Module for telephone number allocation during order processing [1].
+The system shall coordinate with the Number Management Module for telephone number allocation during order processing.
 
 ### 4.6 Payment Module
 
 #### 4.6.1 Payment Processing
 
 **REQ-PAY-001: Multiple Payment Methods**  
-The system shall support multiple payment methods including credit cards, digital wallets, and bank transfers with appropriate gateway integrations [1].
+The system shall support multiple payment methods including credit cards, digital wallets, and bank transfers with appropriate gateway integrations.
 
 **REQ-PAY-002: PCI DSS Compliance**  
-The system shall implement PCI DSS compliant payment processing with secure handling of sensitive payment information using encryption and secure transmission protocols [2].
+The system shall implement PCI DSS compliant payment processing with secure handling of sensitive payment information using encryption and secure transmission protocols.
 
 **REQ-PAY-003: Transaction Lifecycle Management**  
-The system shall manage payment authorization, capture, settlement, and refunds in coordination with the Order Module [1].
+The system shall manage payment authorization, capture, settlement, and refunds in coordination with the Order Module.
 
 #### 4.6.2 Payment Status and Reporting
 
 **REQ-PAY-004: Real-time Status Updates**  
-The system shall provide real-time payment status updates to the Order Module and trigger order progression based on successful payment events [2].
+The system shall provide real-time payment status updates to the Order Module and trigger order progression based on successful payment events.
 
 **REQ-PAY-005: Transaction Logging**  
-The system shall maintain comprehensive transaction logs for reconciliation, reporting, and audit purposes ensuring financial transparency [1].
+The system shall maintain comprehensive transaction logs for reconciliation, reporting, and audit purposes ensuring financial transparency.
 
 ### 4.7 Administration Portal
 
 #### 4.7.1 Multi-Tenant Administration
 
 **REQ-ADM-001: Comprehensive Management Interface**  
-The system shall provide a secure, web-based interface for brand partners and internal staff to manage all aspects of their eCommerce operations [1].
+The system shall provide a secure, web-based interface for brand partners and internal staff to manage all aspects of their eCommerce operations.
 
 **REQ-ADM-002: Product and Channel Management**  
-The system shall allow partners to create, update, and organize products in catalogs and manage digital channel configurations [2].
+The system shall allow partners to create, update, and organize products in catalogs and manage digital channel configurations.
 
 **REQ-ADM-003: Order and Payment Monitoring**  
-The system shall provide real-time order monitoring with detailed order history, search and filtering options, and access to payment status and transaction details [1].
+The system shall provide real-time order monitoring with detailed order history, search and filtering options, and access to payment status and transaction details.
 
 #### 4.7.2 User and Analytics
 
 **REQ-ADM-004: User and Role Management**  
-The system shall support user and role management for partner organizations with configurable permissions, access controls, and branding settings [2].
+The system shall support user and role management for partner organizations with configurable permissions, access controls, and branding settings.
 
 **REQ-ADM-005: Analytics and Reporting**  
-The system shall include dashboards and analytics for sales, inventory, and operational KPIs with audit trails and activity logs for compliance and transparency [1].
+The system shall include dashboards and analytics for sales, inventory, and operational KPIs with audit trails and activity logs for compliance and transparency.
 
 ### 4.8 Whitelabel Frontend Module
 
@@ -251,43 +254,43 @@ The system shall include dashboards and analytics for sales, inventory, and oper
 The system shall provide customizable storefront templates allowing brand partners to apply their logos, color schemes, typography, and domain configurations through a self-service administration interface [1].
 
 **REQ-WHL-002: Layout Customization**  
-The system shall enable flexible layout adjustments and content management to accommodate partner-specific marketing campaigns, promotional banners, and featured product sections [2].
+The system shall enable flexible layout adjustments and content management to accommodate partner-specific marketing campaigns, promotional banners, and featured product sections.
 
 **REQ-WHL-003: Multi-Domain Support**  
-The system shall support custom domain configuration for each brand partner, enabling complete white-label branding with partner-owned URLs and SSL certificate management [1].
+The system shall support custom domain configuration for each brand partner, enabling complete white-label branding with partner-owned URLs and SSL certificate management.
 
 #### 4.8.2 Product Display and Navigation
 
 **REQ-WHL-004: Dynamic Product Presentation**  
-The system shall support dynamic product display and filtering based on channel configurations and catalog data, with real-time updates reflecting product availability and pricing changes [2].
+The system shall support dynamic product display and filtering based on channel configurations and catalog data, with real-time updates reflecting product availability and pricing changes.
 
 **REQ-WHL-005: Responsive Design Implementation**  
-The system shall ensure accessibility, responsive design, and performance optimization across devices and platforms including desktop, tablet, and mobile interfaces [1].
+The system shall ensure accessibility, responsive design, and performance optimization across devices and platforms including desktop, tablet, and mobile interfaces.
 
 **REQ-WHL-006: Search and Navigation**  
-The system shall provide intuitive search functionality, product categorization, and navigation features that can be customized per brand partner's product organization preferences [2].
+The system shall provide intuitive search functionality, product categorization, and navigation features that can be customized per brand partner's product organization preferences [2] (nice to have since, future ).
 
 #### 4.8.3 Customer Experience Features
 
 **REQ-WHL-007: Seamless User Journey**  
-The system shall facilitate seamless user journeys from product discovery through checkout within the partner's branded environment, maintaining consistent branding throughout the entire customer experience [1].
+The system shall facilitate seamless user journeys from product discovery through checkout within the partner's branded environment, maintaining consistent branding throughout the entire customer experience.
 
 **REQ-WHL-008: Real-time Integration**  
-The system shall integrate with backend APIs for real-time product, pricing, availability, and order status information, ensuring customers always see current data [2].
+The system shall integrate with backend APIs for real-time product, pricing, availability, and order status information, ensuring customers always see current data.
 
 **REQ-WHL-009: Checkout Process Customization**  
-The system shall support customizable checkout processes that maintain brand consistency while integrating with the Order and Payment modules for transaction processing [1].
+The system shall support customizable checkout processes that maintain brand consistency while integrating with the Order and Payment modules for transaction processing.
 
 #### 4.8.4 Performance and Accessibility
 
 **REQ-WHL-010: Performance Optimization**  
-The system shall implement performance optimization techniques including lazy loading, content caching, and CDN integration to ensure fast loading times across all customer touchpoints [2].
+The system shall implement performance optimization techniques including lazy loading, content caching, and CDN integration to ensure fast loading times across all customer touchpoints.
 
 **REQ-WHL-011: Accessibility Compliance**  
-The system shall comply with web accessibility standards (WCAG 2.1 AA) to ensure inclusive access for users with disabilities across all whitelabel storefronts [1].
+The system shall comply with web accessibility standards (WCAG 2.1 AA) to ensure inclusive access for users with disabilities across all whitelabel storefronts.
 
 **REQ-WHL-012: Cross-Browser Compatibility**  
-The system shall ensure consistent functionality and appearance across major web browsers and mobile platforms [2].
+The system shall ensure consistent functionality and appearance across major web browsers and mobile platforms.
 
 ---
 
@@ -296,38 +299,38 @@ The system shall ensure consistent functionality and appearance across major web
 ### 5.1 Performance Requirements
 
 **NFR-001: API Response Time**  
-The system shall maintain API response times under 500ms for 95% of requests under normal load conditions [1].
+The system shall maintain API response times under 500ms for 95% of requests under normal load conditions.
 
 **NFR-002: Concurrent User Support**  
-The system shall support a minimum of 10,000 concurrent users across all tenants without performance degradation [2].
+The system shall support a minimum of 500 concurrent users across all tenants without performance degradation.
 
 **NFR-003: Transaction Throughput**  
-The system shall process a minimum of 1,000 orders per hour during peak operation periods [1].
+The system shall process a minimum of 1,000 orders per hour during peak operation periods.
 
 **NFR-004: Frontend Performance**  
-The whitelabel storefronts shall achieve page load times under 3 seconds for initial page loads and under 1 second for subsequent navigation on standard broadband connections [2].
+The whitelabel storefronts shall achieve page load times under 3 seconds for initial page loads and under 1 second for subsequent navigation on standard broadband connections.
 
 ### 5.2 Security Requirements
 
 **NFR-005: Tenant Data Isolation**  
-The system shall implement complete tenant data isolation at the database level using schema or row-level security patterns, preventing any cross-tenant data access [1].
+The system shall implement complete tenant data isolation at the database level using schema or row-level security patterns, preventing any cross-tenant data access.
 
 **NFR-006: Authentication and Authorization**  
-The system shall implement OAuth 2.0 authentication with role-based access control for all user interfaces and APIs [2].
+The system shall implement OAuth 2.0 authentication with role-based access control for all user interfaces and APIs.
 
 **NFR-007: Data Encryption**  
-The system shall encrypt all sensitive data at rest and in transit using industry-standard encryption protocols [1].
+The system shall encrypt all sensitive data at rest and in transit using industry-standard encryption protocols.
 
 ### 5.3 Scalability and Reliability Requirements
 
 **NFR-008: Tenant Scaling**  
-The system shall support a minimum of 50 active tenants with horizontal scaling capabilities [2].
+The system shall support a minimum of 20 active tenants with horizontal scaling capabilities.
 
 **NFR-009: System Availability**  
-The system shall maintain 99.9% availability excluding planned maintenance windows with comprehensive error handling and graceful degradation [1].
+The system shall maintain 99.9% availability excluding planned maintenance windows with comprehensive error handling and graceful degradation.
 
 **NFR-010: Backup and Recovery**  
-The system shall support automated backup and disaster recovery with Recovery Time Objective (RTO) of 4 hours [2].
+The system shall support automated backup and disaster recovery with Recovery Time Objective (RTO) of 4 hours.
 
 ---
 
@@ -335,90 +338,18 @@ The system shall support automated backup and disaster recovery with Recovery Ti
 
 ### 6.1 Multi-Tenant Data Architecture
 
-The system shall implement a multi-tenant data model ensuring complete isolation between tenants using either schema-based or row-level security patterns [1]. Each tenant entity includes tenant_id, name, configuration, branding_settings, and created_date fields [2].
+The system shall implement a multi-tenant data model ensuring complete isolation between tenants using either schema-based or row-level security patterns. Each tenant entity includes tenant_id, name, configuration, branding_settings, and created_date fields.
 
 ### 6.2 Core Data Models
 
-**Catalog Data Model** includes Product_Item with item_id, tenant_id, legacy_subscription_id, name, description, and created_date; Campaign with campaign_id, tenant_id, name, discount_percent, start_date, and end_date; and Binding_Period with binding_id, tenant_id, duration_months, and penalty_amount [1].
+**Catalog Data Model** includes Product_Item with item_id, tenant_id, legacy_subscription_id, name, description, and created_date; Campaign with campaign_id, tenant_id, name, discount_percent, start_date, and end_date; and Binding_Period with binding_id, tenant_id and duration_months.
 
-**Channel Data Model** includes Channel with channel_id, tenant_id, name, type, configuration, and created_date; and Channel_Item_Assignment with channel_id, item_id, visible_from, visible_to, and priority [2].
+**Channel Data Model** includes Channel with channel_id, tenant_id, name, type, configuration, and created_date; and Channel_Item_Assignment with channel_id, item_id, visible_from, visible_to, and priority.
 
 **Order Data Model** includes Order with order_id, tenant_id, customer_id, status, total_amount, and created_date; Order_Item with order_item_id, order_id, product_item_id, quantity, and unit_price; and Order_Status_History with status_id, order_id, status, timestamp, and notes [1].
 
 **Number Management Data Model** includes Number_Pool with pool_id, tenant_id, range_start, range_end, and status; and Number_Assignment with assignment_id, number, tenant_id, customer_id, status, and assigned_date [2].
 
-**Whitelabel Frontend Data Model** includes Brand_Configuration with tenant_id, logo_url, primary_color, secondary_color, custom_css, domain_configuration, and last_updated; Theme_Template with template_id, tenant_id, layout_configuration, component_settings, and creation_date [1].
+**Whitelabel Frontend Data Model** includes Brand_Configuration with tenant_id, domain_configuration, and last_updated;
 
 ---
-
-## 7. Questions for Further Clarification
-
-### 1. Multi-Tenancy Architecture Details
-
-- Should each tenant have a separate database schema, or should we implement row-level security in a shared database? What are the specific compliance requirements that might influence this decision [1]?
-- What level of customization should tenants have over their data models and business rules?
-
-### 2. Legacy TCM System Integration
-
-- What is the exact API specification for the legacy TCM system? Are there rate limits, availability windows, or specific authentication mechanisms we need to consider [2]?
-- How should the system handle legacy system unavailability or degraded performance?
-
-### 3. Number Management Specifications
-
-- What are the specific regulatory requirements for number management in your operating regions? Do we need to support number portability between different operators [1]?
-- How should number reservation timeouts be handled, and what are the business rules for number release?
-
-### 4. Payment Processing Requirements
-
-- What specific payment methods are required for launch? Are there regional payment preferences or regulatory requirements we should prioritize [2]?
-- Should the system support recurring billing or subscription-based payment models?
-
-### 5. Performance and Scaling Expectations
-
-- What are the expected peak load scenarios? How many orders per tenant per hour should we design for?
-- Are there specific geographic regions or markets that require special performance considerations?
-
-### 6. Security and Compliance
-
-- Are there specific telecom industry compliance requirements beyond PCI DSS that we need to address [1]?
-- What are the data retention and audit requirements for different types of transactions and user activities?
-
-### 7. API Consumer Integration
-
-- What level of API customization should be available to different API consumers? Should there be different API tiers or access levels [2]?
-- How should API versioning and backward compatibility be managed for existing integrations?
-
-### 8. Administration Portal Features
-
-- What specific analytics, reporting, and dashboard requirements do brand partners have? Should we integrate with existing business intelligence platforms [1]?
-- What level of self-service configuration should be available to brand partners versus requiring administrator intervention?
-
-### 9. Basket and Order Workflow
-
-- Are there specific business rules for basket expiration, item reservation, or inventory allocation that need to be implemented [2]?
-- How should the system handle complex order scenarios like partial fulfillment or backordered items?
-
-### 10. International and Localization Requirements
-
-- What languages, currencies, and regional variations need to be supported for the initial launch and future expansion [1]?
-- Are there specific regulatory or business requirements for different markets or regions?
-
-### 11. Whitelabel Frontend Customization
-
-- What level of CSS and JavaScript customization should be allowed for brand partners? Should there be restrictions for security or performance reasons [2]?
-- How should theme updates and version control be managed when partners have made customizations?
-
-### 12. Frontend Performance and SEO
-
-- Are there specific SEO requirements for whitelabel storefronts? Should the system support server-side rendering or other SEO optimization techniques [1]?
-- What analytics and tracking capabilities should be built into the whitelabel storefronts for brand partners to monitor customer behavior?
-
----
-
-**References**
-
-[1] Project Charter: SAGA Telecom eCommerce Module  
-[2] SAGA Platform Architecture Documentation
-
-[1] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52483632/b0e3c636-7e8a-4a58-87fa-e8fa5c8b9209/project-charter.md
-[2] https://ppl-ai-file-upload.s3.amazonaws.com/web/direct-files/attachments/52483632/b958c91d-5664-459a-b428-9ae6c9b99aa0/ecom-srs.md
