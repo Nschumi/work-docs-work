@@ -188,36 +188,168 @@ Budget to be defined; will include development, infrastructure, and potential th
 
 ---
 
-## 6. Project Team
+## 6. Technical Architecture & Constraints
 
-### 6.1 Project Sponsor
+### 6.1 Technology Stack Decisions
+
+#### 6.1.1 Backend Architecture
+- **Framework**: .NET 9 with C# - chosen for enterprise-grade scalability, strong typing, and existing organizational expertise
+- **Architecture Pattern**: Modular Monolith - balances development simplicity with service separation, avoiding microservices complexity while maintaining modularity
+- **Orchestration**: .NET Aspire - provides unified debugging, service discovery, and configuration management
+- **Database**: Multi-tenant SQL Server with tenant isolation via TenantId filtering
+- **API Design**: RESTful APIs with OpenAPI/Swagger documentation, following REST maturity level 2
+
+#### 6.1.2 Frontend Architecture
+- **Framework**: SvelteKit - chosen for performance, developer experience, and excellent white-labeling capabilities
+- **Content Management**: Contentful CMS integration for dynamic content and marketing campaigns
+- **Styling**: CSS-in-JS with tenant-specific theming support
+- **State Management**: Stores pattern with reactive updates
+
+#### 6.1.3 Infrastructure & Deployment
+- **Container Platform**: Kubernetes with nginx ingress for scalability and load balancing
+- **Cloud Provider**: Azure (aligned with organizational standards)
+- **CI/CD**: GitHub Actions with automated deployment pipelines
+- **Monitoring**: Grafana and Prometheus for monitoring and observability
+
+### 6.2 Performance Requirements & SLA Targets
+
+#### 6.2.1 Response Time Requirements
+- **API Endpoints**: < 500ms for 95% of requests under normal load
+- **Database Queries**: < 200ms for catalog and product lookups
+- **Frontend Pages**: < 3 seconds initial load, < 1 second subsequent navigation
+- **Payment Processing**: < 2 seconds for authorization, < 10 seconds for capture
+
+#### 6.2.2 Scalability Targets
+- **Concurrent Users**: Support 1,000+ concurrent users across all tenants
+- **Transaction Volume**: Process minimum 1,000 orders per hour during peak periods
+- **Tenant Scaling**: Support 20+ active tenants with horizontal scaling capability
+- **Database Performance**: Handle 10,000+ catalog items per tenant without degradation
+
+#### 6.2.3 Availability & Reliability
+- **System Uptime**: 99.9% availability excluding planned maintenance
+- **Recovery Time Objective (RTO)**: 4 hours for critical system restoration
+- **Recovery Point Objective (RPO)**: 1 hour maximum data loss tolerance
+- **Error Handling**: Graceful degradation with comprehensive error logging
+
+### 6.3 Security & Compliance Requirements
+
+#### 6.3.1 Data Protection
+- **Tenant Isolation**: Data separation using TenantId filtering in queries
+- **Data Encryption**: AES-256 encryption at rest, TLS 1.3 for data in transit
+- **Personal Data**: GDPR compliance with data anonymization and deletion capabilities
+- **Audit Logging**: Comprehensive audit trails for all tenant data access and modifications
+
+#### 6.3.2 Authentication & Authorization
+- **Authentication**: OAuth 2.0 with self-hosted Duende Identity Server
+- **Authorization**: Role-based access control (RBAC) with tenant-specific permissions
+- **API Security**: JWT tokens with proper expiration and refresh mechanisms
+- **Payment Security**: PCI DSS compliance for payment data handling
+
+#### 6.3.3 Regulatory Compliance
+- **Telecom Regulations**: Compliance with national numbering regulations
+- **Data Privacy**: GDPR and national data protection requirements
+- **Financial Compliance**: PCI DSS for payment processing
+- **Industry Standards**: SOC 2 Type II compliance for service delivery
+
+### 6.4 Integration Architecture
+
+#### 6.4.1 Legacy System Integration
+- **TCM System**: SOAP-based webservice integration with custom adapter for XML schema conversion
+- **Product Service**: Proxy layer for product data with caching strategies
+- **Provisioning Systems**: Asynchronous integration with message queues
+- **Error Handling**: Retry mechanisms with exponential backoff
+
+#### 6.4.2 External Service Integration
+- **Payment Gateways**: Currently OnPay, with future support for tenant-specific payment providers
+- **Content Delivery**: CDN integration for static assets and images
+- **Email/SMS**: Notification services with template management
+- **Analytics**: Integration with business intelligence tools
+
+#### 6.4.3 API Design Standards
+- **Versioning**: Semantic versioning with backward compatibility
+- **Documentation**: OpenAPI 3.0 with interactive documentation
+- **Rate Limiting**: Tenant-aware rate limiting with proper error responses
+- **Monitoring**: Distributed tracing with correlation IDs
+
+### 6.5 Development Standards & Quality Gates
+
+#### 6.5.1 Code Quality Requirements
+- **Test Coverage**: Minimum 80% unit test coverage for business logic
+- **Code Review**: Mandatory peer review for all code changes
+- **Static Analysis**: Code quality tooling to be determined based on Nuuday organizational standards
+- **Documentation**: Comprehensive API documentation and architectural decision records
+
+#### 6.5.2 Development Practices
+- **Version Control**: Git with feature branch workflow and protected main branch
+- **CI/CD Pipeline**: GitHub Actions with automated testing, security scanning, and deployment
+- **Environment Strategy**: Development, staging, and production environments with data isolation
+- **Deployment**: Blue-green deployment with automated rollback capabilities
+
+#### 6.5.3 Monitoring & Observability
+- **Application Monitoring**: Grafana dashboards with Prometheus metrics for real-time performance monitoring and alerting
+- **Business Metrics**: Order volume, payment success rates, and tenant usage
+- **Log Management**: Centralized logging with structured log format
+- **Health Checks**: Comprehensive health endpoints for all services
+
+### 6.6 Technical Priorities & Constraints
+
+#### 6.6.1 Core Technical Priorities
+- **Code Quality**: Well-structured and maintainable codebase architecture
+- **Developer Experience**: Easy onboarding for new developers with comprehensive documentation
+- **User Experience**: Easy to use for both internal tenants and external customers
+- **System Reliability**: High availability and performance under load
+
+#### 6.6.2 System Constraints
+- **Legacy Dependencies**: Must maintain compatibility with existing SOAP-based TCM system
+- **Limited Legacy Access**: Restricted access to legacy systems for integration and testing
+- **Performance Constraints**: System must handle peak loads during product launches on shared infrastructure
+- **Scalability Limits**: Database design must support efficient tenant scaling
+- **Security Boundaries**: Strict tenant isolation cannot be compromised
+
+#### 6.6.3 Compliance & Regulatory Constraints
+- **Telecom Regulations**: Compliance with national numbering regulations and telecom industry standards
+- **Data Privacy Laws**: GDPR and national data protection requirements
+- **Financial Compliance**: PCI DSS for payment processing
+- **Audit Requirements**: Comprehensive audit trails for all tenant operations
+
+#### 6.6.4 Technical Debt Management
+- **Legacy Integration**: Custom adapter development for SOAP-based legacy systems
+- **Refactoring**: Planned refactoring cycles to maintain code quality
+- **Documentation**: Continuous documentation updates for system changes
+- **Performance Optimization**: Regular performance reviews and optimization cycles
+
+---
+
+## 7. Project Team
+
+### 7.1 Project Sponsor
 
 Lars Vieland Grasberger, Head of IT, Nuuday Mobile Partners.
 
-### 6.2 Project Manager
+### 7.2 Project Manager
 
 Bjørn Alsted Nielsen, Product Owner, Nuuday Mobile Partners.
 
-### 6.3 Key Stakeholders
+### 7.3 Key Stakeholders
 
 - Nichlas Bruselius, Head of Brand Partners
 - Katrine Grøn Iversen, Commercial Manager
 - Katrine Blicher Christensen, Commercial Manager
 - Niclas Schumacher, IT Lead
 
-### 6.4 Core Project Team
+### 7.4 Core Project Team
 
 Infrastructure & Platform team (responsible for building the module)
 
-### 6.5 External Partners/Vendors
+### 7.5 External Partners/Vendors
 
 Eesy - whom is a known brand partner that will be the first customer using the pure API capabilities of the eCommerce Service.
 
 ---
 
-## 7. Project Milestones & Checkpoints
+## 8. Project Milestones & Checkpoints
 
-### 7.1 Key Milestones
+### 8.1 Key Milestones
 
 | Milestone ID | Description                                                                       | Timing         |
 | ------------ | --------------------------------------------------------------------------------- | -------------- |
@@ -230,29 +362,29 @@ Eesy - whom is a known brand partner that will be the first customer using the p
 | M6           | Whitelabel frontend capabilities delivered                                        | April 2026     |
 | M7           | eCom module version 1.0 (full feature set)                                        | May 2026       |
 
-### 7.2 Timeline
+### 8.2 Timeline
 
 - Phase 1 (August-September): Technical design including architecture for channel and catalog modules.
 - Phase 2 (September–May 2025): Development & integration.
 
-### 7.3 Go/No-Go Checkpoints
+### 8.3 Go/No-Go Checkpoints
 
 Dependencies on legacy TCM system, Open Pages project, and provisioning systems may impact go/no-go decisions.
 
 ---
 
-## 8. Assumptions, Constraints & Dependencies
+## 9. Assumptions, Constraints & Dependencies
 
-### 8.1 Assumptions
+### 9.1 Assumptions
 
 - Timely availability of resources for design and development
 - Continued access to legacy TCM system for product, pricing, and MSISDN data
 
-### 8.2 Constraints
+### 9.2 Constraints
 
 Flexible to adapt to changing requirements or priorities
 
-### 8.3 Dependencies
+### 9.3 Dependencies
 
 - **Legacy TCM system**: Required for product, pricing, and MSISDN data. Any delays in accessing this system may impact the integration timeline and overall project delivery.
 - **Open Pages project**: Provides frontend capabilities for whitelabel solutions. Delays or changes in this project could affect the user interface and customer experience.
@@ -262,23 +394,23 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 9. Risks and Opportunities
+## 10. Risks and Opportunities
 
-### 9.1 Risks
+### 10.1 Risks
 
 - Integration challenges with legacy and downstream systems may delay delivery
 - Dependencies on other projects could cause resource conflicts
 - Scope creep due to evolving partner requirements
 - Competing priorities within Nuuday Mobile Partners may affect focus
 
-### 9.2 Opportunities
+### 10.2 Opportunities
 
 - Strengthened relationships with brand partners through early engagement
 - Foundation for future eCommerce innovation and feature expansion
 
 ---
 
-## 10. Communication Plan
+## 11. Communication Plan
 
 - **Jira dashboard:** Real-time project status, milestones, and key metrics
 - **Slack channel:** Regular status updates and immediate issue resolution and ad-hoc discussions
@@ -286,7 +418,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 11. Charter Acceptance & Approvals
+## 12. Charter Acceptance & Approvals
 
 - **Project Sponsor:** Lars Vieland Grasberger
 - **Project Manager:** Bjørn Alsted Nielsen
