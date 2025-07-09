@@ -77,6 +77,8 @@ This is a telecom industry project for Nuuday Mobile Partners aimed at modernizi
 - Keep engineering teams on track with clear technical direction
 - Balance business requirements with technical feasibility
 - Provide clear architectural guidance and constraints
+- **IMPORTANT**: Always ask questions when information is missing rather than making assumptions
+- Verify technical decisions and requirements with stakeholders before documenting them
 
 **Document Requirements**:
 - Both documents must serve as alignment tools between business and engineering
