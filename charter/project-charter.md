@@ -2,44 +2,85 @@
 
 ---
 
-## 1. About the Project Charter
+## 1. Executive Summary
 
-### 1.1 Description
+### 1.1 Business Opportunity
+
+The SAGA Telecom eCommerce Module addresses a critical operational bottleneck: **tenant onboarding currently takes months** due to legacy TCM system limitations. This project delivers a modern, multi-tenant platform that reduces onboarding to **2-3 weeks** while enabling complete white-label customization for brand partners.
+
+### 1.2 Strategic Value for Brand Partners
+
+**For Nichlas (Head of Brand Partners):**
+- **Faster Partner Onboarding**: New brand partners can launch in weeks, not months
+- **Self-Service Capabilities**: Partners manage their own products, pricing, and campaigns without IT dependency
+- **White-Label Freedom**: Complete branding control with custom domains and storefront design
+- **Scalable Operations**: Support 10x more partners with same operational overhead
+
+**For Lars (Head of IT):**
+- **Modern Architecture**: .NET 9 modular monolith with proven scalability patterns
+- **Operational Efficiency**: 60% reduction in support tickets through improved system design
+- **Future-Proof Platform**: Foundation for telecom eCommerce innovation and expansion
+- **Resource Optimization**: Shared infrastructure reducing per-tenant operational costs
+
+### 1.3 Key Deliverables
+
+**Phase 1 (Oct 2025):** Channel and Catalog modules with API capabilities for Eesy integration
+**Phase 2 (Apr 2026):** Complete white-label frontend capabilities for brand partner customization  
+**Phase 3 (May 2026):** Full platform with all modules operational and first partner migrated
+
+### 1.4 Success Metrics
+
+- **Tenant Onboarding**: Reduction from months to 2-3 weeks
+- **Partner Satisfaction**: Proactive issue identification reduces support escalations
+- **System Performance**: 99.9% availability with sub-500ms API response times
+- **Revenue Impact**: Platform enables partner revenue growth through improved capabilities
+
+### 1.5 Investment Approach
+
+**Resource Allocation**: 6-8 developer team scaling across phases with specialized telecom and multi-tenant expertise
+**Strategic Investment**: Focus on value realization through operational efficiency and partner enablement
+**Risk Mitigation**: Phased approach with early partner feedback and flexible architecture decisions
+
+---
+
+## 2. About the Project Charter
+
+### 2.1 Description
 
 This charter formally authorizes the SAGA Telecom eCommerce Module project, establishing its objectives, scope, key stakeholders, deliverables, and governance structure.
 
-### 1.2 Disclaimer
+### 2.2 Disclaimer
 
 This document may be updated as the project progresses to reflect new information or changes in direction.
 
 ---
 
-## 2. Executive Summary
+## 3. Overall Description
 
-### 2.1 Business Need or Problem
+### 3.1 Business Need or Problem
 
 Modernize the telecom eCommerce platform by enabling a whitelabel, multi-tenant solution that supports multiple brand partners with distinct configurations and branding, replacing the legacy TCM system.
 
-### 2.2 Proposed Solution
+### 3.2 Proposed Solution
 
 Develop and deploy a scalable, multi-tenant eCommerce module as part of the SAGA platform, supporting both API and whitelabel customer models.
 
-### 2.3 Business Benefits
+### 3.3 Business Benefits
 
 - Improved operational efficiency
 - Faster product launches
 - Enhanced customer experience
 - Increased partner engagement
 
-### 2.4 Strategic Alignment
+### 3.4 Strategic Alignment
 
 Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommerce solutions for multiple telecom brands.
 
 ---
 
-## 3. Project Scope
+## 4. Project Scope
 
-### 3.1 Scope Inclusions
+### 4.1 Scope Inclusions
 
 - Development of a multi-tenant eCommerce Service
 - Integration with downstream provisioning systems
@@ -53,16 +94,16 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
   - Catalog Module
   - MVP Administration Portal (covering Channel and Catalog Module)
 
-### 3.2 Scope Exclusions
+### 4.2 Scope Exclusions
 
 - Defining the API interface towards downstream provisioning systems
 
-### 3.2.1 Out of Scope / Future Work
+### 4.2.1 Out of Scope / Future Work
 
 - **Reporting & Analytics Module**: Planned for version 2, this module will provide advanced reporting and analytics capabilities, including dashboards for sales trends, customer behavior, and operational insights.
 - Additional payment providers
 
-### 3.3 Modules Overview
+### 4.3 Modules Overview
 
 #### Catalog Module Scope
 
@@ -153,21 +194,21 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 4. Project Goals, Objectives, and Success Criteria
+## 5. Project Goals, Objectives, and Success Criteria
 
-### 4.1 Goals & Objectives
+### 5.1 Goals & Objectives
 
 - Enable multi-tenant support for telecom brand partners
 - Empower partners to manage products, pricing, and campaigns
 - Deliver a seamless, intuitive shopping experience
 - Ensure high performance and scalability
 
-### 4.2 Completion Criteria
+### 5.2 Completion Criteria
 
 - At least one brand partner migrated and using the service with whitelabel frontend
 - All core features and integrations operational
 
-### 4.3 Engineering Success Metrics
+### 5.3 Engineering Success Metrics
 
 #### 4.3.1 Technical Performance Metrics
 - **API Response Times**: 95% of API calls complete within 500ms under normal load
@@ -219,9 +260,9 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 5. Resource Planning & Business Case
+## 6. Resource Planning & Business Case
 
-### 5.1 Team Structure & Skill Requirements
+### 6.1 Team Structure & Skill Requirements
 
 #### 5.1.1 Core Development Team
 - **Team Size**: 6-8 developers including technical lead
@@ -243,7 +284,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **UX/UI Designer**: 1 designer for whitelabel frontend customization capabilities
 - **Business Analyst**: Part-time role for requirements gathering and partner coordination
 
-### 5.2 Development Environment & Tooling
+### 6.2 Development Environment & Tooling
 
 #### 5.2.1 Development Infrastructure
 - **Local Development**: Docker Desktop licenses and .NET Aspire tooling
@@ -257,7 +298,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Security Testing**: Vulnerability scanning and penetration testing tools
 - **Browser Testing**: Cross-browser compatibility testing services
 
-### 5.3 Cost-Benefit Analysis
+### 6.3 Cost-Benefit Analysis
 
 #### 5.3.1 Project Investment Approach
 - **Development Phases**: Multi-phase development approach over 11-month cycle
@@ -276,7 +317,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Operational Savings**: Automated processes and improved system reliability reduce ongoing costs
 - **Strategic Value**: Modern platform enables competitive advantage and market expansion
 
-### 5.4 Risk Mitigation & Contingency
+### 6.4 Risk Mitigation & Contingency
 
 #### 5.4.1 Project Risk Management
 - **Development Scope**: Contingency planning for scope changes and requirements evolution
@@ -290,9 +331,9 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 6. Development Process Framework
+## 7. Development Process Framework
 
-### 6.1 Architecture Decision Records (ADR) Process
+### 7.1 Architecture Decision Records (ADR) Process
 
 #### 6.1.1 ADR Implementation
 - **Documentation Format**: Lightweight markdown-based ADRs stored in `/docs/architecture/decisions/`
@@ -313,7 +354,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Accepted**: Approved and becomes guiding architecture principle
 - **Superseded**: Replaced by newer decision with reference to original
 
-### 6.2 Development Standards & Workflow
+### 7.2 Development Standards & Workflow
 
 #### 6.2.1 Code Review Standards
 - **Mandatory Reviews**: All code requires review before merging to main branch
@@ -336,7 +377,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Security Scanning**: Automated vulnerability scanning on dependencies and code
 - **Code Quality**: Static analysis with agreed-upon rule sets
 
-### 6.3 Development Environment Standards
+### 7.3 Development Environment Standards
 
 #### 6.3.1 Local Development Setup
 - **Service Orchestration**: .NET Aspire for spinning up the solution with dependencies via Docker
@@ -352,7 +393,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Documentation Standards**: README files for each service with setup instructions
 - **Dependency Management**: Regular updates with automated security monitoring
 
-### 6.4 Change Management & Deployment
+### 7.4 Change Management & Deployment
 
 #### 6.4.1 Change Control Process
 - **Change Categories**: Standard, Emergency, and Major changes with different approval paths
@@ -374,7 +415,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **Approval Process**: Sign-offs required based on change impact
 - **Success Criteria**: Defined metrics for deployment validation
 
-### 6.5 Knowledge Management & Documentation
+### 7.5 Knowledge Management & Documentation
 
 #### 6.5.1 Technical Documentation
 - **API Documentation**: OpenAPI specifications with interactive documentation
@@ -392,9 +433,9 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 7. Technical Architecture & Constraints
+## 8. Technical Architecture & Constraints
 
-### 7.1 Technology Stack Decisions
+### 8.1 Technology Stack Decisions
 
 #### 7.1.1 Backend Architecture
 - **Framework**: .NET 9 with C# - chosen for enterprise-grade scalability, strong typing, and existing organizational expertise
@@ -415,7 +456,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **CI/CD**: GitHub Actions with automated deployment pipelines
 - **Monitoring**: Grafana and Prometheus for monitoring and observability
 
-### 7.2 Performance Requirements & SLA Targets
+### 8.2 Performance Requirements & SLA Targets
 
 #### 6.2.1 Response Time Requirements
 - **API Endpoints**: < 500ms for 95% of requests under normal load
