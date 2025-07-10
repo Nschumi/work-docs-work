@@ -219,22 +219,127 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 5. Business Case
+## 5. Resource Planning & Business Case
 
-### 5.1 Costs
+### 5.1 Team Structure & Skill Requirements
 
-Budget to be defined; will include development, infrastructure, and potential third-party services.
+#### 5.1.1 Core Development Team
+- **Team Size**: 6-8 developers including technical lead
+- **Backend Developers**: 3-4 developers with .NET 9, C#, and SQL Server expertise
+- **Frontend Developers**: 2 developers with SvelteKit, TypeScript, and Contentful CMS experience
+- **DevOps Engineer**: 1 developer with Kubernetes, GitHub Actions, and Azure infrastructure experience
+- **Technical Lead/Architect**: 1 senior developer with telecom domain knowledge and system integration experience
 
-### 5.2 Benefits
+#### 5.1.2 Specialized Skills Required
+- **Legacy Integration**: Experience with SOAP webservices and XML data transformation
+- **Multi-tenant Architecture**: Database design and tenant isolation patterns
+- **Telecom Domain**: Understanding of MSISDN management, SIM card logistics, and subscription billing
+- **Security Compliance**: Knowledge of PCI DSS, GDPR, and telecom regulatory requirements
+- **Performance Optimization**: Experience with high-throughput eCommerce platforms
 
-- Increased revenue and partner satisfaction
-- Platform scalability for future growth
+#### 5.1.3 Support Roles
+- **Product Owner**: Bjørn Alsted Nielsen (existing)
+- **QA Engineer**: 1 tester with automation and multi-tenant testing expertise
+- **UX/UI Designer**: 1 designer for whitelabel frontend customization capabilities
+- **Business Analyst**: Part-time role for requirements gathering and partner coordination
+
+### 5.2 Infrastructure & Technology Costs
+
+#### 5.2.1 Cloud Infrastructure (Azure)
+- **Development Environment**: €2,000/month (3 environments: dev, staging, prod)
+- **Production Infrastructure**: €5,000-8,000/month (auto-scaling, high availability)
+- **Database Services**: €1,500-3,000/month (SQL Server with backup and replication)
+- **Monitoring & Logging**: €500/month (Grafana, Prometheus, log aggregation)
+- **CDN & Storage**: €300-500/month (content delivery and asset storage)
+
+#### 5.2.2 Software Licenses & Tools
+- **Development Tools**: €3,000/year (Visual Studio licenses, Rider, etc.)
+- **Duende Identity Server**: €2,000/year (commercial license for production)
+- **Code Quality Tools**: €1,500/year (static analysis, security scanning)
+- **Project Management**: €1,200/year (existing Jira, Confluence)
+- **Testing Tools**: €2,000/year (automated testing frameworks and tools)
+
+#### 5.2.3 Third-Party Services
+- **Contentful CMS**: €1,000-2,000/month (depends on content volume and API calls)
+- **OnPay Payment Gateway**: Transaction-based fees (2-3% per transaction)
+- **SSL Certificates**: €500/year (wildcard certificates for multi-domain support)
+- **Backup Services**: €300/month (automated backup and disaster recovery)
+
+### 5.3 Development Environment & Tooling
+
+#### 5.3.1 Development Infrastructure
+- **Local Development**: Docker Desktop licenses and .NET Aspire tooling
+- **CI/CD Pipeline**: GitHub Actions (included in existing GitHub subscription)
+- **Code Repository**: GitHub Enterprise (existing organizational license)
+- **Development Databases**: Local SQL Server instances and containerized services
+
+#### 5.3.2 Testing & Quality Assurance
+- **Automated Testing**: Unit testing frameworks, integration test environments
+- **Performance Testing**: Load testing tools for multi-tenant scalability validation
+- **Security Testing**: Vulnerability scanning and penetration testing tools
+- **Browser Testing**: Cross-browser compatibility testing services
+
+### 5.4 Budget Estimates by Phase
+
+#### 5.4.1 Phase 1: Foundation (Months 1-3)
+- **Personnel Costs**: €180,000 (6 developers × 3 months × €10,000 average)
+- **Infrastructure Setup**: €15,000 (initial setup, tooling, licenses)
+- **External Services**: €5,000 (consultancy, training, setup costs)
+- **Total Phase 1**: €200,000
+
+#### 5.4.2 Phase 2: Core Development (Months 4-8)
+- **Personnel Costs**: €400,000 (8 team members × 5 months × €10,000 average)
+- **Infrastructure Operations**: €40,000 (€8,000/month × 5 months)
+- **Third-Party Services**: €25,000 (Contentful, payment processing, tools)
+- **Total Phase 2**: €465,000
+
+#### 5.4.3 Phase 3: Integration & Testing (Months 9-11)
+- **Personnel Costs**: €240,000 (8 team members × 3 months × €10,000 average)
+- **Infrastructure Scale-Up**: €30,000 (production environment preparation)
+- **Testing & Validation**: €15,000 (performance testing, security audits)
+- **Total Phase 3**: €285,000
+
+#### 5.4.4 Ongoing Operations (Annual)
+- **Infrastructure**: €80,000-100,000/year (scaling with growth)
+- **Software Licenses**: €10,000/year (tools and services)
+- **Support & Maintenance**: €120,000/year (2 developers for ongoing support)
+- **Total Annual Operations**: €210,000-230,000/year
+
+### 5.5 Cost-Benefit Analysis
+
+#### 5.5.1 Total Project Investment
+- **Development Phases**: €950,000 (11-month development cycle)
+- **First Year Operations**: €230,000
+- **Total First Year**: €1,180,000
+
+#### 5.5.2 Expected Benefits
+- **Operational Efficiency**: 50% reduction in tenant onboarding costs
+- **Revenue Growth**: 15% increase in partner revenue within first year
+- **Support Cost Reduction**: 60% decrease in support ticket volume
+- **Scalability Value**: Platform supports 10x more tenants with same operational overhead
+
+#### 5.5.3 ROI Projections
+- **Break-even Timeline**: 18-24 months post-launch
+- **3-Year ROI**: 250-300% based on operational savings and revenue growth
+- **Platform Value**: Foundation for future eCommerce innovation and expansion
+
+### 5.6 Risk Mitigation & Contingency
+
+#### 5.6.1 Budget Contingency
+- **Development Overruns**: 15% contingency (€142,500) for scope changes
+- **Infrastructure Scaling**: 20% contingency for unexpected load requirements
+- **Integration Complexity**: €50,000 buffer for legacy system integration challenges
+
+#### 5.6.2 Resource Risk Mitigation
+- **Key Personnel**: Cross-training and documentation to reduce single points of failure
+- **Vendor Dependencies**: Alternative vendor evaluation for critical services
+- **Skill Gaps**: Training budget and external consultancy for specialized requirements
 
 ---
 
-## 6. Technical Architecture & Constraints
+## 7. Technical Architecture & Constraints
 
-### 6.1 Technology Stack Decisions
+### 7.1 Technology Stack Decisions
 
 #### 6.1.1 Backend Architecture
 - **Framework**: .NET 9 with C# - chosen for enterprise-grade scalability, strong typing, and existing organizational expertise
@@ -255,7 +360,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 - **CI/CD**: GitHub Actions with automated deployment pipelines
 - **Monitoring**: Grafana and Prometheus for monitoring and observability
 
-### 6.2 Performance Requirements & SLA Targets
+### 7.2 Performance Requirements & SLA Targets
 
 #### 6.2.1 Response Time Requirements
 - **API Endpoints**: < 500ms for 95% of requests under normal load
@@ -275,7 +380,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 - **Recovery Point Objective (RPO)**: 1 hour maximum data loss tolerance
 - **Error Handling**: Graceful degradation with comprehensive error logging
 
-### 6.3 Security & Compliance Requirements
+### 7.3 Security & Compliance Requirements
 
 #### 6.3.1 Data Protection
 - **Tenant Isolation**: Data separation using TenantId filtering in queries
@@ -295,7 +400,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 - **Financial Compliance**: PCI DSS for payment processing
 - **Industry Standards**: SOC 2 Type II compliance for service delivery
 
-### 6.4 Integration Architecture
+### 7.4 Integration Architecture
 
 #### 6.4.1 Legacy System Integration
 - **TCM System**: SOAP-based webservice integration with custom adapter for XML schema conversion
@@ -315,7 +420,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 - **Rate Limiting**: Tenant-aware rate limiting with proper error responses
 - **Monitoring**: Distributed tracing with correlation IDs
 
-### 6.5 Development Standards & Quality Gates
+### 7.5 Development Standards & Quality Gates
 
 #### 6.5.1 Code Quality Requirements
 - **Test Coverage**: Minimum 80% unit test coverage for business logic
@@ -335,7 +440,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 - **Log Management**: Centralized logging with structured log format
 - **Health Checks**: Comprehensive health endpoints for all services
 
-### 6.6 Technical Priorities & Constraints
+### 7.6 Technical Priorities & Constraints
 
 #### 6.6.1 Core Technical Priorities
 - **Code Quality**: Well-structured and maintainable codebase architecture
@@ -364,7 +469,7 @@ Budget to be defined; will include development, infrastructure, and potential th
 
 ---
 
-## 7. Project Team
+## 8. Project Team
 
 ### 7.1 Project Sponsor
 
@@ -391,7 +496,7 @@ Eesy - whom is a known brand partner that will be the first customer using the p
 
 ---
 
-## 8. Project Milestones & Checkpoints
+## 9. Project Milestones & Checkpoints
 
 ### 8.1 Key Milestones
 
@@ -417,7 +522,7 @@ Dependencies on legacy TCM system, Open Pages project, and provisioning systems 
 
 ---
 
-## 9. Assumptions, Constraints & Dependencies
+## 10. Assumptions, Constraints & Dependencies
 
 ### 9.1 Assumptions
 
@@ -438,7 +543,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 10. Risks and Opportunities
+## 11. Risks and Opportunities
 
 ### 10.1 Risks
 
@@ -454,7 +559,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 11. Communication Plan
+## 12. Communication Plan
 
 - **Jira dashboard:** Real-time project status, milestones, and key metrics
 - **Slack channel:** Regular status updates and immediate issue resolution and ad-hoc discussions
@@ -462,7 +567,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 12. Charter Acceptance & Approvals
+## 13. Charter Acceptance & Approvals
 
 - **Project Sponsor:** Lars Vieland Grasberger
 - **Project Manager:** Bjørn Alsted Nielsen
