@@ -290,11 +290,113 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
+## 6. Development Process Framework
+
+### 6.1 Architecture Decision Records (ADR) Process
+
+#### 6.1.1 ADR Implementation
+- **Documentation Format**: Lightweight markdown-based ADRs stored in `/docs/architecture/decisions/`
+- **Naming Convention**: `ADR-YYYY-MM-DD-title-of-decision.md` for chronological ordering
+- **Review Process**: All significant architecture decisions require ADR with peer review
+- **Template Structure**: Context, Decision, Consequences, and Alternatives Considered
+
+#### 6.1.2 When ADRs Are Required
+- **Technology Stack Changes**: Any modification to core frameworks or libraries
+- **Integration Patterns**: New external system integrations or API design changes
+- **Data Architecture**: Changes to multi-tenant patterns or database design
+- **Security Decisions**: Authentication, authorization, or data protection changes
+- **Performance Trade-offs**: Decisions impacting system performance or scalability
+
+#### 6.1.3 ADR Lifecycle
+- **Draft Status**: Initial proposal open for team discussion
+- **Proposed**: Ready for formal review and feedback
+- **Accepted**: Approved and becomes guiding architecture principle
+- **Superseded**: Replaced by newer decision with reference to original
+
+### 6.2 Development Standards & Workflow
+
+#### 6.2.1 Code Review Standards
+- **Mandatory Reviews**: All code requires review before merging to main branch
+- **Review Checklist**: Security, performance, maintainability, test coverage, documentation
+- **Reviewer Assignment**: Minimum one peer review, two for critical components
+- **Response Time**: Reviews completed within 24 hours for standard changes
+- **Approval Criteria**: No unresolved comments, all CI checks passing
+
+#### 6.2.2 Development Workflow
+- **Branch Strategy**: Feature branches from main with descriptive naming
+- **Commit Standards**: Conventional commits format for automated changelog generation
+- **Pull Request Template**: Description, testing steps, checklist, related issues
+- **CI/CD Integration**: Automated tests, security scans, and quality checks on every PR
+- **Documentation Updates**: Code changes include relevant documentation updates
+
+#### 6.2.3 Quality Gates
+- **Unit Test Coverage**: Minimum 80% for new code, verified by automated tooling
+- **Integration Tests**: Required for all API endpoints and external integrations
+- **Performance Tests**: Load testing for changes impacting critical paths
+- **Security Scanning**: Automated vulnerability scanning on dependencies and code
+- **Code Quality**: Static analysis with agreed-upon rule sets
+
+### 6.3 Development Environment Standards
+
+#### 6.3.1 Local Development Setup
+- **Service Orchestration**: .NET Aspire for spinning up the solution with dependencies via Docker
+- **Environment Configuration**: .env files with documented example configurations
+- **Database Seeding**: Automated scripts for test data across multiple tenants
+- **Service Discovery**: Local service discovery matching production patterns via Aspire
+- **Debugging Support**: Configured for IDE debugging across all services
+
+#### 6.3.2 Shared Development Practices
+- **Code Formatting**: Automated formatting with .editorconfig and language-specific tools
+- **Linting Rules**: Shared ESLint, StyleCop configurations across projects
+- **Git Hooks**: Pre-commit hooks for formatting, linting, and test execution
+- **Documentation Standards**: README files for each service with setup instructions
+- **Dependency Management**: Regular updates with automated security monitoring
+
+### 6.4 Change Management & Deployment
+
+#### 6.4.1 Change Control Process
+- **Change Categories**: Standard, Emergency, and Major changes with different approval paths
+- **Impact Assessment**: Required for all changes affecting multiple services
+- **Rollback Plans**: Documented rollback procedure for every deployment
+- **Communication**: Stakeholder notification for significant changes
+- **Post-Implementation Review**: Lessons learned for major deployments
+
+#### 6.4.2 Deployment Strategy
+- **Blue-Green Deployments**: Zero-downtime deployments with instant rollback capability
+- **Feature Toggles**: Gradual rollout capabilities for new features
+- **Database Migrations**: Backward-compatible migrations with rollback scripts
+- **Monitoring Integration**: Deployment markers in monitoring systems
+- **Health Checks**: Comprehensive health endpoints validated post-deployment
+
+#### 6.4.3 Release Management
+- **Semantic Versioning**: Consistent versioning across all services
+- **Release Notes**: Automated generation from commit messages and PR descriptions
+- **Approval Process**: Sign-offs required based on change impact
+- **Success Criteria**: Defined metrics for deployment validation
+
+### 6.5 Knowledge Management & Documentation
+
+#### 6.5.1 Technical Documentation
+- **API Documentation**: OpenAPI specifications with interactive documentation
+- **Service Documentation**: Architecture diagrams, data flows, and integration points
+- **Runbooks**: Operational procedures for common tasks and incident response
+- **Troubleshooting Guides**: Known issues and resolution procedures
+- **Performance Baselines**: Documented performance expectations and benchmarks
+
+#### 6.5.2 Knowledge Sharing
+- **Code Comments**: Meaningful comments for complex logic and business rules
+- **Team Wiki**: Centralized knowledge base for decisions and procedures
+- **Tech Talks**: Regular sessions for sharing architectural decisions and learnings
+- **Pair Programming**: Encouraged for knowledge transfer and complex features
+- **Documentation Reviews**: Regular audits to ensure documentation accuracy
+
+---
+
 ## 7. Technical Architecture & Constraints
 
 ### 7.1 Technology Stack Decisions
 
-#### 6.1.1 Backend Architecture
+#### 7.1.1 Backend Architecture
 - **Framework**: .NET 9 with C# - chosen for enterprise-grade scalability, strong typing, and existing organizational expertise
 - **Architecture Pattern**: Modular Monolith - balances development simplicity with service separation, avoiding microservices complexity while maintaining modularity
 - **Orchestration**: .NET Aspire - provides unified debugging, service discovery, and configuration management
@@ -422,7 +524,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ---
 
-## 8. Project Team
+## 9. Project Team
 
 ### 7.1 Project Sponsor
 
@@ -449,7 +551,7 @@ Eesy - whom is a known brand partner that will be the first customer using the p
 
 ---
 
-## 9. Project Milestones & Checkpoints
+## 10. Project Milestones & Checkpoints
 
 ### 8.1 Key Milestones
 
@@ -475,7 +577,7 @@ Dependencies on legacy TCM system, Open Pages project, and provisioning systems 
 
 ---
 
-## 10. Assumptions, Constraints & Dependencies
+## 11. Assumptions, Constraints & Dependencies
 
 ### 9.1 Assumptions
 
@@ -496,7 +598,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 11. Risks and Opportunities
+## 12. Risks and Opportunities
 
 ### 10.1 Risks
 
@@ -512,7 +614,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 12. Communication Plan
+## 13. Communication Plan
 
 - **Jira dashboard:** Real-time project status, milestones, and key metrics
 - **Slack channel:** Regular status updates and immediate issue resolution and ad-hoc discussions
@@ -520,7 +622,7 @@ Flexible to adapt to changing requirements or priorities
 
 ---
 
-## 13. Charter Acceptance & Approvals
+## 14. Charter Acceptance & Approvals
 
 - **Project Sponsor:** Lars Vieland Grasberger
 - **Project Manager:** Bjørn Alsted Nielsen
