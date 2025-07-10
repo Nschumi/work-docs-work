@@ -243,94 +243,47 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 - **UX/UI Designer**: 1 designer for whitelabel frontend customization capabilities
 - **Business Analyst**: Part-time role for requirements gathering and partner coordination
 
-### 5.2 Infrastructure & Technology Costs
+### 5.2 Development Environment & Tooling
 
-#### 5.2.1 Cloud Infrastructure (Azure)
-- **Development Environment**: €2,000/month (3 environments: dev, staging, prod)
-- **Production Infrastructure**: €5,000-8,000/month (auto-scaling, high availability)
-- **Database Services**: €1,500-3,000/month (SQL Server with backup and replication)
-- **Monitoring & Logging**: €500/month (Grafana, Prometheus, log aggregation)
-- **CDN & Storage**: €300-500/month (content delivery and asset storage)
-
-#### 5.2.2 Software Licenses & Tools
-- **Development Tools**: €3,000/year (Visual Studio licenses, Rider, etc.)
-- **Duende Identity Server**: €2,000/year (commercial license for production)
-- **Code Quality Tools**: €1,500/year (static analysis, security scanning)
-- **Project Management**: €1,200/year (existing Jira, Confluence)
-- **Testing Tools**: €2,000/year (automated testing frameworks and tools)
-
-#### 5.2.3 Third-Party Services
-- **Contentful CMS**: €1,000-2,000/month (depends on content volume and API calls)
-- **OnPay Payment Gateway**: Transaction-based fees (2-3% per transaction)
-- **SSL Certificates**: €500/year (wildcard certificates for multi-domain support)
-- **Backup Services**: €300/month (automated backup and disaster recovery)
-
-### 5.3 Development Environment & Tooling
-
-#### 5.3.1 Development Infrastructure
+#### 5.2.1 Development Infrastructure
 - **Local Development**: Docker Desktop licenses and .NET Aspire tooling
 - **CI/CD Pipeline**: GitHub Actions (included in existing GitHub subscription)
 - **Code Repository**: GitHub Enterprise (existing organizational license)
 - **Development Databases**: Local SQL Server instances and containerized services
 
-#### 5.3.2 Testing & Quality Assurance
+#### 5.2.2 Testing & Quality Assurance
 - **Automated Testing**: Unit testing frameworks, integration test environments
 - **Performance Testing**: Load testing tools for multi-tenant scalability validation
 - **Security Testing**: Vulnerability scanning and penetration testing tools
 - **Browser Testing**: Cross-browser compatibility testing services
 
-### 5.4 Budget Estimates by Phase
+### 5.3 Cost-Benefit Analysis
 
-#### 5.4.1 Phase 1: Foundation (Months 1-3)
-- **Personnel Costs**: €180,000 (6 developers × 3 months × €10,000 average)
-- **Infrastructure Setup**: €15,000 (initial setup, tooling, licenses)
-- **External Services**: €5,000 (consultancy, training, setup costs)
-- **Total Phase 1**: €200,000
+#### 5.3.1 Project Investment Approach
+- **Development Phases**: Multi-phase development approach over 11-month cycle
+- **Resource Allocation**: Team scaling from 6 to 8 developers across phases
+- **Infrastructure Scaling**: Cloud infrastructure costs scaling with tenant growth
 
-#### 5.4.2 Phase 2: Core Development (Months 4-8)
-- **Personnel Costs**: €400,000 (8 team members × 5 months × €10,000 average)
-- **Infrastructure Operations**: €40,000 (€8,000/month × 5 months)
-- **Third-Party Services**: €25,000 (Contentful, payment processing, tools)
-- **Total Phase 2**: €465,000
+#### 5.3.2 Expected Benefits
+- **Operational Efficiency**: Significant reduction in tenant onboarding time and costs
+- **Revenue Growth**: Platform enables partner revenue growth through improved capabilities
+- **Support Cost Reduction**: Substantial decrease in support ticket volume through improved system design
+- **Scalability Value**: Platform supports multiple tenants with shared operational overhead
 
-#### 5.4.3 Phase 3: Integration & Testing (Months 9-11)
-- **Personnel Costs**: €240,000 (8 team members × 3 months × €10,000 average)
-- **Infrastructure Scale-Up**: €30,000 (production environment preparation)
-- **Testing & Validation**: €15,000 (performance testing, security audits)
-- **Total Phase 3**: €285,000
+#### 5.3.3 Value Realization
+- **Tenant Onboarding**: Reduction from months to 2-3 weeks creates immediate value
+- **Platform Capabilities**: Foundation for future eCommerce innovation and expansion
+- **Operational Savings**: Automated processes and improved system reliability reduce ongoing costs
+- **Strategic Value**: Modern platform enables competitive advantage and market expansion
 
-#### 5.4.4 Ongoing Operations (Annual)
-- **Infrastructure**: €80,000-100,000/year (scaling with growth)
-- **Software Licenses**: €10,000/year (tools and services)
-- **Support & Maintenance**: €120,000/year (2 developers for ongoing support)
-- **Total Annual Operations**: €210,000-230,000/year
+### 5.4 Risk Mitigation & Contingency
 
-### 5.5 Cost-Benefit Analysis
+#### 5.4.1 Project Risk Management
+- **Development Scope**: Contingency planning for scope changes and requirements evolution
+- **Infrastructure Scaling**: Flexible infrastructure approach to accommodate unexpected load requirements
+- **Integration Complexity**: Buffer planning for legacy system integration challenges and technical complexity
 
-#### 5.5.1 Total Project Investment
-- **Development Phases**: €950,000 (11-month development cycle)
-- **First Year Operations**: €230,000
-- **Total First Year**: €1,180,000
-
-#### 5.5.2 Expected Benefits
-- **Operational Efficiency**: 50% reduction in tenant onboarding costs
-- **Revenue Growth**: 15% increase in partner revenue within first year
-- **Support Cost Reduction**: 60% decrease in support ticket volume
-- **Scalability Value**: Platform supports 10x more tenants with same operational overhead
-
-#### 5.5.3 ROI Projections
-- **Break-even Timeline**: 18-24 months post-launch
-- **3-Year ROI**: 250-300% based on operational savings and revenue growth
-- **Platform Value**: Foundation for future eCommerce innovation and expansion
-
-### 5.6 Risk Mitigation & Contingency
-
-#### 5.6.1 Budget Contingency
-- **Development Overruns**: 15% contingency (€142,500) for scope changes
-- **Infrastructure Scaling**: 20% contingency for unexpected load requirements
-- **Integration Complexity**: €50,000 buffer for legacy system integration challenges
-
-#### 5.6.2 Resource Risk Mitigation
+#### 5.4.2 Resource Risk Mitigation
 - **Key Personnel**: Cross-training and documentation to reduce single points of failure
 - **Vendor Dependencies**: Alternative vendor evaluation for critical services
 - **Skill Gaps**: Training budget and external consultancy for specialized requirements
