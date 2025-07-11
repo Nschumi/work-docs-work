@@ -29,8 +29,8 @@ This guide will configure your GitHub Project board for optimal project tracking
    - Purpose: New issues and upcoming work
    - Automation: None
 
-2. 📅 Sprint Planning  
-   - Purpose: Items being planned for current sprint
+2. 📅 Iteration Planning  
+   - Purpose: Items being planned for current iteration
    - Automation: None
 
 3. 🔄 In Progress
@@ -62,20 +62,16 @@ This guide will configure your GitHub Project board for optimal project tracking
 - Type: `Number`
 - Description: `Estimation using Fibonacci sequence (1,2,3,5,8,13)`
 
-**Field 2: Sprint**
-- Name: `Sprint`
-- Type: `Single select`
-- Options:
-  - `Sprint 0 - Foundation`
-  - `Sprint 1 - Multi-tenant`
-  - `Sprint 2 - Multi-tenant`
-  - `Sprint 3 - Catalog`
-  - `Sprint 4 - Catalog`
-  - `Sprint 5 - Channel`
-  - `Sprint 6 - Channel`
-  - `Sprint 7 - Open Pages MVP`
-  - `Sprint 8 - Production Prep`
-  - `Sprint 9 - Production Prep`
+**Field 2: Iteration (Built-in)**
+- Name: `Iteration` (should already exist as built-in field)
+- Type: `Iteration` (with date management)
+- Configure iterations:
+  - `Iteration 0 - Foundation` (2 weeks)
+  - `Iteration 1 - Multi-tenant` (4 weeks)
+  - `Iteration 2 - Catalog` (4 weeks)
+  - `Iteration 3 - Channel` (4 weeks)
+  - `Iteration 4 - Open Pages MVP` (2 weeks)
+  - `Iteration 5 - Production Prep` (4 weeks)
 
 **Field 3: Module**
 - Name: `Module`
@@ -114,20 +110,20 @@ This guide will configure your GitHub Project board for optimal project tracking
 5. Sort by: `Priority Score` (descending)
 6. Filter: `Status != Done` (hide completed work)
 
-### 3.3 Sprint Planning View
+### 3.3 Iteration Planning View
 
 1. Click **"+ New view"**
-2. Name: **"📅 Sprint Planning"**  
+2. Name: **"📅 Iteration Planning"**  
 3. Layout: **"Table"**
 4. Columns to show:
    - `Title`
    - `Status`
-   - `Sprint`
+   - `Iteration`
    - `Module`
    - `Story Points`
    - `Assignees`
    - `Priority Score`
-5. Sort by: `Sprint`, then `Priority Score`
+5. Sort by: `Iteration`, then `Priority Score`
 6. Filter: `Status != Done`
 
 ### 3.4 Developer Assignment View
@@ -158,7 +154,7 @@ This guide will configure your GitHub Project board for optimal project tracking
    - `Title`
    - `Status`
    - `Module`
-   - `Sprint`
+   - `Iteration`
    - `Assignees`
 6. Sort by: `Priority Score` (descending)
 
@@ -211,9 +207,9 @@ Action: Set status to "Done"
 
 Go to any view and create these saved filters:
 
-**Filter 1: Current Sprint**
-- Name: `🎯 Current Sprint Work`
-- Filter: `Sprint = "Sprint 0 - Foundation" AND Status != Done`
+**Filter 1: Current Iteration**
+- Name: `🎯 Current Iteration Work`
+- Filter: `Iteration = "Iteration 0 - Foundation" AND Status != Done`
 
 **Filter 2: Blocked Items**
 - Name: `🚫 Blocked Issues`
@@ -246,11 +242,11 @@ Go to any view and create these saved filters:
 - X-axis: `Time`
 - Y-axis: `Count of items`
 - Group by: `Status`
-- Filter: `Sprint = "Current Sprint"`
+- Filter: `Iteration = "Current Iteration"`
 
 **Chart 2: Velocity Chart**
 - Type: `Column chart`  
-- X-axis: `Sprint`
+- X-axis: `Iteration`
 - Y-axis: `Sum of Story Points`
 - Group by: `Status = Done`
 
@@ -316,7 +312,7 @@ Go to any view and create these saved filters:
 **Team Metrics:**
 - Workload distribution
 - Blocked items count
-- Sprint commitment accuracy
+- Iteration commitment accuracy
 
 ### 9.2 Weekly Review Dashboard
 
@@ -331,8 +327,8 @@ Create a **"📊 Weekly Review"** view:
 After completing setup, verify:
 
 - [ ] 6 board columns configured with automation
-- [ ] 4 custom fields created (Story Points, Sprint, Module, Priority Score)
-- [ ] 6 different views created (Development, Module, Sprint, Team, Priority, Epic)
+- [ ] 4 custom fields created (Story Points, Iteration, Module, Priority Score)
+- [ ] 6 different views created (Development, Module, Iteration, Team, Priority, Epic)
 - [ ] 6 automation workflows active
 - [ ] 5 saved filters configured
 - [ ] 4 insight charts created
@@ -346,18 +342,18 @@ After completing setup, verify:
 Go to each of the 3 created epics and add:
 - Story Points: 13 (large epic)
 - Module: Infrastructure/Catalog/Channel
-- Sprint: Multiple sprints
+- Iteration: Multiple iterations
 - Priority Score: 4 (critical) or 3 (high)
 
-### 11.2 Create Sprint 0 Stories
+### 11.2 Create Iteration 0 Stories
 
-Create these initial stories for Sprint 0:
+Create these initial stories for Iteration 0:
 
 **Story 1:**
 ```
 Title: [STORY] As a developer I want to set up the development environment
 Module: Infrastructure
-Sprint: Sprint 0 - Foundation
+Iteration: Iteration 0 - Foundation
 Story Points: 5
 Priority Score: 4
 Labels: type:story, module:infrastructure, priority:critical
@@ -367,7 +363,7 @@ Labels: type:story, module:infrastructure, priority:critical
 ```
 Title: [STORY] As a developer I want to create the solution structure
 Module: Infrastructure  
-Sprint: Sprint 0 - Foundation
+Iteration: Iteration 0 - Foundation
 Story Points: 3
 Priority Score: 4
 Labels: type:story, module:infrastructure, priority:critical
@@ -377,7 +373,7 @@ Labels: type:story, module:infrastructure, priority:critical
 ```
 Title: [STORY] As a team I want CI/CD pipeline validation
 Module: Infrastructure
-Sprint: Sprint 0 - Foundation  
+Iteration: Iteration 0 - Foundation  
 Story Points: 2
 Priority Score: 3
 Labels: type:story, module:infrastructure, priority:high
@@ -397,14 +393,14 @@ Your project board is successfully configured when:
 ## Maintenance
 
 **Weekly:**
-- Review and update sprint assignments
+- Review and update iteration assignments
 - Check for blocked items
 - Update story point estimates
 
-**Sprint End:**
+**Iteration End:**
 - Move completed items to Done
 - Create retrospective issues
-- Plan next sprint items
+- Plan next iteration items
 
 **Monthly:**
 - Review automation rules effectiveness
