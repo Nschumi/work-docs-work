@@ -51,20 +51,17 @@ This is a practical, step-by-step guide for setting up your GitHub Project board
 4. **Description:** `Effort estimation (1,2,3,5,8,13)`
 5. Click **"Save"**
 
-**Field 2: Sprint**
-1. Click **"+ Add field"**
-2. **Name:** `Sprint`
-3. **Type:** `Single select`
-4. **Options:** Add these one by one:
-   - `Sprint 0 - Foundation`
-   - `Sprint 1 - Multi-tenant`
-   - `Sprint 2 - Multi-tenant`
-   - `Sprint 3 - Catalog`
-   - `Sprint 4 - Catalog`
-   - `Sprint 5 - Channel`
-   - `Sprint 6 - Channel`
-   - `Sprint 7 - Open Pages MVP`
-5. Click **"Save"**
+**Field 2: Iteration (Built-in)**
+1. Look for **"Iteration"** field (it should already exist as a built-in field)
+2. If not visible, click **"+ Add field"** and select **"Iteration"**
+3. **Configure iterations** with start/end dates:
+   - `Iteration 0 - Foundation` (2 weeks)
+   - `Iteration 1 - Multi-tenant` (4 weeks)
+   - `Iteration 2 - Catalog` (4 weeks)
+   - `Iteration 3 - Channel` (4 weeks)
+   - `Iteration 4 - Open Pages MVP` (2 weeks)
+   - `Iteration 5 - Production Prep` (4 weeks)
+4. **Set dates** for each iteration based on your timeline
 
 **Field 3: Module**
 1. Click **"+ Add field"**
@@ -94,15 +91,15 @@ This is a practical, step-by-step guide for setting up your GitHub Project board
 
 ## Step 4: Create Multiple Views
 
-### 4.1 Create Sprint Planning View
+### 4.1 Create Iteration Planning View
 
 1. Click **"+ New view"** (next to current view tab)
-2. **Name:** `📅 Sprint Planning`
+2. **Name:** `📅 Iteration Planning`
 3. **Layout:** `Table`
 4. **Configure table columns:**
    - Title ✓
    - Status ✓
-   - Sprint ✓
+   - Iteration ✓
    - Module ✓
    - Story Points ✓
    - Assignees ✓
@@ -163,24 +160,40 @@ This is a practical, step-by-step guide for setting up your GitHub Project board
 3. **Then:** Set status to "Done"
 4. **Enable workflow**
 
-## Step 6: Basic Filtering and Sorting
+## Step 6: Filtering and Organization
 
-### 6.1 Create Useful Filters
+### 6.1 Use Built-in Filters
 
 In any view, use the **search/filter bar** at the top:
 
-**Common Filters:**
-- Current sprint: `sprint:"Sprint 0 - Foundation"`
+**Common Filter Syntax:**
+- Current iteration: `iteration:"Iteration 0 - Foundation"`
 - High priority: `priority:"🔥 Critical"`
 - Specific module: `module:"Catalog"`
 - Open items: `-status:"Done"`
 - Assigned work: `assignee:@me`
+- Multiple conditions: `module:"Infrastructure" priority:"🔥 Critical"`
 
-### 6.2 Save Common Filters
+### 6.2 Workaround for "Saved" Filters
 
-1. Apply a filter you use often
-2. Look for **"Save filter"** or bookmark option
-3. Name it for easy access
+⚠️ **Note:** GitHub Projects doesn't have saved filters. Use these alternatives:
+
+**Method 1: Browser Bookmarks**
+1. Apply a filter you use frequently
+2. **Copy the URL** from your browser address bar
+3. **Bookmark the URL** with a descriptive name:
+   - "Current Sprint Work"
+   - "High Priority Items"  
+   - "My Assigned Tasks"
+
+**Method 2: Use Views Instead of Filters**
+- **📅 Iteration Planning view** - for current iteration work
+- **🏗️ Module Overview** - grouped by feature area
+- **👥 Team Workload** - for individual assignments
+- **🎯 Priority Focus** - for urgent items
+
+**Method 3: Memorize Common Filters**
+Keep a cheat sheet of frequently used filter syntax for quick typing
 
 ## Step 7: Update Your Epic Issues
 
@@ -189,26 +202,26 @@ In any view, use the **search/filter bar** at the top:
 Go to each of your 3 epic issues and update:
 
 **Multi-tenant Infrastructure Epic:**
-- Sprint: `Sprint 1 - Multi-tenant`
+- Iteration: `Iteration 1 - Multi-tenant`
 - Module: `Infrastructure`
 - Priority: `🔥 Critical`
 - Story Points: `13`
 
 **Product Catalog Epic:**
-- Sprint: `Sprint 3 - Catalog`
+- Iteration: `Iteration 2 - Catalog`
 - Module: `Catalog`
 - Priority: `🟠 High`
 - Story Points: `13`
 
 **Channel Module Epic:**
-- Sprint: `Sprint 5 - Channel`
+- Iteration: `Iteration 3 - Channel`
 - Module: `Channel`
 - Priority: `🟠 High`
 - Story Points: `13`
 
-## Step 8: Create Initial Sprint 0 Items
+## Step 8: Create Initial Iteration 0 Items
 
-### 8.1 Create Sprint 0 Stories
+### 8.1 Create Iteration 0 Stories
 
 Create these issues in your repository and add to project:
 
@@ -236,7 +249,7 @@ Milestone: Phase 1 - Foundation
 ### 8.2 Update New Stories
 
 For each new story, set:
-- **Sprint:** `Sprint 0 - Foundation`
+- **Iteration:** `Iteration 0 - Foundation`
 - **Module:** `Infrastructure`
 - **Priority:** `🔥 Critical` or `🟠 High`
 - **Story Points:** `3`, `5`, or `8`
@@ -254,11 +267,11 @@ For each new story, set:
    - 👁️ Review → 🧪 Testing (when approved)
    - 🧪 Testing → ✅ Done (when complete)
 
-### 9.2 Sprint Planning Workflow
+### 9.2 Iteration Planning Workflow
 
-**Weekly Sprint Planning:**
-1. **Use "📅 Sprint Planning" view** (table format)
-2. **Filter by current sprint** (e.g., `sprint:"Sprint 0 - Foundation"`)
+**Weekly Iteration Planning:**
+1. **Use "📅 Iteration Planning" view** (table format)
+2. **Filter by current iteration** (e.g., `iteration:"Iteration 0 - Foundation"`)
 3. **Assign story points** and team members
 4. **Move planned items** from Backlog to Ready
 
@@ -283,11 +296,11 @@ For each new story, set:
 After completing this setup, you should have:
 
 - [ ] 6 status columns configured
-- [ ] 4 custom fields created (Story Points, Sprint, Module, Priority)
-- [ ] 4 different views (Board, Sprint Planning, Module, Team, Priority)
+- [ ] 4 custom fields created (Story Points, Iteration, Module, Priority)
+- [ ] 4 different views (Board, Iteration Planning, Module, Team, Priority)
 - [ ] 3 basic automation workflows enabled
 - [ ] Epic issues updated with field values
-- [ ] Initial Sprint 0 stories created and configured
+- [ ] Initial Iteration 0 stories created and configured
 - [ ] Team members know the daily workflow
 
 ## Daily Usage Tips
@@ -298,24 +311,24 @@ After completing this setup, you should have:
 - **Add story point estimates** when you understand the work better
 
 ### For Team Lead:
-- **Use Sprint Planning view** for planning sessions
+- **Use Iteration Planning view** for planning sessions
 - **Monitor Module Overview** for feature progress
 - **Check Priority Focus** to ensure critical items are moving
 
-### For Sprint Reviews:
-- **Filter by completed sprint** to see what was accomplished
+### For Iteration Reviews:
+- **Filter by completed iteration** to see what was accomplished
 - **Use table view** to see story points completed
-- **Plan next sprint** using backlog items
+- **Plan next iteration** using backlog items
 
 ## Maintenance
 
 ### Weekly:
-- [ ] Update sprint assignments for upcoming work
+- [ ] Update iteration assignments for upcoming work
 - [ ] Review and estimate new backlog items
 - [ ] Check for blocked items and resolve
 
 ### Monthly:
-- [ ] Review velocity (story points completed per sprint)
+- [ ] Review velocity (story points completed per iteration)
 - [ ] Adjust estimation practices if needed
 - [ ] Clean up old completed items
 
