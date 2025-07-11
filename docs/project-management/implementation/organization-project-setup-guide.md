@@ -83,20 +83,16 @@ gh project link PROJECT_ID --repo "Nuuday/saga-ecommerce-frontend"
    - "Phase 1 Complete"
    - "Future Releases"
 
-**Field 2: Iteration**
+**Field 2: Target Date**
 1. Click **"+ Add field"**
-2. Look for **"Iteration"** (built-in field)
-3. **Configure iterations:**
-   - Iteration 0 - Foundation (Jan 15 - Jan 29, 2025)
-   - Iteration 1 - Multi-tenant Part 1 (Feb 1 - Feb 15, 2025)
-   - Iteration 2 - Multi-tenant Part 2 (Feb 16 - Mar 1, 2025)
-   - Iteration 3 - Catalog Part 1 (Mar 2 - Mar 16, 2025)
-   - Iteration 4 - Catalog Part 2 (Mar 17 - Mar 31, 2025)
-   - Iteration 5 - Channel Part 1 (Apr 1 - Apr 15, 2025)
-   - Iteration 6 - Channel Part 2 (Apr 16 - Apr 30, 2025)
-   - Iteration 7 - Open Pages MVP (May 1 - May 15, 2025)
-   - Iteration 8 - Production Prep Part 1 (May 16 - May 30, 2025)
-   - Iteration 9 - Production Prep Part 2 (Jun 1 - Jun 15, 2025)
+2. Look for **"Date"** (built-in field) or **"Target Date"** if available
+3. **Name:** "Target Date"
+4. **Purpose:** Expected completion date for Kanban flow
+5. **Usage Examples:**
+   - Epic: Multi-tenant Infrastructure → April 30, 2025
+   - Story: User Authentication → March 15, 2025  
+   - Task: Database Schema → End of next week
+6. **Note:** Use realistic date ranges, not precise deadlines
 
 **Field 3: Estimate**
 1. Click **"+ Add field"**

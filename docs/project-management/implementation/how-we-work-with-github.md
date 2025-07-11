@@ -25,20 +25,30 @@ Milestone (Business Timeline)
 
 ## Definitions
 
-### Milestones
+### Milestones (Business Milestone Field)
+**Important:** We use a custom "Business Milestone" field in the organization project, NOT GitHub's repository milestone feature.
+
 **Purpose:** Business deliverables and external commitments  
 **Owner:** Project Manager / Business  
 **Timeline:** Months (external deadlines)  
-**Examples:**
+**Implementation:** Custom single-select field in GitHub Projects
+
+**Business Milestone Options:**
+- "Multi-tenant Foundation" (May 2025)
 - "Open Pages MVP" (July 2025)
 - "Phase 1 Complete" (October 2025)
-- "Multi-tenant Foundation" (May 2025)
+- "Future Releases"
 
-**What goes in milestones:**
+**What goes in Business Milestones:**
 - Customer-facing deliverables
 - Integration points with other teams
 - Production releases
 - Business commitments and contracts
+
+**Why not use GitHub's built-in milestones?**
+- Repository milestones don't work across multiple repositories
+- Organization projects can't access repository milestones
+- Custom field gives us more flexibility and control
 
 ### Epics
 **Purpose:** Complete customer features that can be verified  
@@ -182,88 +192,142 @@ Organization Milestone: "Open Pages MVP"
 
 | Field | Epic | Story | Task | Purpose |
 |-------|------|-------|------|---------|
-| **Milestone** | ✅ | ❌ | ❌ | Business timeline |
-| **Iteration** | ❌ | ✅ | ✅ | Sprint planning |
-| **Estimate** | ❌ | ❌ | ✅ | Development effort |
+| **Business Milestone** | ✅ | ❌ | ❌ | Business timeline (custom field) |
+| **Target Date** | ✅ | ✅ | ✅ | Expected completion (Kanban flow) |
+| **Estimate** | ❌ | ✅ | ✅ | Development effort (T-shirt sizing) |
 | **Module** | ✅ | ✅ | ✅ | Feature area |
 | **Priority** | ✅ | ✅ | ✅ | Business importance |
+| **Work Item Age** | ❌ | ✅ | ✅ | Track flow time |
 
 ### Project Views
 
-**1. Business Roadmap View**
-- **Layout:** Table
-- **Filter:** `type:epic`
-- **Columns:** Title, Milestone, Module, Priority, Status
-- **Sort:** Milestone, Priority
-- **Purpose:** Track business deliverables
+**1. Feature Delivery Roadmap**
+- **Layout:** Roadmap
+- **Filter:** `label:type:epic`
+- **Date Fields:** Epic Start Date → Epic Target Date  
+- **Group by:** Business Milestone
+- **Purpose:** Visualize continuous feature delivery
 
-**2. Epic Progress View**  
+**2. Kanban Board (Primary)**
 - **Layout:** Board
 - **Group by:** Status
-- **Filter:** `type:epic`
-- **Purpose:** Monitor feature completion
+- **Columns:** Backlog, Ready, In Progress, Review, Done
+- **WIP Limits:** Ready (15), In Progress (8), Review (5)
+- **Purpose:** Daily flow management
 
-**3. Sprint Planning View**
+**3. Priority Queue**
 - **Layout:** Table  
-- **Filter:** `type:story OR type:task`
-- **Columns:** Title, Iteration, Estimate, Assignee, Status
-- **Sort:** Iteration, Priority
-- **Purpose:** Plan and track iterations
+- **Filter:** `status:ready`
+- **Columns:** Title, Priority, Target Date, Estimate, Work Item Age
+- **Sort:** Priority (desc), Work Item Age (desc)
+- **Purpose:** What to pull next
 
-**4. Development Board**
-- **Layout:** Board
-- **Group by:** Status  
-- **Filter:** `type:task OR type:bug`
-- **Purpose:** Daily development workflow
+**4. Cycle Time Analysis**
+- **Layout:** Table
+- **Filter:** `status:done` (last 30 days)
+- **Columns:** Title, Started Date, Completed Date, Cycle Time
+- **Purpose:** Flow metrics and improvement
 
-**5. Module Overview**
-- **Layout:** Board
-- **Group by:** Module
-- **Filter:** `-status:Done`
-- **Purpose:** Track work by feature area
+**5. Milestone Progress**
+- **Layout:** Table
+- **Filter:** `label:type:epic`
+- **Group by:** Business Milestone
+- **Columns:** Title, Progress, Target Date, Confidence
+- **Purpose:** Track business deliverables
 
-## Workflow
+## Kanban Workflow
 
 ### 1. Business Planning (Quarterly)
 1. **Create milestones** for business deliverables
 2. **Define epics** that deliver milestone value
-3. **Assign epics to milestones**
-4. **Prioritize epics** based on business value
+3. **Assign epics to milestones** with target date ranges
+4. **Prioritize epic backlog** based on business value
 
-### 2. Feature Planning (Epic Level)
+### 2. Continuous Refinement (Weekly)
 1. **Break epics into stories** that deliver user value
 2. **Write acceptance criteria** for each story
-3. **Estimate story complexity** (t-shirt sizes: S/M/L/XL)
-4. **Assign stories to iterations** based on capacity
+3. **Estimate story complexity** (T-shirt sizes: S/M/L/XL)
+4. **Maintain Ready queue** with 5-8 refined items
 
-### 3. Sprint Planning (Task Level)
-1. **Break stories into tasks** (development work)
-2. **Estimate tasks in story points** (1, 2, 3, 5, 8)
-3. **Assign tasks to developers**
-4. **Move tasks to Ready status**
+### 3. Flow Management (Daily)
+1. **Respect WIP limits** (max items per status column)
+2. **Pull work when capacity available** (highest priority from Ready)
+3. **Focus on completion** before starting new work
+4. **Escalate blockers immediately**
 
-### 4. Development Execution (Daily)
-1. **Pick tasks from Ready**
-2. **Move through status columns:** Ready → In Progress → Review → Testing → Done
-3. **Update estimates** if actual effort differs
-4. **Create new tasks** if scope increases
+### 4. Continuous Delivery
+1. **Deploy features when ready** (not waiting for sprint end)
+2. **Update roadmap weekly** based on actual throughput
+3. **Measure cycle time** and flow efficiency
+4. **Adjust target dates** based on metrics
 
 ## Status Flow
 
-### Epic Status Flow
+### Kanban Status Flow
+Simplified status flow for continuous delivery, with WIP limits to maintain healthy flow:
+
 ```
-Planning → Active → Completed
+📋 Backlog → ✨ Ready → 🔄 In Progress → 👁️ In Review → ✅ Done → 🚫 Blocked
 ```
 
-### Story Status Flow  
-```
-Backlog → Ready → In Progress → Review → Done
-```
+**WIP Limits:**
+- Ready: Max 15 items
+- In Progress: Max 1-2 per developer  
+- In Review: Max 5 items
+- Blocked: Target 0 (immediate attention)
 
-### Task Status Flow
+### Status Usage by Issue Type
+
+**Epic Flow (Business Features):**
 ```
-Backlog → Ready → In Progress → Review → Testing → Done
+🔄 Active → ✅ Done
 ```
+- **Active:** Epic has started, stories flowing through system
+- **Done:** All child stories complete and milestone delivered
+
+**Story/Task Flow (Development Work):**
+```
+📋 Backlog → ✨ Ready → 🔄 In Progress → 👁️ In Review → ✅ Done
+```
+- **Backlog:** Identified but not refined
+- **Ready:** Refined, estimated, ready to pull
+- **In Progress:** Developer actively working (respect WIP limits)
+- **In Review:** Code review, acceptance review
+- **Done:** Merged, tested, deployed
+
+**Bug Flow (Defect Resolution):**
+```
+📋 Backlog → 🔄 In Progress → 👁️ In Review → ✅ Done
+```
+- **Backlog:** Bug reported and triaged
+- **In Progress:** Developer fixing
+- **In Review:** Verification testing
+- **Done:** Fix deployed and verified
+
+**Blocked Items (Any Type):**
+```
+Any Status → 🚫 Blocked → Previous Status
+```
+- **Blocked:** Cannot proceed due to impediment
+- **Must include:** Comment explaining blockage and who can resolve
+- **Goal:** Zero blocked items through active impediment removal
+
+### View Configuration for Kanban Flow
+
+**Main Kanban Board:**
+- Show columns: Backlog, Ready, In Progress, In Review, Done, Blocked
+- WIP limits visible on each column
+- Filter: `label:type:story OR label:type:task OR label:type:bug`
+
+**Epic Roadmap View:**
+- Layout: Roadmap with date ranges
+- Show: Epic start/target dates, progress bars
+- Filter: `label:type:epic`
+
+**Priority Queue View:**
+- Show: Ready items sorted by priority and age
+- Focus: What to pull next
+- Filter: `status:ready`
 
 ## Estimation Guidelines
 
