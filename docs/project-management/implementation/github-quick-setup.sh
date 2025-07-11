@@ -87,11 +87,19 @@ gh label create "status:ready-for-qa" --description "Ready for QA testing" --col
 gh label create "open-pages" --description "Required for Open Pages integration" --color "F9D0C4" 2>/dev/null || true
 gh label create "tcm-compatibility" --description "Legacy TCM compatibility required" --color "FEF2C0" 2>/dev/null || true
 
+# Epic timeline labels
+gh label create "epic:iteration-1-2" --description "Epic spans Iteration 1-2" --color "8B5A3C" 2>/dev/null || true
+gh label create "epic:iteration-2-3" --description "Epic spans Iteration 2-3" --color "8B5A3C" 2>/dev/null || true
+gh label create "epic:iteration-3-4" --description "Epic spans Iteration 3-4" --color "8B5A3C" 2>/dev/null || true
+gh label create "epic:iteration-4-5" --description "Epic spans Iteration 4-5" --color "8B5A3C" 2>/dev/null || true
+gh label create "epic:iteration-6-7" --description "Epic spans Iteration 6-7" --color "8B5A3C" 2>/dev/null || true
+gh label create "epic:iteration-8-9" --description "Epic spans Iteration 8-9" --color "8B5A3C" 2>/dev/null || true
+
 echo "✅ Labels created"
 
-# Step 3: Create Milestones
+# Step 3: Create Repository Milestones (for reference only)
 echo ""
-echo "3️⃣ Creating milestones..."
+echo "3️⃣ Creating repository milestones for reference..."
 
 gh api repos/"$REPO_FULL"/milestones \
   --method POST \
@@ -107,7 +115,7 @@ gh api repos/"$REPO_FULL"/milestones \
   --field due_on="2025-07-01T00:00:00Z" \
   2>/dev/null || true
 
-echo "✅ Milestones created"
+echo "✅ Repository milestones created (for reference - main tracking in organization project)"
 
 # Step 4: Create Directory Structure
 echo ""
@@ -125,7 +133,7 @@ echo "5️⃣ Creating issue templates..."
 # Epic template
 cat > .github/ISSUE_TEMPLATE/epic.yml << 'EOF'
 name: Epic
-description: Large feature spanning multiple sprints
+description: Large feature spanning multiple iterations
 title: "[EPIC] "
 labels: ["type:epic"]
 body:
@@ -143,6 +151,21 @@ body:
       description: Describe the business value and impact
     validations:
       required: true
+  - type: dropdown
+    id: epic-timeline
+    attributes:
+      label: Epic Timeline
+      description: Which iterations does this epic span?
+      options:
+        - "Iteration 0 (Foundation)"
+        - "Iteration 1-2 (Multi-tenant)"
+        - "Iteration 3-4 (Catalog)"
+        - "Iteration 5-6 (Channel)"
+        - "Iteration 7 (Open Pages)"
+        - "Iteration 8-9 (Production)"
+        - "Multiple phases"
+    validations:
+      required: true
   - type: textarea
     id: success-criteria
     attributes:
@@ -153,21 +176,40 @@ body:
   - type: textarea
     id: user-stories
     attributes:
-      label: User Stories
-      description: List related user stories
+      label: User Stories / Child Issues
+      description: List related user stories and tasks (will be created as separate issues)
       value: |
-        - [ ] Story 1
-        - [ ] Story 2
-        - [ ] Story 3
+        ## Iteration 1:
+        - [ ] Story: [Link to issue when created]
+        - [ ] Story: [Link to issue when created]
+        
+        ## Iteration 2:
+        - [ ] Story: [Link to issue when created]
+        - [ ] Story: [Link to issue when created]
+        
+        ## Notes:
+        - Stories will be assigned to specific iterations
+        - Epic completion = all stories done + acceptance criteria met
     validations:
       required: false
   - type: textarea
     id: acceptance-criteria
     attributes:
       label: Acceptance Criteria
-      description: High-level acceptance criteria
+      description: High-level acceptance criteria for epic completion
     validations:
       required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Epic Dependencies
+      description: Other epics or external dependencies this epic relies on
+      value: |
+        - Depends on: [Epic/Issue reference]
+        - Blocks: [Epic/Issue reference]
+        - Cross-repo coordination: [Details if applicable]
+    validations:
+      required: false
 EOF
 
 # Story template
@@ -423,6 +465,9 @@ gh issue create \
   --body "## Epic Overview
 Implement the foundational multi-tenant infrastructure for the SAGA eCommerce platform.
 
+## Epic Timeline
+Iteration 1-2 (Multi-tenant) - Spans 4 weeks across 2 iterations
+
 ## Business Value
 Enable multiple brand partners to operate on a single platform instance with complete data isolation.
 
@@ -430,14 +475,31 @@ Enable multiple brand partners to operate on a single platform instance with com
 - Tenant isolation at database level
 - Tenant resolution via headers and JWT
 - Multi-tenant middleware functioning
+- Tenant management endpoints operational
 
-## User Stories
-- [ ] Implement tenant context and resolver
-- [ ] Create tenant-aware base entities
-- [ ] Implement tenant middleware
-- [ ] Add tenant management endpoints" \
-  --label "type:epic,module:infrastructure,priority:critical" \
-  --milestone "Phase 1 - Foundation" || true
+## User Stories / Child Issues
+
+### Iteration 1:
+- [ ] Story: Tenant context and resolver setup
+- [ ] Story: Tenant-aware base entities
+- [ ] Task: Database schema for tenant isolation
+
+### Iteration 2:
+- [ ] Story: Tenant middleware implementation
+- [ ] Story: Tenant management endpoints
+- [ ] Task: Integration testing and documentation
+
+## Epic Dependencies
+- Depends on: Infrastructure setup (Iteration 0)
+- Blocks: All feature modules (Catalog, Channel, etc.)
+- Cross-repo coordination: Frontend tenant switching UI
+
+## Acceptance Criteria
+- [ ] Multiple tenants can operate without data leakage
+- [ ] Tenant resolution works via headers and JWT
+- [ ] All base entities are tenant-aware
+- [ ] Tenant management API is functional" \
+  --label "type:epic,module:infrastructure,priority:critical,epic:iteration-1-2" || true
 
 # Epic 2: Product Catalog
 gh issue create \
@@ -445,41 +507,85 @@ gh issue create \
   --body "## Epic Overview
 Implement the product catalog module with multi-tenant support and basic CRUD operations.
 
+## Epic Timeline
+Iteration 3-4 (Catalog) - Spans 4 weeks across 2 iterations
+
 ## Business Value
 Enable tenants to manage their product offerings with customizable catalogs.
 
 ## Success Criteria
-- Product CRUD operations
-- Category management
-- Basic search functionality
+- Product CRUD operations with tenant isolation
+- Category management system
+- Basic search and filtering functionality
+- Integration with Product-service proxy
 
-## User Stories
-- [ ] Create product entity and repository
-- [ ] Implement product CRUD endpoints
-- [ ] Add category management" \
-  --label "type:epic,module:catalog,priority:high" \
-  --milestone "Phase 1 - Foundation" || true
+## User Stories / Child Issues
+
+### Iteration 3:
+- [ ] Story: Product entity and repository setup
+- [ ] Story: Basic product CRUD endpoints
+- [ ] Task: Product database schema design
+
+### Iteration 4:
+- [ ] Story: Category management system
+- [ ] Story: Product search and filtering
+- [ ] Task: Product-service proxy integration
+
+## Epic Dependencies
+- Depends on: Multi-tenant Infrastructure (Iteration 1-2)
+- Blocks: Channel Module (product-channel associations)
+- Cross-repo coordination: Frontend product management UI
+
+## Acceptance Criteria
+- [ ] Products are tenant-isolated
+- [ ] CRUD operations work via FastEndpoints
+- [ ] Category hierarchy is functional
+- [ ] Search returns relevant results
+- [ ] Integration with existing product service works" \
+  --label "type:epic,module:catalog,priority:high,epic:iteration-3-4" || true
 
 # Epic 3: Channel Module
 gh issue create \
   --title "[EPIC] Channel Module" \
   --body "## Epic Overview
-Implement the channel module for managing digital sales channels.
+Implement the channel module for managing digital sales channels and product visibility rules.
+
+## Epic Timeline
+Iteration 5-6 (Channel) - Spans 4 weeks across 2 iterations
 
 ## Business Value
-Enable tenants to control product visibility across different sales channels.
+Enable tenants to control product visibility across different sales channels, critical for Open Pages integration.
 
 ## Success Criteria
-- Channel CRUD operations
-- Product-channel associations
-- Visibility rules engine
+- Channel CRUD operations with tenant isolation
+- Product-channel association management
+- Visibility rules engine operational
+- Open Pages integration points ready
 
-## User Stories
-- [ ] Create channel entity
-- [ ] Implement channel endpoints
-- [ ] Add visibility rules" \
-  --label "type:epic,module:channel,priority:high,open-pages" \
-  --milestone "Phase 1 - Foundation" || true
+## User Stories / Child Issues
+
+### Iteration 5:
+- [ ] Story: Channel entity and repository setup
+- [ ] Story: Basic channel CRUD endpoints
+- [ ] Task: Channel database schema design
+
+### Iteration 6:
+- [ ] Story: Product-channel association system
+- [ ] Story: Visibility rules engine
+- [ ] Task: Open Pages integration endpoints
+
+## Epic Dependencies
+- Depends on: Product Catalog Module (Iteration 3-4)
+- Enables: Open Pages MVP (Iteration 7)
+- Cross-repo coordination: Channel management UI and Contentful integration
+
+## Acceptance Criteria
+- [ ] Channels are tenant-isolated
+- [ ] Product visibility rules work correctly
+- [ ] Channel associations can be managed
+- [ ] Open Pages can query channel data
+- [ ] Visibility rules are performant" \
+  --label "type:epic,module:channel,priority:high,open-pages,epic:iteration-5-6" || true
 
 echo "✅ Initial epics created"
 
@@ -532,9 +638,12 @@ echo "  ✓ 3 initial epics"
 echo "  ✓ Project board"
 echo ""
 echo "🎯 Next steps:"
-echo "  1. Configure project board views in GitHub UI"
-echo "  2. Add team members to the repository"
-echo "  3. Start Sprint 0 - Foundation setup"
+echo "  1. Add existing epics to organization project board manually"
+echo "  2. Configure project milestone field in organization project"
+echo "  3. Remove milestone assignments from epics (use project milestones instead)"
+echo "  4. Configure project board views in GitHub UI"
+echo "  5. Add team members to the repository"
+echo "  6. Start Iteration 0 - Foundation setup"
 echo ""
 echo "🔗 Repository URL: https://github.com/$REPO_FULL"
 echo ""
