@@ -16,7 +16,7 @@ This document provides the complete GitHub project setup based on your questionn
 # Create the repository under Nuuday organization
 gh repo create Nuuday/saga-ecommerce-service \
   --internal \
-  --description "SAGA Telecom eCommerce Module - Multi-tenant whitelabel platform" \
+  --description "SAGA Telecom eCommerce Module - Multi-tenant platform" \
   --clone
 
 cd saga-ecommerce-service
@@ -104,7 +104,7 @@ gh api repos/Nuuday/saga-ecommerce-service/milestones \
 
 ## Step 5: Issue Templates
 
-```bash
+````bash
 # Create .github/ISSUE_TEMPLATE directory
 mkdir -p .github/ISSUE_TEMPLATE
 
@@ -141,9 +141,9 @@ assignees: ''
 
 ## Acceptance Criteria
 <!-- High-level acceptance criteria -->
-1. 
-2. 
-3. 
+1.
+2.
+3.
 EOF
 
 # User Story template
@@ -167,12 +167,14 @@ So that **[benefit/value]**
 Given [context]
 When [action]
 Then [outcome]
-```
+````
 
 ## Technical Implementation Notes
+
 <!-- Technical details for developers -->
 
 ## Definition of Done
+
 - [ ] Code complete and peer reviewed
 - [ ] Unit tests written and passing
 - [ ] Integration tests updated
@@ -180,133 +182,166 @@ Then [outcome]
 - [ ] Deployed to staging environment
 
 ## Related Issues
+
 <!-- Link to related epics, tasks, or dependencies -->
+
 - Epic: #
 - Depends on: #
 - Blocks: #
-EOF
+  EOF
 
 # Task template
-cat > .github/ISSUE_TEMPLATE/task.md << 'EOF'
----
+
+## cat > .github/ISSUE_TEMPLATE/task.md << 'EOF'
+
 name: Technical Task
 about: Implementation work item
 title: '[TASK] '
 labels: 'type:task'
 assignees: ''
+
 ---
 
 ## Description
+
 <!-- Clear description of the technical task -->
 
 ## Technical Details
+
 <!-- Implementation details, approach, and considerations -->
 
 ## Acceptance Criteria
-- [ ] 
-- [ ] 
-- [ ] 
+
+- [ ]
+- [ ]
+- [ ]
 
 ## Testing Approach
+
 <!-- How will this be tested? -->
 
 ## Related Issues
+
 - Story: #
 - Blocked by: #
-EOF
+  EOF
 
 # Bug Report template
-cat > .github/ISSUE_TEMPLATE/bug-report.md << 'EOF'
----
+
+## cat > .github/ISSUE_TEMPLATE/bug-report.md << 'EOF'
+
 name: Bug Report
 about: Report a bug or issue
 title: '[BUG] '
 labels: 'type:bug'
 assignees: ''
+
 ---
 
 ## Bug Description
+
 <!-- Clear description of the bug -->
 
 ## Steps to Reproduce
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
 
 ## Expected Behavior
+
 <!-- What should happen -->
 
 ## Actual Behavior
+
 <!-- What actually happens -->
 
 ## Environment
+
 - Environment: [Development/Staging/Production]
 - Module: [Catalog/Channel/etc.]
 - Tenant: [If tenant-specific]
 
 ## Screenshots/Logs
+
 <!-- If applicable -->
 
 ## Additional Context
+
 <!-- Any other relevant information -->
+
 EOF
 
 # Spike template
-cat > .github/ISSUE_TEMPLATE/spike.md << 'EOF'
----
+
+## cat > .github/ISSUE_TEMPLATE/spike.md << 'EOF'
+
 name: Spike/Research
 about: Research or investigation task
 title: '[SPIKE] '
 labels: 'type:spike'
 assignees: ''
+
 ---
 
 ## Objective
+
 <!-- What are we trying to learn or investigate? -->
 
 ## Questions to Answer
-1. 
-2. 
-3. 
+
+1.
+2.
+3.
 
 ## Success Criteria
+
 <!-- How will we know the spike is complete? -->
 
 ## Timebox
+
 <!-- Maximum time to spend on this spike -->
-- [ ] Timeboxed to: ___ hours/days
+
+- [ ] Timeboxed to: \_\_\_ hours/days
 
 ## Deliverables
+
 - [ ] Technical recommendation document
 - [ ] Proof of concept code
 - [ ] Decision matrix
 - [ ] Team presentation
 
 ## Related Issues
+
 - Epic: #
 - Will inform: #
-EOF
+  EOF
 
 # Documentation template
-cat > .github/ISSUE_TEMPLATE/documentation.md << 'EOF'
----
+
+## cat > .github/ISSUE_TEMPLATE/documentation.md << 'EOF'
+
 name: Documentation
 about: Documentation task
 title: '[DOC] '
 labels: 'type:documentation'
 assignees: ''
+
 ---
 
 ## Documentation Need
+
 <!-- What needs to be documented? -->
 
 ## Target Audience
+
 - [ ] Developers
 - [ ] Technical Architects
 - [ ] Business Stakeholders
 - [ ] End Users
 
 ## Documentation Type
+
 - [ ] API Documentation
 - [ ] Architecture Decision Record (ADR)
 - [ ] How-to Guide
@@ -314,15 +349,18 @@ assignees: ''
 - [ ] README Update
 
 ## Acceptance Criteria
+
 - [ ] Content is accurate and complete
 - [ ] Reviewed by subject matter expert
 - [ ] Follows documentation standards
 - [ ] Includes examples where appropriate
 
 ## Related Issues
+
 - Feature/Story: #
-EOF
-```
+  EOF
+
+````
 
 ## Step 6: Pull Request Template
 
@@ -373,7 +411,7 @@ Fixes #
 ## Additional Notes
 <!-- Any additional context or notes for reviewers -->
 EOF
-```
+````
 
 ## Step 7: Project Board Creation
 
@@ -487,24 +525,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 9.0.x
-    
+
     - name: Restore dependencies
       run: dotnet restore
-    
+
     - name: Build
       run: dotnet build --no-restore --configuration Release
-    
+
     - name: Test
       run: dotnet test --no-build --verbosity normal --configuration Release
-    
+
     - name: Code Coverage
       run: dotnet test --no-build --configuration Release --collect:"XPlat Code Coverage"
 
@@ -512,17 +550,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Run security scan
       uses: security-devops/action-scan@v1
       with:
         policy: 'Microsoft'
-        
+
   dependency-check:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Dependency Review
       uses: actions/dependency-review-action@v3
 EOF
@@ -549,7 +587,7 @@ EOF
 cat > .github/labeler.yml << 'EOF'
 module:catalog:
   - 'src/Modules/Catalog/**/*'
-  
+
 module:channel:
   - 'src/Modules/Channel/**/*'
 
@@ -568,12 +606,14 @@ EOF
 After running the above commands, configure these automation rules in the GitHub Project settings:
 
 ### Auto-move Issues
+
 1. **When PR created** → Move to "In Progress"
 2. **When PR marked ready for review** → Move to "Code Review"
 3. **When PR approved** → Move to "Testing"
 4. **When PR merged** → Move to "Done"
 
 ### Auto-assign
+
 1. **Label: module:catalog** → Assign to catalog team member
 2. **Label: module:channel** → Assign to channel team member
 3. **Label: priority:critical** → Notify team lead
@@ -636,16 +676,19 @@ After running all commands, verify:
 ## Next Steps
 
 1. **Configure Project Board Views** (via web UI):
+
    - Module view grouped by `module:*` labels
    - Priority matrix view
    - Sprint planning view
    - Developer assignment view
 
 2. **Add Team Members**:
+
    - Run team access commands with actual GitHub usernames
    - Configure code owners file
 
 3. **Create Initial Stories**:
+
    - Break down epics into user stories
    - Add story points estimation
    - Plan first sprint
