@@ -9,7 +9,7 @@ Please answer these questions to help create the optimal GitHub project structur
    - [ ] saga-telecom-ecommerce
    - [ ] saga-ecom-platform
    - [ ] telecom-ecommerce-module
-   - [ ] Other: saga-ecommerce-service
+   - [x] Other: saga-ecommerce-service
 
 2. **Repository Visibility**:
 
