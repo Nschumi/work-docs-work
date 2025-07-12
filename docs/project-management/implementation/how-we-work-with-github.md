@@ -201,12 +201,13 @@ Organization Milestone: "Open Pages MVP"
 
 ### Project Views
 
-**1. Feature Delivery Roadmap**
+**1. Business Roadmap**
 - **Layout:** Roadmap
 - **Filter:** `label:type:epic`
-- **Date Fields:** Epic Start Date → Epic Target Date  
+- **Date Fields:** Epic Start Date → Target Date
 - **Group by:** Business Milestone
-- **Purpose:** Visualize continuous feature delivery
+- **Purpose:** Visualize epic delivery against business milestones
+- **Setup Guide:** See `roadmap-view-setup-guide.md` for detailed configuration
 
 **2. Kanban Board (Primary)**
 - **Layout:** Board
