@@ -16,7 +16,7 @@ When you create a GitHub project, these fields exist by default:
 | **Labels** | Labels | ✅ **KEEP** | Essential - categorization |
 | **Linked Pull Requests** | Linked PRs | ✅ **KEEP** | Useful - shows PR connections |
 | **Repository** | Repository | ✅ **KEEP** | Critical - shows which repo issue belongs to |
-| **Milestone** | Milestone | ❌ **DELETE** | Use organization milestones instead |
+| **Milestone** | Milestone | ⚠️ **IGNORE** | Cannot delete; use Business Milestone instead |
 
 ## Custom Fields to Add
 
@@ -101,6 +101,7 @@ When you create a GitHub project, these fields exist by default:
 | **Assignees** | ✅ | ✅ | ✅ | ✅ | Ownership |
 | **Labels** | ✅ | ✅ | ✅ | ✅ | Categorization |
 | **Repository** | ✅ | ✅ | ✅ | ✅ | Source identification |
+| **Repository Milestone** | ❌ | ❌ | ❌ | ❌ | Not used (ignore this field) |
 | **Business Milestone** | ✅ | ❌ | ❌ | ❌ | Business planning |
 | **Target Date** | ✅ | ✅ | ✅ | ✅ | Expected completion |
 | **Estimate** | ❌ | ✅ | ✅ | Sometimes | Effort tracking (T-shirt sizing) |
@@ -111,13 +112,13 @@ When you create a GitHub project, these fields exist by default:
 
 ## Step-by-Step Field Configuration
 
-### Step 1: Delete Unnecessary Default Fields
+### Step 1: Handle Default Fields
 
 **Repository Milestone Field:**
-1. Go to project Settings → Fields
-2. Find "Milestone" field 
-3. Click "..." → Delete field
-4. **Reason:** Using Business Milestone instead for cross-repo coordination
+- **Cannot be deleted** (GitHub built-in field)
+- **Recommendation:** Ignore this field, don't use it
+- **Use Business Milestone instead** for cross-repo coordination
+- **Hide in views** where not needed
 
 ### Step 2: Configure Status Field Options
 
