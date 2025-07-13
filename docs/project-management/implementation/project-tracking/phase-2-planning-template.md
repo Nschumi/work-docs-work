@@ -24,43 +24,32 @@ Phase 2 focuses on implementing the core business modules for the SAGA eCommerce
 ### Sequence Rationale
 The modules are ordered based on dependencies and business priority:
 
-1. **Tenant Management** (Foundation) - Required by all other modules
-2. **Product Catalog** (Core Business) - Primary eCommerce functionality
-3. **Channel Management** (Business Logic) - Depends on product catalog
+1. **Product Catalog** (Core Business) - Primary eCommerce functionality
+2. **Channel Management** (Business Logic) - Depends on product catalog
+3. **Number Management** (Telecom-Specific) - MSISDN and SIM card management
+
+**Note:** Tenant management is handled by external solution integration via Finbuckle.MultiTenant framework.
 
 ## Phase 2 Epics Overview
 
-### Epic 1: Tenant Management Module
-**Duration:** 3-4 weeks | **Team:** 2 developers  
-**Dependencies:** Phase 1 foundation complete
-
-**Business Value:**
-- Administrative control over tenant lifecycle
-- Tenant configuration and customization
-- Foundation for all other multi-tenant features
-
-**Key Features:**
-- Tenant CRUD operations with admin APIs
-- Tenant configuration management (branding, settings)
-- Tenant activation/deactivation workflow
-- Tenant usage tracking and reporting
-
-### Epic 2: Product Catalog Module  
+### Epic 1: Product Catalog Module  
 **Duration:** 4-5 weeks | **Team:** 2-3 developers  
-**Dependencies:** Tenant Management complete
+**Dependencies:** Phase 1 foundation complete
 
 **Business Value:**
 - Core eCommerce product management
 - Tenant-specific product catalogs
 - Search and discovery capabilities
+- Foundation for all telecom product offerings
 
 **Key Features:**
 - Product and category management
 - Tenant-aware product catalogs
 - Search implementation with filtering
 - Product visibility and availability rules
+- Telecom-specific product types (subscriptions, devices, SIM cards)
 
-### Epic 3: Channel Management Module
+### Epic 2: Channel Management Module
 **Duration:** 3-4 weeks | **Team:** 2 developers  
 **Dependencies:** Product Catalog complete
 
@@ -74,6 +63,23 @@ The modules are ordered based on dependencies and business priority:
 - Channel-specific product visibility
 - Pricing and availability by channel
 - Channel analytics foundation
+
+### Epic 3: Number Management Module
+**Duration:** 4-5 weeks | **Team:** 2-3 developers  
+**Dependencies:** Product Catalog complete (parallel with Channel Management)
+
+**Business Value:**
+- Complete MSISDN lifecycle management
+- Number portability and reservation
+- SIM card management (pSIM/eSIM)
+- Integration with telecom carrier systems
+
+**Key Features:**
+- MSISDN allocation and management
+- Number portability workflow
+- SIM card provisioning and activation
+- Number inventory and availability tracking
+- Integration with TCM legacy systems
 
 ## Technical Implementation Strategy
 
@@ -179,12 +185,12 @@ Before module completion:
 
 ### Timeline Estimation
 ```
-Phase 2 Timeline (12-14 weeks total):
+Phase 2 Timeline (10-12 weeks total):
 
-Weeks 1-4:  Tenant Management Module
-Weeks 3-8:  Product Catalog Module (parallel start)  
-Weeks 7-11: Channel Management Module
-Weeks 9-14: Integration & Production Readiness
+Weeks 1-5:  Product Catalog Module
+Weeks 4-7:  Channel Management Module (parallel start)  
+Weeks 4-9:  Number Management Module (parallel start)
+Weeks 8-12: Integration & Production Readiness
 ```
 
 ### Infrastructure Requirements
