@@ -16,6 +16,7 @@
 | **Task #38** | Multi-Tenant Middleware | 🚧 **IN PROGRESS** | User | Tenant resolution implementation |
 | **Task #39** | CI/CD Pipeline Setup | 📋 **READY** | Available | Waiting to start |
 | **Task #40** | Code Style with .editorconfig | 📋 **READY** | Available | Team code consistency |
+| **Task #41** | Centralized NuGet Package Management | 📋 **READY** | Available | Directory.Packages.props for version alignment |
 
 ### Implementation Progress
 
@@ -28,9 +29,10 @@
 - **Database Setup:** Implementing Finbuckle.MultiTenant with EF Core
 - **Multi-Tenant Middleware:** Header-based tenant resolution with Finbuckle strategies
 
-#### 📋 Next Available (Tasks #39-40)
+#### 📋 Next Available (Tasks #39-41)
 - **CI/CD Pipeline:** GitHub Actions workflow for .NET 9.0 + Aspire builds
 - **Code Style Enforcement:** .editorconfig for team consistency
+- **Package Management:** Directory.Packages.props for centralized version control
 
 ### Technical Architecture Status
 
