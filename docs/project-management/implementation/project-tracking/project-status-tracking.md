@@ -15,6 +15,7 @@
 | **Task #37** | Database and EF Core Setup | 🚧 **IN PROGRESS** | User | Finbuckle.MultiTenant integration |
 | **Task #38** | Multi-Tenant Middleware | 🚧 **IN PROGRESS** | User | Tenant resolution implementation |
 | **Task #39** | CI/CD Pipeline Setup | 📋 **READY** | Available | Waiting to start |
+| **Task #40** | Code Style with .editorconfig | 📋 **READY** | Available | Team code consistency |
 
 ### Implementation Progress
 
@@ -27,8 +28,9 @@
 - **Database Setup:** Implementing Finbuckle.MultiTenant with EF Core
 - **Multi-Tenant Middleware:** Header-based tenant resolution with Finbuckle strategies
 
-#### 📋 Next Available (Task #39)
+#### 📋 Next Available (Tasks #39-40)
 - **CI/CD Pipeline:** GitHub Actions workflow for .NET 9.0 + Aspire builds
+- **Code Style Enforcement:** .editorconfig for team consistency
 
 ### Technical Architecture Status
 
