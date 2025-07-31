@@ -63,7 +63,7 @@ The Brand Management System is the comprehensive administrative portal for brand
 
 | Project | Impact | Status |
 |---------|--------|--------|
-| [Admin Portal PoC](../projects/admin-portal-poc.md) | Validate Blazor, design patterns | In Progress |
+| [Brand Management Portal PoC](../projects/brand-management-portal-poc.md) | Validate Blazor, design patterns | In Progress |
 | [PingFederate Integration](../projects/pingfederate-integration.md) | Employee authentication | Planning |
 
 ## Development Phases
