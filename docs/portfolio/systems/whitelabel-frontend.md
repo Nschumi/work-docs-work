@@ -66,6 +66,15 @@ The Whitelabel Frontend is a multi-tenant SvelteKit platform that powers all cus
 - API endpoints
 - Third-party integrations
 
+## External Integrations
+
+| Service | Purpose | Used By |
+|---------|---------|---------|
+| Edge Service | Backend data via REST APIs | All areas |
+| Contentful | CMS content | Open Pages |
+| Analytics | User tracking | All areas |
+| CDN | Static assets | All areas |
+
 ## Performance
 
 ### Metrics

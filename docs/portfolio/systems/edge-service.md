@@ -7,7 +7,7 @@
 
 ## Overview
 
-The Edge Service is a Backend-for-Frontend (BFF) that provides a GraphQL API layer for all Whitelabel brand frontends. It aggregates data from multiple backend services and optimizes it for frontend consumption.
+The Edge Service is a Backend-for-Frontend (BFF) that provides an optimized API layer for all Whitelabel brand frontends. It aggregates data from multiple backend services and transforms it for efficient frontend consumption.
 
 ## Purpose
 
@@ -19,17 +19,17 @@ The Edge Service is a Backend-for-Frontend (BFF) that provides a GraphQL API lay
 - Multi-tenant support
 
 ### Technical Benefits
-- GraphQL query optimization
-- Response caching
-- Field-level authorization
-- Request batching
-- Schema stitching
+- Response optimization
+- Response caching  
+- Request aggregation
+- Data transformation
+- Reduced network calls
 
 ## Architecture
 
 ### Core Technologies
-- **Framework**: Node.js with Apollo Server
-- **API Style**: GraphQL
+- **Framework**: Node.js/Express
+- **API Style**: REST
 - **Language**: TypeScript
 - **Caching**: Redis
 - **Monitoring**: DataDog
@@ -40,7 +40,6 @@ The Edge Service is a Backend-for-Frontend (BFF) that provides a GraphQL API lay
 | Product Service | Customer & subscription data | REST |
 | Identity Service | Authentication | REST |
 | eCommerce Service | Product catalog (future) | REST |
-| Content Service | CMS data | REST |
 
 ## Multi-Tenant Design
 
@@ -50,24 +49,14 @@ The Edge Service is a Backend-for-Frontend (BFF) that provides a GraphQL API lay
 - Tenant-specific caching
 - Configuration per brand
 
-## GraphQL Schema
+## API Design
 
-### Key Types
-```graphql
-type Customer {
-  id: ID!
-  subscriptions: [Subscription!]!
-  profile: Profile!
-  usage: Usage!
-}
-
-type Subscription {
-  id: ID!
-  plan: Plan!
-  status: SubscriptionStatus!
-  devices: [Device!]!
-}
-```
+### Key Endpoints
+- `GET /api/customer/:id` - Customer details with subscriptions
+- `GET /api/subscriptions` - List customer subscriptions
+- `GET /api/usage/:subscriptionId` - Usage data
+- `GET /api/profile` - Customer profile
+- `POST /api/profile` - Update profile
 
 ## Performance
 
@@ -86,12 +75,12 @@ type Subscription {
 
 ## Future Enhancements
 
-- Subscription support for real-time updates
-- Federation with other GraphQL services
+- WebSocket support for real-time updates
+- GraphQL consideration for complex queries
 - Enhanced caching strategies
 - Performance monitoring dashboard
 
 ## Documentation
-- [GraphQL Schema](./edge-service/schema.md)
+- [API Reference](./edge-service/api-reference.md)
 - [Integration Guide](./edge-service/integration.md)
 - [Performance Tuning](./edge-service/performance.md)
