@@ -1,5 +1,82 @@
 # Project Charter: SAGA Telecom eCommerce Module
 
+## Table of Contents
+
+1. [Executive Summary](#1-executive-summary)
+   - 1.1 [Business Opportunity](#11-business-opportunity)
+   - 1.2 [Strategic Value for Brand Partners](#12-strategic-value-for-brand-partners)
+   - 1.3 [Key Deliverables](#13-key-deliverables)
+   - 1.4 [Success Metrics](#14-success-metrics)
+   - 1.5 [Investment Approach](#15-investment-approach)
+
+2. [About the Project Charter](#2-about-the-project-charter)
+   - 2.1 [Description](#21-description)
+   - 2.2 [Disclaimer](#22-disclaimer)
+
+3. [Overall Description](#3-overall-description)
+   - 3.1 [Business Need or Problem](#31-business-need-or-problem)
+   - 3.2 [Proposed Solution](#32-proposed-solution)
+   - 3.3 [Business Benefits](#33-business-benefits)
+   - 3.4 [Strategic Alignment](#34-strategic-alignment)
+
+4. [Project Scope](#4-project-scope)
+   - 4.1 [Scope Inclusions](#41-scope-inclusions)
+   - 4.2 [Scope Exclusions](#42-scope-exclusions)
+   - 4.2.1 [Items Requiring Later Scoping](#421-items-requiring-later-scoping)
+   - 4.2.2 [Out of Scope / Future Work](#422-out-of-scope--future-work)
+   - 4.3 [Modules Overview](#43-modules-overview)
+
+5. [Project Goals, Objectives, and Success Criteria](#5-project-goals-objectives-and-success-criteria)
+   - 5.1 [Goals & Objectives](#51-goals--objectives)
+   - 5.2 [Completion Criteria](#52-completion-criteria)
+   - 5.3 [Engineering Success Metrics](#53-engineering-success-metrics)
+
+6. [Resource Planning & Business Case](#6-resource-planning--business-case)
+   - 6.1 [Team Structure & Skill Requirements](#61-team-structure--skill-requirements)
+   - 6.2 [Development Environment & Tooling](#62-development-environment--tooling)
+   - 6.3 [Cost-Benefit Analysis](#63-cost-benefit-analysis)
+   - 6.4 [Risk Mitigation & Contingency](#64-risk-mitigation--contingency)
+
+7. [Development Process Framework](#7-development-process-framework)
+   - 7.1 [Architecture Decision Records (ADR) Process](#71-architecture-decision-records-adr-process)
+   - 7.2 [Development Standards & Workflow](#72-development-standards--workflow)
+   - 7.3 [Development Environment Standards](#73-development-environment-standards)
+   - 7.4 [Change Management & Deployment](#74-change-management--deployment)
+   - 7.5 [Knowledge Management & Documentation](#75-knowledge-management--documentation)
+
+8. [Technical Architecture & Constraints](#8-technical-architecture--constraints)
+   - 8.1 [Technology Stack Decisions](#81-technology-stack-decisions)
+   - 8.2 [Performance Requirements & SLA Targets](#82-performance-requirements--sla-targets)
+   - 8.3 [Security & Compliance Requirements](#83-security--compliance-requirements)
+   - 8.4 [Integration Architecture](#84-integration-architecture)
+   - 8.5 [Development Standards & Quality Gates](#85-development-standards--quality-gates)
+   - 8.6 [Technical Priorities & Constraints](#86-technical-priorities--constraints)
+
+9. [Project Team](#9-project-team)
+   - 9.1 [Project Sponsor](#91-project-sponsor)
+   - 9.2 [Project Manager](#92-project-manager)
+   - 9.3 [Key Stakeholders](#93-key-stakeholders)
+   - 9.4 [Core Project Team](#94-core-project-team)
+   - 9.5 [External Partners/Vendors](#95-external-partnersvendors)
+
+10. [Project Milestones & Checkpoints](#10-project-milestones--checkpoints)
+    - 10.1 [Key Milestones](#101-key-milestones)
+    - 10.2 [Timeline](#102-timeline)
+    - 10.3 [Go/No-Go Checkpoints](#103-gono-go-checkpoints)
+
+11. [Assumptions, Constraints & Dependencies](#11-assumptions-constraints--dependencies)
+    - 11.1 [Assumptions](#111-assumptions)
+    - 11.2 [Constraints](#112-constraints)
+    - 11.3 [Dependencies](#113-dependencies)
+
+12. [Risks and Opportunities](#12-risks-and-opportunities)
+    - 12.1 [Risks](#121-risks)
+    - 12.2 [Opportunities](#122-opportunities)
+
+13. [Communication Plan](#13-communication-plan)
+
+14. [Charter Acceptance & Approvals](#14-charter-acceptance--approvals)
+
 ---
 
 ## 1. Executive Summary
@@ -11,12 +88,14 @@ The SAGA Telecom eCommerce Module addresses a critical operational bottleneck: *
 ### 1.2 Strategic Value for Brand Partners
 
 **For Nichlas (Head of Brand Partners):**
+
 - **Faster Partner Onboarding**: New brand partners can launch in weeks, not months
 - **Self-Service Capabilities**: Partners manage their own products, pricing, and campaigns without IT dependency
 - **White-Label Freedom**: Complete branding control with custom domains and storefront design
 - **Scalable Operations**: Support 10x more partners with same operational overhead
 
 **For Lars (Head of IT):**
+
 - **Modern Architecture**: .NET 9 modular monolith with proven scalability patterns
 - **Operational Efficiency**: 60% reduction in support tickets through improved system design
 - **Future-Proof Platform**: Foundation for telecom eCommerce innovation and expansion
@@ -24,7 +103,7 @@ The SAGA Telecom eCommerce Module addresses a critical operational bottleneck: *
 
 ### 1.3 Key Deliverables
 
-**Phase 1 (Oct 2025):** Channel and Catalog modules with API capabilities for Eesy integration
+**Phase 1 (Oct 2025):** Sales Channel and Catalog modules with API capabilities for WL Open Pages integration
 **Phase 2 (Apr 2026):** Complete white-label frontend capabilities for brand partner customization  
 **Phase 3 (May 2026):** Full platform with all modules operational and first partner migrated
 
@@ -33,11 +112,10 @@ The SAGA Telecom eCommerce Module addresses a critical operational bottleneck: *
 - **Tenant Onboarding**: Reduction from months to 2-3 weeks
 - **Partner Satisfaction**: Proactive issue identification reduces support escalations
 - **System Performance**: 99.9% availability with sub-500ms API response times
-- **Revenue Impact**: Platform enables partner revenue growth through improved capabilities
 
 ### 1.5 Investment Approach
 
-**Resource Allocation**: 6-8 developer team scaling across phases with specialized telecom and multi-tenant expertise
+**Resource Allocation**: 4-6 developer team scaling across phases with specialized expertise
 **Strategic Investment**: Focus on value realization through operational efficiency and partner enablement
 **Risk Mitigation**: Phased approach with early partner feedback and flexible architecture decisions
 
@@ -59,11 +137,11 @@ This document may be updated as the project progresses to reflect new informatio
 
 ### 3.1 Business Need or Problem
 
-Modernize the telecom eCommerce platform by enabling a whitelabel, multi-tenant solution that supports multiple brand partners with distinct configurations and branding, replacing the legacy TCM system.
+Modernize the telecom eCommerce platform by enabling a whitelabel, multi-tenant solution that supports multiple brand partners with distinct configurations, replacing the need of developers doing work for changing products on the websites.
 
 ### 3.2 Proposed Solution
 
-Develop and deploy a scalable, multi-tenant eCommerce module as part of the SAGA platform, supporting both API and whitelabel customer models.
+Develop and deploy a scalable, multi-tenant eCommerce service as part of the SAGA platform, supporting both API and whitelabel customer models.
 
 ### 3.3 Business Benefits
 
@@ -83,22 +161,26 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 ### 4.1 Scope Inclusions
 
 - Development of a multi-tenant eCommerce Service
-- Integration with downstream provisioning systems
-- Support for distinct product offerings, pricing, and branding per partner
+- Integration with downstream provisioning system (TCM)
+- Support for distinct product offerings, pricing (Via campaigns), and branding per partner
 - Centralized product management for brand partners
 - Development and delivery of whitelabel frontend capabilities enabling brand partners to customize storefront branding, layout, and product presentation
-- Integration of the whitelabel frontend with backend modules (Catalog, Channel, Order, Payment) to provide a seamless end-to-end customer experience
+- Integration of the whitelabel frontend with backend modules (Catalog, Sales Channel, Order, Payment) to provide a seamless end-to-end customer experience
 - Support for responsive design and multi-channel access (web, mobile, app) within the whitelabel frontend
 - First-delivery components (see **3.3 Modules Overview**):
-  - Channel Module
+  - Sales Channel Module
   - Catalog Module
-  - MVP Administration Portal (covering Channel and Catalog Module)
+  - MVP Administration Portal (covering Sales Channel and Catalog Module)
 
 ### 4.2 Scope Exclusions
 
-- Defining the API interface towards downstream provisioning systems
+- None currently identified
 
-### 4.2.1 Out of Scope / Future Work
+### 4.2.1 Items Requiring Later Scoping
+
+- **API interface towards downstream provisioning systems**: Interface definition and specifications need to be scoped later with the provisioning endpoint owner (TCM)
+
+### 4.2.2 Out of Scope / Future Work
 
 - **Reporting & Analytics Module**: Planned for version 2, this module will provide advanced reporting and analytics capabilities, including dashboards for sales trends, customer behavior, and operational insights.
 - Additional payment providers
@@ -110,17 +192,20 @@ Supports Nuuday Mobile Partners’ strategy to deliver flexible, modular eCommer
 The **Catalog Module** is responsible for managing product items and their associated metadata while ensuring tenant isolation.
 
 - Maintains product items by storing only a legacy subscription ID for provisioning purposes, decoupling business logic from legacy data structures.
-- Enriches each catalog entry with variant metadata—such as pricing, promotional campaigns, and binding periods—to support multiple variants of the same subscription ID.
-- Enforces tenant isolation by partitioning product namespaces and related metadata per brand partner, ensuring no data leakage across tenants.
+- Enriches each catalog entry with variant metadata—such as,campaigns, and binding periods—to support multiple variants of the same subscription ID.
+- Enforces tenant isolation and related metadata per brand partner, ensuring no data leakage across tenants.
 - Exposes RESTful CRUD APIs for catalog item management and integrates with downstream Product Service to fetch subscription details based solely on the legacy ID.
 - Includes information from the underlying subscription, such as:
   - Available datacards and their potential amount limits
   - Available SIM types
-  - Available modules (e.g., 5G) with their price setup as defined in the legacy system.
+  - Available modules (e.g., 5G) with their price setup as defined in the legacy system
+  - Data amount capacity and allowances
+  - Voice/SMS/MMS capacity and limits
+  - Any subscription information available from TCM that would be displayed on the website
 
-#### Channel Module Scope
+#### Sales Channel Module Scope
 
-The **Channel Module** defines and manages digital sales channels, enabling brand partners to configure product visibility across multiple customer touchpoints.
+The **Sales Channel Module** defines and manages digital sales channels, enabling brand partners to configure product visibility across multiple customer touchpoints.
 
 - Defines and manages digital sales channels (e.g., web front pages, subpages, mobile apps, ecare upsale pages) as discrete entities representing customer touchpoints.
 - Configures visibility of catalog items per channel via a many-to-many association table, incorporating `visible_from` and `visible_to` time-range fields for scheduling item exposure.
@@ -129,9 +214,9 @@ The **Channel Module** defines and manages digital sales channels, enabling bran
 
 #### Number Management Module Scope
 
-The **Number Management Module** handles the lifecycle of telephone numbers, ensuring availability and compliance with regulatory requirements.
+The **Number Management Module** handles the lifecycle of telephone numbers, ensuring availability and reservation.
 
-- Manages the inventory, reservation, assignment, and lifecycle of telephone numbers, including both new number allocation and number port-in (MNP) processes.
+- Manages the inventory, reservation, assignment, and lifecycle of telephone numbers, including new number allocation.
 - Maintains number pools and ranges per brand partner, ensuring only available numbers are offered at checkout.
 - Provides APIs to the Ordering & Checkout Module for real-time number selection, validation, reservation, and release.
 - Supports integration with legacy systems for number status updates and regulatory compliance.
@@ -153,7 +238,7 @@ The **Basket Module** facilitates the shopping basket experience, ensuring seaml
 
 The **Payment Module** manages payment processing, ensuring secure and reliable transactions for customer orders.
 
-- Manages payment processing for customer orders, supporting multiple payment methods and gateways.
+- Manages payment processing for customer orders, supporting (Potential) multiple payment methods and gateways.
 - Handles payment authorization, capture, settlement, and refunds in coordination with the Order Module.
 - Provides payment status updates to the Order Module and triggers order progression based on successful payment events.
 - Supports transaction logging, reconciliation, and reporting for financial transparency.
@@ -172,7 +257,7 @@ The **Order Module** orchestrates the entire order lifecycle, ensuring complianc
 
 #### Whitelabel Frontend Module Scope
 
-The **Whitelabel Frontend Module** provides customizable storefront templates allowing brand partners to apply their logos, color schemes, and domain configurations.
+The **Whitelabel Frontend Module** provides customizable storefront templates allowing brand partners to have their logos, color schemes, and domain configurations.
 
 - Supports dynamic product display and filtering based on channel configurations and catalog data.
 - Enables flexible layout adjustments and content management to accommodate partner-specific marketing campaigns.
@@ -199,7 +284,7 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 ### 5.1 Goals & Objectives
 
 - Enable multi-tenant support for telecom brand partners
-- Empower partners to manage products, pricing, and campaigns
+- Empower partners to manage products, and campaigns
 - Deliver a seamless, intuitive shopping experience
 - Ensure high performance and scalability
 
@@ -210,49 +295,55 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 5.3 Engineering Success Metrics
 
-#### 4.3.1 Technical Performance Metrics
+#### 5.3.1 Technical Performance Metrics
+
 - **API Response Times**: 95% of API calls complete within 500ms under normal load
 - **System Uptime**: 99.9% availability excluding planned maintenance windows
 - **Database Performance**: Catalog queries return results within 200ms for 95% of requests
 - **Frontend Performance**: Page load times under 3 seconds for initial load, under 1 second for navigation
 - **Transaction Processing**: Payment authorization within 2 seconds, order processing within 10 seconds
 
-#### 4.3.2 Quality & Reliability Metrics
+#### 5.3.2 Quality & Reliability Metrics
+
 - **Test Coverage**: Maintain minimum 80% unit test coverage for business logic, measured via automated tooling in CI/CD pipeline with coverage reports generated on each build
 - **Code Review**: 100% of code changes reviewed before merge to main branch
 - **Deployment Success Rate**: 95% successful deployments without rollback, measured as deployments that complete successfully and remain stable for 24 hours post-deployment
 - **Production Incidents**: Less than 2 critical production incidents per month, where critical incidents are defined as system outages or data corruption affecting multiple tenants
 - **Security Compliance**: Zero critical security vulnerabilities in production code
 
-#### 4.3.3 Development Productivity Metrics
+#### 5.3.3 Development Productivity Metrics
+
 - **Developer Onboarding**: New developers productive within 5 business days
 - **Feature Delivery Throughput**: Consistent feature delivery with average cycle time under 2 weeks for standard features, measured from development start to production deployment
 - **Lead Time**: From feature request to production deployment within 2 weeks for small features
 - **Documentation Coverage**: 100% of APIs documented with interactive examples
 - **Code Quality Maintenance**: Address technical debt items within 1 sprint of identification, tracked via dedicated technical debt backlog items and resolution time metrics
 
-#### 4.3.4 Business Impact Metrics
+#### 5.3.4 Business Impact Metrics
+
 - **Tenant Onboarding Time**: Reduce from months to 2-3 weeks (target: 75% reduction)
 - **Partner Feedback**: Collect and track partner feedback through regular check-ins and support interactions, with goal of proactive issue identification and resolution
 - **Support Ticket Reduction**: 60% decrease in support tickets compared to legacy system
-- **Order Processing Efficiency**: Process 1000+ orders per hour during peak periods
-- **Multi-tenant Scalability**: Successfully support 20+ active tenants simultaneously
+- **Order Processing Efficiency**: Process 200+ orders per hour during peak periods
+- **Multi-tenant Scalability**: Successfully support 10+ active tenants simultaneously
 
-#### 4.3.5 Operational Excellence Metrics
+#### 5.3.5 Operational Excellence Metrics
+
 - **Incident Response**: Mean Time to Recovery (MTTR) under 2 hours for critical issues
 - **Monitoring Coverage**: 100% of critical system components monitored with alerting
-- **Backup and Recovery**: RTO of 4 hours, RPO of 1 hour for critical data
 - **Capacity Planning**: System performance maintained during 2x expected peak load
 - **Change Management**: 100% of production changes follow approved change control process
 
-#### 4.3.6 Partner and Customer Success Metrics
+#### 5.3.6 Partner and Customer Success Metrics
+
 - **Partner Adoption Rate**: 80% of targeted brand partners migrated within 6 months
 - **User Experience**: Task completion rate above 90% for common workflows
 - **API Usage**: External API consumers achieve their integration goals within planned timeframes
-- **White-label Effectiveness**: Partners can customize and deploy branded storefronts within 1 week
+- **White-label Effectiveness**: Partners can customize and deploy branded storefronts within weeks
 - **Revenue Impact**: Platform enables 15% increase in partner revenue within first year
 
-#### 4.3.7 Measurement and Monitoring Strategy
+#### 5.3.7 Measurement and Monitoring Strategy
+
 - **Proactive Issue Detection**: Implement comprehensive monitoring and alerting to identify and resolve issues before they impact business operations
 - **Automated Metrics Collection**: All metrics captured automatically through system monitoring, avoiding manual reporting overhead
 - **Monthly Review Cadence**: Metrics reviewed monthly with stakeholders to ensure alignment and identify improvement opportunities
@@ -264,21 +355,24 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 6.1 Team Structure & Skill Requirements
 
-#### 5.1.1 Core Development Team
-- **Team Size**: 6-8 developers including technical lead
-- **Backend Developers**: 3-4 developers with .NET 9, C#, and SQL Server expertise
-- **Frontend Developers**: 2 developers with SvelteKit, TypeScript, and Contentful CMS experience
-- **DevOps Engineer**: 1 developer with Kubernetes, GitHub Actions, and Azure infrastructure experience
-- **Technical Lead/Architect**: 1 senior developer with telecom domain knowledge and system integration experience
+#### 6.1.1 Core Development Team
 
-#### 5.1.2 Specialized Skills Required
-- **Legacy Integration**: Experience with SOAP webservices and XML data transformation
+- **Team Size**: 4-6 developers including technical lead
+- **Backend Developers**: 2-4 developers with .NET 9, C#, and SQL Server expertise
+- **Frontend Developers**: 3 developers with SvelteKit, TypeScript, and Contentful CMS experience
+- **DevOps Engineer**: 1 developer with Kubernetes, GitHub Actions, and Azure infrastructure experience
+- **Technical Lead/Architect**: 1 senior developer with domain knowledge and system integration experience
+
+#### 6.1.2 Specialized Skills Required
+
+- **Legacy Integration**: Experience XML data transformation ( Potentially updated to JSON)
 - **Multi-tenant Architecture**: Database design and tenant isolation patterns
 - **Telecom Domain**: Understanding of MSISDN management, SIM card logistics, and subscription billing
-- **Security Compliance**: Knowledge of PCI DSS, GDPR, and telecom regulatory requirements
+- **Security Compliance**: Knowledge of GDPR, and telecom regulatory requirements
 - **Performance Optimization**: Experience with high-throughput eCommerce platforms
 
-#### 5.1.3 Support Roles
+#### 6.1.3 Support Roles
+
 - **Product Owner**: Bjørn Alsted Nielsen (existing)
 - **QA Engineer**: 1 tester with automation and multi-tenant testing expertise
 - **UX/UI Designer**: 1 designer for whitelabel frontend customization capabilities
@@ -286,13 +380,15 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 6.2 Development Environment & Tooling
 
-#### 5.2.1 Development Infrastructure
+#### 6.2.1 Development Infrastructure
+
 - **Local Development**: Docker Desktop licenses and .NET Aspire tooling
 - **CI/CD Pipeline**: GitHub Actions (included in existing GitHub subscription)
 - **Code Repository**: GitHub Enterprise (existing organizational license)
 - **Development Databases**: Local SQL Server instances and containerized services
 
-#### 5.2.2 Testing & Quality Assurance
+#### 6.2.2 Testing & Quality Assurance
+
 - **Automated Testing**: Unit testing frameworks, integration test environments
 - **Performance Testing**: Load testing tools for multi-tenant scalability validation
 - **Security Testing**: Vulnerability scanning and penetration testing tools
@@ -300,18 +396,21 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 6.3 Cost-Benefit Analysis
 
-#### 5.3.1 Project Investment Approach
+#### 6.3.1 Project Investment Approach
+
 - **Development Phases**: Multi-phase development approach over 11-month cycle
-- **Resource Allocation**: Team scaling from 6 to 8 developers across phases
+- **Resource Allocation**: Team scaling from 4 to 6 developers across phases
 - **Infrastructure Scaling**: Cloud infrastructure costs scaling with tenant growth
 
-#### 5.3.2 Expected Benefits
+#### 6.3.2 Expected Benefits
+
 - **Operational Efficiency**: Significant reduction in tenant onboarding time and costs
 - **Revenue Growth**: Platform enables partner revenue growth through improved capabilities
 - **Support Cost Reduction**: Substantial decrease in support ticket volume through improved system design
 - **Scalability Value**: Platform supports multiple tenants with shared operational overhead
 
-#### 5.3.3 Value Realization
+#### 6.3.3 Value Realization
+
 - **Tenant Onboarding**: Reduction from months to 2-3 weeks creates immediate value
 - **Platform Capabilities**: Foundation for future eCommerce innovation and expansion
 - **Operational Savings**: Automated processes and improved system reliability reduce ongoing costs
@@ -319,12 +418,14 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 6.4 Risk Mitigation & Contingency
 
-#### 5.4.1 Project Risk Management
+#### 6.4.1 Project Risk Management
+
 - **Development Scope**: Contingency planning for scope changes and requirements evolution
 - **Infrastructure Scaling**: Flexible infrastructure approach to accommodate unexpected load requirements
 - **Integration Complexity**: Buffer planning for legacy system integration challenges and technical complexity
 
-#### 5.4.2 Resource Risk Mitigation
+#### 6.4.2 Resource Risk Mitigation
+
 - **Key Personnel**: Cross-training and documentation to reduce single points of failure
 - **Vendor Dependencies**: Alternative vendor evaluation for critical services
 - **Skill Gaps**: Training budget and external consultancy for specialized requirements
@@ -335,20 +436,23 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 7.1 Architecture Decision Records (ADR) Process
 
-#### 6.1.1 ADR Implementation
+#### 7.1.1 ADR Implementation
+
 - **Documentation Format**: Lightweight markdown-based ADRs stored in `/docs/architecture/decisions/`
 - **Naming Convention**: `ADR-YYYY-MM-DD-title-of-decision.md` for chronological ordering
 - **Review Process**: All significant architecture decisions require ADR with peer review
 - **Template Structure**: Context, Decision, Consequences, and Alternatives Considered
 
-#### 6.1.2 When ADRs Are Required
+#### 7.1.2 When ADRs Are Required
+
 - **Technology Stack Changes**: Any modification to core frameworks or libraries
 - **Integration Patterns**: New external system integrations or API design changes
 - **Data Architecture**: Changes to multi-tenant patterns or database design
 - **Security Decisions**: Authentication, authorization, or data protection changes
 - **Performance Trade-offs**: Decisions impacting system performance or scalability
 
-#### 6.1.3 ADR Lifecycle
+#### 7.1.3 ADR Lifecycle
+
 - **Draft Status**: Initial proposal open for team discussion
 - **Proposed**: Ready for formal review and feedback
 - **Accepted**: Approved and becomes guiding architecture principle
@@ -356,37 +460,41 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 7.2 Development Standards & Workflow
 
-#### 6.2.1 Code Review Standards
+#### 7.2.1 Code Review Standards
+
 - **Mandatory Reviews**: All code requires review before merging to main branch
 - **Review Checklist**: Security, performance, maintainability, test coverage, documentation
 - **Reviewer Assignment**: Minimum one peer review, two for critical components
 - **Response Time**: Reviews completed within 24 hours for standard changes
 - **Approval Criteria**: No unresolved comments, all CI checks passing
 
-#### 6.2.2 Development Workflow
+#### 7.2.2 Development Workflow
+
 - **Branch Strategy**: Feature branches from main with descriptive naming
 - **Commit Standards**: Conventional commits format for automated changelog generation
 - **Pull Request Template**: Description, testing steps, checklist, related issues
 - **CI/CD Integration**: Automated tests, security scans, and quality checks on every PR
 - **Documentation Updates**: Code changes include relevant documentation updates
 
-#### 6.2.3 Quality Gates
+#### 7.2.3 Quality Gates
+
 - **Unit Test Coverage**: Minimum 80% for new code, verified by automated tooling
 - **Integration Tests**: Required for all API endpoints and external integrations
-- **Performance Tests**: Load testing for changes impacting critical paths
 - **Security Scanning**: Automated vulnerability scanning on dependencies and code
 - **Code Quality**: Static analysis with agreed-upon rule sets
 
 ### 7.3 Development Environment Standards
 
-#### 6.3.1 Local Development Setup
+#### 7.3.1 Local Development Setup
+
 - **Service Orchestration**: .NET Aspire for spinning up the solution with dependencies via Docker
 - **Environment Configuration**: .env files with documented example configurations
 - **Database Seeding**: Automated scripts for test data across multiple tenants
 - **Service Discovery**: Local service discovery matching production patterns via Aspire
 - **Debugging Support**: Configured for IDE debugging across all services
 
-#### 6.3.2 Shared Development Practices
+#### 7.3.2 Shared Development Practices
+
 - **Code Formatting**: Automated formatting with .editorconfig and language-specific tools
 - **Linting Rules**: Shared ESLint, StyleCop configurations across projects
 - **Git Hooks**: Pre-commit hooks for formatting, linting, and test execution
@@ -395,21 +503,23 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 7.4 Change Management & Deployment
 
-#### 6.4.1 Change Control Process
+#### 7.4.1 Change Control Process
+
 - **Change Categories**: Standard, Emergency, and Major changes with different approval paths
 - **Impact Assessment**: Required for all changes affecting multiple services
-- **Rollback Plans**: Documented rollback procedure for every deployment
 - **Communication**: Stakeholder notification for significant changes
 - **Post-Implementation Review**: Lessons learned for major deployments
 
-#### 6.4.2 Deployment Strategy
+#### 7.4.2 Deployment Strategy
+
 - **Blue-Green Deployments**: Zero-downtime deployments with instant rollback capability
 - **Feature Toggles**: Gradual rollout capabilities for new features
 - **Database Migrations**: Backward-compatible migrations with rollback scripts
 - **Monitoring Integration**: Deployment markers in monitoring systems
 - **Health Checks**: Comprehensive health endpoints validated post-deployment
 
-#### 6.4.3 Release Management
+#### 7.4.3 Release Management
+
 - **Semantic Versioning**: Consistent versioning across all services
 - **Release Notes**: Automated generation from commit messages and PR descriptions
 - **Approval Process**: Sign-offs required based on change impact
@@ -417,14 +527,16 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 7.5 Knowledge Management & Documentation
 
-#### 6.5.1 Technical Documentation
+#### 7.5.1 Technical Documentation
+
 - **API Documentation**: OpenAPI specifications with interactive documentation
 - **Service Documentation**: Architecture diagrams, data flows, and integration points
 - **Runbooks**: Operational procedures for common tasks and incident response
 - **Troubleshooting Guides**: Known issues and resolution procedures
 - **Performance Baselines**: Documented performance expectations and benchmarks
 
-#### 6.5.2 Knowledge Sharing
+#### 7.5.2 Knowledge Sharing
+
 - **Code Comments**: Meaningful comments for complex logic and business rules
 - **Team Wiki**: Centralized knowledge base for decisions and procedures
 - **Tech Talks**: Regular sessions for sharing architectural decisions and learnings
@@ -437,20 +549,23 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 8.1 Technology Stack Decisions
 
-#### 7.1.1 Backend Architecture
+#### 8.1.1 Backend Architecture
+
 - **Framework**: .NET 9 with C# - chosen for enterprise-grade scalability, strong typing, and existing organizational expertise
 - **Architecture Pattern**: Modular Monolith - balances development simplicity with service separation, avoiding microservices complexity while maintaining modularity
 - **Orchestration**: .NET Aspire - provides unified debugging, service discovery, and configuration management
 - **Database**: Multi-tenant SQL Server with tenant isolation via TenantId filtering
 - **API Design**: RESTful APIs with OpenAPI/Swagger documentation, following REST maturity level 2
 
-#### 6.1.2 Frontend Architecture
+#### 8.1.2 Frontend Architecture
+
 - **Framework**: SvelteKit - chosen for performance, developer experience, and excellent white-labeling capabilities
 - **Content Management**: Contentful CMS integration for dynamic content and marketing campaigns
 - **Styling**: CSS-in-JS with tenant-specific theming support
 - **State Management**: Stores pattern with reactive updates
 
-#### 6.1.3 Infrastructure & Deployment
+#### 8.1.3 Infrastructure & Deployment
+
 - **Container Platform**: Kubernetes with nginx ingress for scalability and load balancing
 - **Cloud Provider**: Azure (aligned with organizational standards)
 - **CI/CD**: GitHub Actions with automated deployment pipelines
@@ -458,107 +573,117 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ### 8.2 Performance Requirements & SLA Targets
 
-#### 6.2.1 Response Time Requirements
+#### 8.2.1 Response Time Requirements
+
 - **API Endpoints**: < 500ms for 95% of requests under normal load
 - **Database Queries**: < 200ms for catalog and product lookups
 - **Frontend Pages**: < 3 seconds initial load, < 1 second subsequent navigation
 - **Payment Processing**: < 2 seconds for authorization, < 10 seconds for capture
 
-#### 6.2.2 Scalability Targets
+#### 8.2.2 Scalability Targets
+
 - **Concurrent Users**: Support 1,000+ concurrent users across all tenants
 - **Transaction Volume**: Process minimum 1,000 orders per hour during peak periods
-- **Tenant Scaling**: Support 20+ active tenants with horizontal scaling capability
+- **Tenant Scaling**: Support 10+ active tenants with horizontal scaling capability
 - **Database Performance**: Handle 10,000+ catalog items per tenant without degradation
 
-#### 6.2.3 Availability & Reliability
+#### 8.2.3 Availability & Reliability
+
 - **System Uptime**: 99.9% availability excluding planned maintenance
 - **Recovery Time Objective (RTO)**: 4 hours for critical system restoration
 - **Recovery Point Objective (RPO)**: 1 hour maximum data loss tolerance
 - **Error Handling**: Graceful degradation with comprehensive error logging
 
-### 7.3 Security & Compliance Requirements
+### 8.3 Security & Compliance Requirements
 
-#### 6.3.1 Data Protection
+#### 8.3.1 Data Protection
+
 - **Tenant Isolation**: Data separation using TenantId filtering in queries
 - **Data Encryption**: AES-256 encryption at rest, TLS 1.3 for data in transit
 - **Personal Data**: GDPR compliance with data anonymization and deletion capabilities
 - **Audit Logging**: Comprehensive audit trails for all tenant data access and modifications
 
-#### 6.3.2 Authentication & Authorization
+#### 8.3.2 Authentication & Authorization
+
 - **Authentication**: OAuth 2.0 with self-hosted Duende Identity Server
 - **Authorization**: Role-based access control (RBAC) with tenant-specific permissions
 - **API Security**: JWT tokens with proper expiration and refresh mechanisms
-- **Payment Security**: PCI DSS compliance for payment data handling
 
-#### 6.3.3 Regulatory Compliance
+#### 8.3.3 Regulatory Compliance
+
 - **Telecom Regulations**: Compliance with national numbering regulations
 - **Data Privacy**: GDPR and national data protection requirements
-- **Financial Compliance**: PCI DSS for payment processing
-- **Industry Standards**: SOC 2 Type II compliance for service delivery
 
-### 7.4 Integration Architecture
+### 8.4 Integration Architecture
 
-#### 6.4.1 Legacy System Integration
-- **TCM System**: SOAP-based webservice integration with custom adapter for XML schema conversion
+#### 8.4.1 Legacy System Integration
+
+- **TCM System**: XML-based webservice integration with custom adapter for XML schema conversion
 - **Product Service**: Proxy layer for product data with caching strategies
-- **Provisioning Systems**: Asynchronous integration with message queues
+- **Provisioning Systems**: Integration with provisioning system via API endpoints, orchestrated by the Order Service
 - **Error Handling**: Retry mechanisms with exponential backoff
 
-#### 6.4.2 External Service Integration
+#### 8.4.2 External Service Integration
+
 - **Payment Gateways**: Currently OnPay, with future support for tenant-specific payment providers
 - **Content Delivery**: CDN integration for static assets and images
-- **Email/SMS**: Notification services with template management
+- **Email/SMS**: Notification services with template management (Tcm handles this is version 1)
 - **Analytics**: Integration with business intelligence tools
 
-#### 6.4.3 API Design Standards
+#### 8.4.3 API Design Standards
+
 - **Versioning**: Semantic versioning with backward compatibility
 - **Documentation**: OpenAPI 3.0 with interactive documentation
-- **Rate Limiting**: Tenant-aware rate limiting with proper error responses
 - **Monitoring**: Distributed tracing with correlation IDs
 
-### 7.5 Development Standards & Quality Gates
+### 8.5 Development Standards & Quality Gates
 
-#### 6.5.1 Code Quality Requirements
+#### 8.5.1 Code Quality Requirements
+
 - **Test Coverage**: Minimum 80% unit test coverage for business logic
 - **Code Review**: Mandatory peer review for all code changes
 - **Static Analysis**: Code quality tooling to be determined based on Nuuday organizational standards
 - **Documentation**: Comprehensive API documentation and architectural decision records
 
-#### 6.5.2 Development Practices
+#### 8.5.2 Development Practices
+
 - **Version Control**: Git with feature branch workflow and protected main branch
 - **CI/CD Pipeline**: GitHub Actions with automated testing, security scanning, and deployment
 - **Environment Strategy**: Development, staging, and production environments with data isolation
-- **Deployment**: Blue-green deployment with automated rollback capabilities
 
-#### 6.5.3 Monitoring & Observability
+#### 8.5.3 Monitoring & Observability
+
 - **Application Monitoring**: Grafana dashboards with Prometheus metrics for real-time performance monitoring and alerting
 - **Business Metrics**: Order volume, payment success rates, and tenant usage
 - **Log Management**: Centralized logging with structured log format
 - **Health Checks**: Comprehensive health endpoints for all services
 
-### 7.6 Technical Priorities & Constraints
+### 8.6 Technical Priorities & Constraints
 
-#### 6.6.1 Core Technical Priorities
+#### 8.6.1 Core Technical Priorities
+
 - **Code Quality**: Well-structured and maintainable codebase architecture
 - **Developer Experience**: Easy onboarding for new developers with comprehensive documentation
 - **User Experience**: Easy to use for both internal tenants and external customers
 - **System Reliability**: High availability and performance under load
 
-#### 6.6.2 System Constraints
+#### 8.6.2 System Constraints
+
 - **Legacy Dependencies**: Must maintain compatibility with existing SOAP-based TCM system
 - **Limited Legacy Access**: Restricted access to legacy systems for integration and testing
 - **Performance Constraints**: System must handle peak loads during product launches on shared infrastructure
 - **Scalability Limits**: Database design must support efficient tenant scaling
 - **Security Boundaries**: Strict tenant isolation cannot be compromised
 
-#### 6.6.3 Compliance & Regulatory Constraints
+#### 8.6.3 Compliance & Regulatory Constraints
+
 - **Telecom Regulations**: Compliance with national numbering regulations and telecom industry standards
 - **Data Privacy Laws**: GDPR and national data protection requirements
-- **Financial Compliance**: PCI DSS for payment processing
 - **Audit Requirements**: Comprehensive audit trails for all tenant operations
 
-#### 6.6.4 Technical Debt Management
-- **Legacy Integration**: Custom adapter development for SOAP-based legacy systems
+#### 8.6.4 Technical Debt Management
+
+- **Legacy Integration**: Custom adapter development for XML-based legacy systems
 - **Refactoring**: Planned refactoring cycles to maintain code quality
 - **Documentation**: Continuous documentation updates for system changes
 - **Performance Optimization**: Regular performance reviews and optimization cycles
@@ -567,52 +692,54 @@ The **Whitelabel Frontend Module** provides customizable storefront templates al
 
 ## 9. Project Team
 
-### 7.1 Project Sponsor
+### 9.1 Project Sponsor
 
 Lars Vieland Grasberger, Head of IT, Nuuday Mobile Partners.
 
-### 7.2 Project Manager
+### 9.2 Project Manager
 
 Bjørn Alsted Nielsen, Product Owner, Nuuday Mobile Partners.
 
-### 7.3 Key Stakeholders
+### 9.3 Key Stakeholders
 
 - Nichlas Bruselius, Head of Brand Partners
 - Katrine Grøn Iversen, Commercial Manager
 - Katrine Blicher Christensen, Commercial Manager
 - Niclas Schumacher, IT Lead
+- Peter Jensen, Provisioning System Owner (TCM)
 
-### 7.4 Core Project Team
+### 9.4 Core Project Team
 
 Infrastructure & Platform team (responsible for building the module)
 
-### 7.5 External Partners/Vendors
+### 9.5 External Partners/Vendors
 
 Eesy - whom is a known brand partner that will be the first customer using the pure API capabilities of the eCommerce Service.
+brand partners - whom will use the whitelabel frontend capabilities of the eCommerce Service.
 
 ---
 
 ## 10. Project Milestones & Checkpoints
 
-### 8.1 Key Milestones
+### 10.1 Key Milestones
 
-| Milestone ID | Description                                                                       | Timing         |
-| ------------ | --------------------------------------------------------------------------------- | -------------- |
-| M1           | Requirements gathering and analysis complete                                      | August 2025    |
-| M2           | Initial general technical design and architecture planning                        | September 2025 |
-| M2.1         | Delivery of channel and catalog modules for digital channels and API availability | October 2025   |
-| M3           | Complete technical design and architecture planning                               | November 2025  |
-| M4           | Development for Open Pages Project features complete                              | December 2025  |
-| M5           | eCom module version 0.5                                                           | January 2026   |
-| M6           | Whitelabel frontend capabilities delivered                                        | April 2026     |
-| M7           | eCom module version 1.0 (full feature set)                                        | May 2026       |
+| Milestone ID | Description                                                                             | Timing         |
+| ------------ | --------------------------------------------------------------------------------------- | -------------- |
+| M1           | Requirements gathering and analysis complete                                            | August 2025    |
+| M2           | Initial general technical design and architecture planning                              | September 2025 |
+| M2.1         | Delivery of sales channel and catalog modules for digital channels and API availability | October 2025   |
+| M3           | Complete technical design and architecture planning                                     | November 2025  |
+| M4           | Development for Open Pages Project features complete                                    | November 2025  |
+| M5           | eCom module version 0.5                                                                 | January 2026   |
+| M6           | Whitelabel frontend capabilities delivered                                              | April 2026     |
+| M7           | eCom module version 1.0 (full feature set)                                              | May 2026       |
 
-### 8.2 Timeline
+### 10.2 Timeline
 
 - Phase 1 (August-September): Technical design including architecture for channel and catalog modules.
 - Phase 2 (September–May 2025): Development & integration.
 
-### 8.3 Go/No-Go Checkpoints
+### 10.3 Go/No-Go Checkpoints
 
 Dependencies on legacy TCM system, Open Pages project, and provisioning systems may impact go/no-go decisions.
 
@@ -620,16 +747,16 @@ Dependencies on legacy TCM system, Open Pages project, and provisioning systems 
 
 ## 11. Assumptions, Constraints & Dependencies
 
-### 9.1 Assumptions
+### 11.1 Assumptions
 
 - Timely availability of resources for design and development
-- Continued access to legacy TCM system for product, pricing, and MSISDN data
+- Continued access to legacy TCM system for product, Campaign and MSISDN data
 
-### 9.2 Constraints
+### 11.2 Constraints
 
 Flexible to adapt to changing requirements or priorities
 
-### 9.3 Dependencies
+### 11.3 Dependencies
 
 - **Legacy TCM system**: Required for product, pricing, and MSISDN data. Any delays in accessing this system may impact the integration timeline and overall project delivery.
 - **Open Pages project**: Provides frontend capabilities for whitelabel solutions. Delays or changes in this project could affect the user interface and customer experience.
@@ -641,14 +768,14 @@ Flexible to adapt to changing requirements or priorities
 
 ## 12. Risks and Opportunities
 
-### 10.1 Risks
+### 12.1 Risks
 
 - Integration challenges with legacy and downstream systems may delay delivery
 - Dependencies on other projects could cause resource conflicts
 - Scope creep due to evolving partner requirements
 - Competing priorities within Nuuday Mobile Partners may affect focus
 
-### 10.2 Opportunities
+### 12.2 Opportunities
 
 - Strengthened relationships with brand partners through early engagement
 - Foundation for future eCommerce innovation and feature expansion
@@ -669,5 +796,5 @@ Flexible to adapt to changing requirements or priorities
 - **Project Manager:** Bjørn Alsted Nielsen
 - **Core Project Team:** [Signatures as appropriate]
 
-**Prepared by:** [Your Name]  
-**Date:** June 20, 2025
+**Prepared by:** Niclas Schumacher
+**Date:** september 03, 2025
